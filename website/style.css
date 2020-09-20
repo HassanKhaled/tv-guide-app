@@ -1,0 +1,56 @@
+
+html {
+    height: 100%
+}
+body{
+     background: linear-gradient(#E76F51, #F4A261); 
+     background-repeat: no-repeat;
+}
+
+.navbar{
+    background-color: #E76F51;
+}
+
+
+
+.footer{
+    width: 100%;
+    color: #eee;
+    background-color: #333;
+}
+
+
+h4{
+    margin: 10px;
+}
+
+
+.lastElement{
+    background-color: #555;
+}
+
+.borderLeft{
+
+    border-left: solid 1px #eee;
+
+    height: 75%;
+
+}
+
+.bar{
+    background: #555;
+    width: 50px;
+    height: 5px;
+    margin: 10px;
+}
+
+a{
+    margin-left: 10px;
+    margin-bottom:5px;
+    color: #808080;
+}
+
+a:hover{
+    color: #eee;
+    text-decoration: none;
+}
