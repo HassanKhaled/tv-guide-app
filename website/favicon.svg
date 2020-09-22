@@ -1,23 +1,4 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <link rel="shortcut icon" href="favicon.svg " type="image/x-icon" />
-  <title>TV Guide</title>
-  <link rel="stylesheet" href="style.css">
-  <!--  https://coolors.co/264653-2a9d8f-e9c46a-f4a261-e76f51 -->
-
-
-  <script src="https://kit.fontawesome.com/6914962af8.js" crossorigin="anonymous"></script>
-
-</head>
-
-<body>
-  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-    <!-- Brand -->
-    <a class="navbar-brand" href="#">
-      
-      <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
@@ -35,170 +16,61 @@
    id="svg8"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
    sodipodi:docname="tvIcon.svg">
-
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="2.8"
+     inkscape:cx="-21.545295"
+     inkscape:cy="40.382773"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:object-nodes="false"
+     inkscape:snap-nodes="false"
+     inkscape:window-width="1366"
+     inkscape:window-height="705"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1"
+     units="px" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     
+     id="layer1"
      transform="translate(0,-288.53333)">
-    <path 
-       style="opacity:1;;stroke:none;stroke-width:0.46170852;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+    <path
+       style="opacity:1;;stroke:none;fill:#F4A261;stroke-width:0.46170852;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        d="m 6.3299799,288.79723 a 1.743953,1.7881966 0 0 0 -0.00164,0.005 H 1.882686 c -0.3908641,0 -0.7055272,0.32265 -0.7055272,0.72343 v 6.37937 c 0,0.40078 0.3146631,0.72355 0.7055272,0.72355 h 12.186409 c 0.390864,0 0.705526,-0.32277 0.705526,-0.72355 v -6.37937 c 0,-0.40078 -0.314662,-0.72343 -0.705526,-0.72343 H 9.6223611 a 1.743953,1.7881966 0 0 0 -0.00164,-0.005 z m -1.0479069,0.66212 h 7.311821 c 0.817263,0 1.475162,0.67459 1.475162,1.51259 v 3.48567 c 0,0.838 -0.657899,1.51271 -1.475162,1.51271 H 5.282073 c -0.817262,0 -1.4752815,-0.67471 -1.4752815,-1.51271 v -3.48567 c 0,-0.838 0.6580195,-1.51259 1.4752815,-1.51259 z m -2.9023037,0.46038 a 0.70553114,0.72343021 0 0 1 0.7055283,0.72343 0.70553114,0.72343021 0 0 1 -0.7055283,0.7233 0.70553114,0.72343021 0 0 1 -0.7056476,-0.7233 0.70553114,0.72343021 0 0 1 0.7056476,-0.72343 z m -0.3206502,0.52611 c -0.1065994,0 -0.1925584,0.088 -0.1925584,0.19732 0,0.10931 0.085962,0.19732 0.1925584,0.19732 h 0.6413014 c 0.1065985,0 0.1924381,-0.088 0.1924381,-0.19732 0,-0.1093 -0.085843,-0.19732 -0.1924381,-0.19732 z m 0.3206502,1.21666 a 0.70553114,0.72343021 0 0 1 0.7055283,0.72343 0.70553114,0.72343021 0 0 1 -0.7055283,0.72342 0.70553114,0.72343021 0 0 1 -0.7056476,-0.72342 0.70553114,0.72343021 0 0 1 0.7056476,-0.72343 z m -0.3206502,0.52624 c -0.1065994,0 -0.1925584,0.0879 -0.1925584,0.19719 0,0.10931 0.085962,0.19732 0.1925584,0.19732 h 0.6413014 c 0.1065985,0 0.1924381,-0.088 0.1924381,-0.19732 0,-0.10931 -0.085843,-0.19719 -0.1924381,-0.19719 z"
-       id="tv"
+       id="tvIcon"
        inkscape:connector-curvature="0" />
     <g
        aria-label="Guide"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:21.38451004px;line-height:1.25;font-family:SimSun-ExtB;-inkscape-font-specification:SimSun-ExtB;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.28639969"
-       
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:21.38451004px;line-height:1.25;font-family:SimSun-ExtB;-inkscape-font-specification:SimSun-ExtB;letter-spacing:0px;word-spacing:0px;;stroke:none;stroke-width:0.28639969"
+       id="text8177"
        transform="matrix(0.23230887,0,0,0.23820247,0.5321165,226.87563)">
       <path
-         id="text"
-         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:16.80211639px;font-family:'Alba Matter';-inkscape-font-specification:'Alba Matter, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.28639969"
+         id="textIcon"
+         style="font-style:normal;font-variant:normal;fill:#E76F51;font-weight:normal;font-stretch:normal;font-size:16.80211639px;font-family:'Alba Matter';-inkscape-font-specification:'Alba Matter, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.28639969"
          d="m 52.629856,276.53396 q -0.571272,0.13442 -0.940919,0.60488 -0.352844,0.45366 -0.352844,1.04173 0,0.70569 0.487261,1.20975 0.487262,0.48726 1.19295,0.48726 h 1.495389 q 0.63848,0 1.041731,0.42006 0.420053,0.40325 0.420053,1.04173 0,0.63848 -0.420053,1.05853 -0.403251,0.42005 -1.041731,0.42005 h -1.495389 q -1.965847,0 -3.293214,-1.32736 -1.327368,-1.34417 -1.327368,-3.31002 0,-1.96585 1.327368,-3.29321 1.327367,-1.32737 3.293214,-1.32737 1.98265,0 3.343622,1.41138 0.436855,0.45365 0.436855,1.00812 0,0.70569 -0.604877,1.17615 l -2.133868,2.08346 q -0.47046,0.45366 -1.024929,0.45366 -0.621679,0 -1.058534,-0.43685 -0.436855,-0.45366 -0.436855,-1.07534 0,-0.47046 0.369647,-0.92412 z m -9.097558,6.25039 q -1.949046,0 -3.293215,-1.32737 -1.327367,-1.34417 -1.327367,-3.29321 0,-1.96585 1.327367,-3.29322 1.327367,-1.34417 3.293215,-1.34417 0.63848,0 1.058533,0.42006 0.420053,0.42005 0.420053,1.05853 0,0.63848 -0.420053,1.05853 -0.420053,0.40325 -1.058533,0.40325 -0.705689,0 -1.192951,0.50407 -0.487261,0.48726 -0.487261,1.19295 0,0.70569 0.487261,1.19295 0.487262,0.48726 1.192951,0.48726 0.705688,0 1.19295,-0.48726 0.504063,-0.48726 0.504063,-1.19295 v -6.58643 q 0,-0.62168 0.420053,-1.04173 0.420053,-0.42006 1.041731,-0.42006 0.638481,0 1.058534,0.42006 0.420053,0.40325 0.420053,1.04173 v 6.58643 q 0,1.94904 -1.34417,3.29321 -1.344169,1.32737 -3.293214,1.32737 z m -6.342012,-9.35878 q -0.722491,0 -1.226555,-0.50406 -0.504063,-0.50407 -0.504063,-1.22656 0,-0.72249 0.504063,-1.22655 0.504064,-0.50406 1.226555,-0.50406 0.722491,0 1.226554,0.50406 0.504063,0.50406 0.504063,1.22655 0,0.72249 -0.504063,1.22656 -0.504063,0.50406 -1.226554,0.50406 z m 1.058533,8.93873 q -0.420053,0.42005 -1.058533,0.42005 -0.638481,0 -1.058534,-0.42005 -0.403251,-0.40325 -0.403251,-1.04173 v -6.3008 q 0,-0.63848 0.403251,-1.04173 0.420053,-0.42005 1.058534,-0.42005 0.655282,0 1.058533,0.40325 0.420053,0.40325 0.420053,1.05853 v 6.3008 q 0,0.63848 -0.420053,1.04173 z m -6.726359,0.42005 q -1.697014,0 -2.839558,-1.12574 -1.125742,-1.14255 -1.125742,-2.83956 v -3.76367 q 0,-0.63848 0.403251,-1.05854 0.420053,-0.42005 1.058534,-0.42005 0.63848,0 1.058533,0.42005 0.420053,0.42006 0.420053,1.05854 v 3.76367 q 0,0.43686 0.285636,0.73929 0.302438,0.28564 0.739293,0.28564 0.436855,0 0.722491,-0.28564 0.285636,-0.30243 0.285636,-0.73929 v -3.79728 q 0,-0.63848 0.420053,-1.04173 0.420053,-0.42005 1.058533,-0.42005 0.638481,0 1.041731,0.42005 0.420053,0.40325 0.420053,1.04173 v 3.79728 q 0,1.68021 -1.142544,2.82276 -1.125741,1.14254 -2.805953,1.14254 z m -10.47822,0.0336 q -2.671537,0 -4.519769,-1.83143 -1.831431,-1.84823 -1.831431,-4.51977 0,-2.67153 1.831431,-4.50296 1.848232,-1.84824 4.519769,-1.84824 2.805953,0 4.738197,2.13387 0.403251,0.45366 0.403251,0.95772 0,0.62168 -0.453658,1.05854 -0.436855,0.43685 -1.058533,0.43685 -0.487261,0 -0.991325,-0.42005 -0.436855,-0.36965 -0.974523,-0.8065 -0.688886,-0.42006 -1.663409,-0.42006 -1.461784,0 -2.436307,0.97453 -0.974523,0.97452 -0.974523,2.4363 0,1.44499 0.974523,2.43631 0.991325,0.97452 2.436307,0.97452 0.991325,0 1.831431,-0.52086 0.840105,-0.53767 1.260158,-1.42818 h -1.797826 q -0.638481,0 -1.058533,-0.42005 -0.403251,-0.42006 -0.403251,-1.05854 0,-0.63848 0.403251,-1.04173 0.420052,-0.42005 1.058533,-0.42005 h 3.595653 q 0.604876,0 1.024929,0.43685 0.436855,0.43686 0.436855,1.04173 0,2.67154 -1.848233,4.51977 -1.831431,1.83143 -4.502967,1.83143 z"
          inkscape:connector-curvature="0" />
     </g>
   </g>
 </svg>
-
-
-
-      
-    </a>
-  
-    <!-- Toggler/collapsibe Button -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <!-- Navbar links -->
-    <div class="collapse navbar-collapse" id="collapsibleNavbar">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link active" href="#">Search</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Schedule</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Shows</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Episodes</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">People</a>
-        </li>
-
-
-      </ul>
-    </div>
-  </nav> 
-<div class="conatiner">
-
-
-
-</div>
-</div>
-  <footer class="footer">
-<div class="container">
-  <div class="row">
-    
-    <div class="col"> 
-      <div class="bar"></div>
-      <h4>Source Code </h4> 
-     
-    </div>
-    
-    <div class="col">
-      <div class="bar"></div>
-       <h4>Used Apis</h4>
-      
-      </div>
-  
-    <div class="col">
-      <div class="bar"></div>
-    <h4>Tech Stack</h4>
-    </div>
-  
-    <div class="col">
-      <div class="bar"></div>
-    <h4>Certificates</h4>
-
-    </div>
-  </div>
-
-
-  <div class="row">
-
-    <div class="col">
-      <a href="https://github.com/HassanKhaled/tvGuide"> This Project </a>
-    </div>
-    <div class="col">
-      <a href="https://openweathermap.org/">Open Weather Maps</a>
-    </div>
-    <div class="col">
-      <a href="https://www.w3schools.com/html/">HTML</a>
-
-    </div>
-
-    <div class="col">
-      <a href="https://confirm.udacity.com/KKMLTGA4">Web Development Professional</a>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col">
-      <a href="https://github.com/HassanKhaled/WeatherSPA"> Weather App</a>
-    </div>
-    <div class="col">
-      <a href="https://openlayers.org/">Open Layers </a>
-    </div>
-    <div class="col">
-      <a href="https://www.w3schools.com/js/">Javascript</a>
-    </div>
-
-    <div class="col">
-      
-    </div>
-  </div>
-
-  <div class="row mb-2">
-    <div class="col">
-      
-    </div>
-    <div class="col">
-        <a href="https://www.countryflags.com/en/">Country Flags</a>
-    </div>
-
-    <div class="col">
-      <a href="https://www.w3schools.com/css/">Css</a>
-    </div>
-
-    <div class="col">
-      
-    </div>
-  </div>
- 
-  <div class="row py-3 lastElement" >
-   
-    <div class="col text-center">
-      <a  href="https://www.linkedin.com/in/hassankhaledabdelhady/"><i class="fab fa-linkedin fa-2x"></i></a> 
-      <a  href="https://github.com/HassanKhaled"> <i class="fab fa-github-square fa-2x"></i>
-      <a href="https://twitter.com/hassan_k_a"><i class="fab fa-twitter-square fa-2x"></i></a>
-      <a href="https://facebook.com/hassan.khaled.1414" ><i class="fab fa-facebook-square fa-2x"></i></a>
-     </div>
-  </div> 
-
-</div>
-</footer>
-<!-- CSS only -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
-<!-- JS, Popper.js, and jQuery -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-<script src="app.js"></script>
-<link rel="stylesheet" href="style.css">
-</body>
-</html>
