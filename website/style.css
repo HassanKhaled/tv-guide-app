@@ -1,55 +1,131 @@
 
+
+.orange{
+    --color-1: #e76f51;
+    --color-2: #f4a261;
+    --color-3: #e9c46a;
+    --color-4: #2a9d8f;
+    --color-5: #264653;
+
+    --color-6:#eee;
+    --color-7:#333;
+    --color-8:#818181;
+   
+}
+
+.brown{
+    --color-1: #BC6C25;
+    --color-2: #DDA15E;
+    --color-3: #FEFAE0;
+    --color-4: #283618;
+    --color-5: #606C38;
+
+    --color-6:#eee;
+    --color-7:#333;
+    --color-8:#818181;
+   
+}
+
+.light{
+    --color-1: #E29578;
+    --color-2: #FFDDD2;
+    --color-3: #EDF6F9;
+    --color-4: #83C5BE;
+    --color-5: #006D77;
+
+    --color-6:#eee;
+    --color-7:#333;
+    --color-8:#818181;
+   
+}
+
+.white{
+    --color-1: #FFFFFF;
+    --color-2: #E5E5E5;
+    --color-3: #FCA311;
+    --color-4: #14213D;
+    --color-5: #000000;
+
+    --color-6:#eee;
+    --color-7:#333;
+    --color-8:#818181;
+   
+}
+
+
+.blue{
+    --color-3: #EEF4ED;
+    --color-2: #8DA9C4;
+    --color-1: #0B2545;
+    --color-5: #13315C;
+    --color-4: #134074;
+
+    --color-6:#eee;
+    --color-7:#333;
+    --color-8:#818181;
+   
+}
+
+
 html {
     height: 100%
 }
 body{
-     background: linear-gradient(#E76F51, #F4A261); 
+     background: linear-gradient(var(--color-1),var(--color-2)); 
      background-repeat: no-repeat;
      overflow-x: hidden;
 }
 
 
 .navbar-dark .navbar-nav .nav-link {
-    color: #E76F51;
-    }
+    color: var(--color-1);
+}
+
+.navbar-dark .navbar-nav .act { 
+    color: var(--color-3); 
+}
+
 
 .navbar-dark .navbar-nav .nav-link:hover {
-        color: #F4A261;
-    }
-
+    color: var(--color-2);
+}
 
 .footer{
     width: 100%;
-    color: #eee;
-    background-color: #333;
+    color: var(--color-6);
+    background-color: var(--color-7);
 }
 
 
 h4{
-    margin: 10px;
-    color: #E9C46A;
+    
+    color: var(--color-3);
 }
-
-
-.lastElement{
-    background-color: #555;
-}
-
 
 .bar{
-    background: #E76F51;
+    background: var(--color-1);
     width: 50px;
     height: 5px;
-    margin: 10px;
+    margin: 10px 0px 10px 0px;
 }
 
 a{
-    margin-left: 10px;
+    margin-left: var(-) 10px;
     margin-bottom:5px;
-    color: #E76F51;
+    color: var(--color-8);
 }
 
 a:hover{
-    color: #F4A261;
+    color: var(--color-2);
     text-decoration: none;
 }
+
+
+#tv {
+fill: var(--color-1);
+}
+
+#text {
+fill: var(--color-2);
+}
+
