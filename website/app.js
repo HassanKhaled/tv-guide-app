@@ -89,11 +89,31 @@ fillInLinksInNavBar = ()=> {
     for( link of links){
         createListItemWithAnchor(link.text,link.href);
     }
-;
 }
 
-fillInLinksInNavBar();
 
+/**
+* @function  saveThemeTolocalStorage
+* @description save selected theme into the local storage .
+* @param theme to be saved to teh local storage
+*/
+saveThemeTolocalStorage = (theme)=>{
+    localStorage.setItem("theme",theme);
+}
+
+
+/**
+* @function  loadThemeFromlocalStorage
+* @description save selected theme into the local storage .
+* @param theme to be saved to teh local storage
+*/
+loadThemeFromlocalStorage = ()=>{
+    document.documentElement.className=localStorage.getItem("theme");
+}
+
+
+fillInLinksInNavBar();
+loadThemeFromlocalStorage();
 
 
 
@@ -105,4 +125,5 @@ fillInLinksInNavBar();
 dropdown.addEventListener('click', (e) =>{
   let className  = e.target.innerHTML ;
   document.documentElement.className=className;
+  saveThemeTolocalStorage(className);
 })
