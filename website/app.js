@@ -7,6 +7,12 @@ themes = [{text:'orange'}, {text:'brown'}, {text:'light'},{text:'white'}, {text:
 {text:'yellow'}, {text:'paleBlue'}, {text:'paleBiege'}, {text:'green'},{text:'pale'}, {text:'blue'}];
 
 
+/** @constant
+*   @type {string}
+*   @global
+*   @description url search in the api.
+*/
+ const searchUrl = "http://api.tvmaze.com/search/shows?q=";
 
 /** @constant
     @type {array}
@@ -21,19 +27,35 @@ links = [ {link:"",text:"Search"},
 
 
 /** @constant
-    @type {object}
-    @global
-    @description Hold reference drop down menu.
+*   @type {object}
+*   @global
+*   @description Hold reference drop down menu.
 */
 let dropdown = document.querySelector(".dropdown-menu");
 
 
 /** @constant
-    @type {object}
-    @global
-    @description Hold reference nav bar.
+*   @type {object}
+*   @global
+*   @description Hold reference search button .
 */
 let navbar = document.querySelector(".navbar-nav");
+
+
+/** @constant
+*   @type {object}
+*   @global
+*   @description Hold reference search button .
+*/
+let searchButton = document.querySelector("#search");
+
+
+/** @constant
+*   @type {object}
+*   @global
+*   @description Hold reference search term textbox.
+*/
+let searchInput = document.querySelector("#searchTerm");
 
 /**
 * @function  fillInThemes
@@ -132,4 +154,28 @@ dropdown.addEventListener('click', (e) =>{
   let className  = e.target.innerHTML ;
   document.documentElement.className=className;
   saveThemeTolocalStorage(className);
-})
+});
+
+/**
+ * @description Handle click event of the dropdown list items
+ */
+searchButton.addEventListener('click', (e) =>{
+    getRequest(searchUrl+searchInput.value);
+  });
+
+/**
+* @function  getRequest
+* @description get the data from the remote server.
+* @param url to be called to get the data requested
+*/
+getRequest = async url => {
+  
+    const response = await fetch(url);
+    
+    try{
+        const data = await response.json();
+        console.log(data);
+    }catch(error){
+
+    }
+}
