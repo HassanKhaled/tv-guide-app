@@ -20,7 +20,6 @@ links = [ {link:"",text:"Search"},
           {link:"",text:"People"}];
 
 
-
 /** @constant
     @type {object}
     @global
@@ -49,7 +48,7 @@ fillInThemes = ()=> {
     }
 }
 
-fillInThemes();
+
 /**
 * @function  createAnchorFromTextAndHref
 * @description fill in the linkes in the nav bar and highlighted active link .
@@ -76,7 +75,8 @@ createListItemWithAnchor = (text, href) => {
     tempLi.appendChild(createAnchorFromTextAndHref(text,href));
     console.log(tempLi);
 
-    navbar.appendChild(tempLi);
+    navbar.insertBefore(tempLi,navbar.childNodes[0]);
+
 }
 
 
@@ -112,12 +112,18 @@ loadThemeFromlocalStorage = ()=>{
 }
 
 
-fillInLinksInNavBar();
-loadThemeFromlocalStorage();
+/**
+* @function  callOnStart
+* @description call on the start of the loading of the file .
+*/
+callOnStart = ()=>{
+    links= links.reverse();
+    fillInThemes();
+    fillInLinksInNavBar();
+    loadThemeFromlocalStorage();
+}
 
-
-
-
+callOnStart();
 
 /**
  * @description Handle click event of the dropdown list items
