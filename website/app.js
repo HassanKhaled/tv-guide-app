@@ -49,6 +49,13 @@ let navbar = document.querySelector(".navbar-nav");
 */
 let searchButton = document.querySelector("#search");
 
+/** @constant
+*   @type {object}
+*   @global
+*   @description Hold reference to content div .
+*/
+let contentDiv = document.querySelector("#content");
+
 
 /** @constant
 *   @type {object}
@@ -95,10 +102,7 @@ createListItemWithAnchor = (text, href) => {
     let tempLi = document.createElement("li");
     tempLi.classList.add("nav-item");
     tempLi.appendChild(createAnchorFromTextAndHref(text,href));
-    console.log(tempLi);
-
     navbar.insertBefore(tempLi,navbar.childNodes[0]);
-
 }
 
 
@@ -175,6 +179,13 @@ getRequest = async url => {
     try{
         const data = await response.json();
         console.log(data);
+        for(item of data){
+            const x = item.show;
+            console.log(x.name);
+            console.log(x.image.medium);
+        }
+
+
     }catch(error){
 
     }
