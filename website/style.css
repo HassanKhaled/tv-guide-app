@@ -250,4 +250,12 @@ fill: var(--color-2);
     padding-right: 20px;
   }
 
+  .modal-content{
+      background-color: var(--color-5);
+      color: var(--color-2);
+  }
  
+  .modal-title{
+    color: var(--color-2);
+    text-shadow: 1px 1px var(--color-5);
+  }
