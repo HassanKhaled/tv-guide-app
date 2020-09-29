@@ -182,7 +182,8 @@ getRequest = async url => {
         for(item of data){
             const x = item.show;
             console.log(x.name);
-            console.log(x.image.medium);
+            
+            createImageFromUrl(x.image.medium,x.name);
         }
 
 
@@ -190,3 +191,23 @@ getRequest = async url => {
 
     }
 }
+
+/**
+* @function  createImageFromUrl
+* @description get url and convert into an image element and added to the content div.
+* @param url to be convernted into an image 
+* @param alt to be the name of the show
+*/
+createImageFromUrl = (url,alt) =>{
+    const img = document.createElement("img");
+    img.setAttribute("src",url);
+    img.setAttribute("alt",alt);
+    img.setAttribute("title",alt);
+    img.classList.add("img-thumbnail");
+    img.classList.add("mb-1");
+    
+
+    console.log(img);
+    contentDiv.appendChild(img);
+}
+
