@@ -207,3 +207,13 @@ fill: var(--color-1);
 fill: var(--color-2);
 }
 
+.btn-success{
+    background-color: var(--color-4);
+    border: none;
+}
+
+.btn-success:hover{
+    background-color: var(--color-5);
+    border: none;
+}
+
