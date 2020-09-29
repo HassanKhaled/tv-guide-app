@@ -38,6 +38,13 @@ links = [ {link:"",text:"Search"},
 */
 let dropdown = document.querySelector(".dropdown-menu");
 
+/** @constant
+*   @type {object}
+*   @global
+*   @description Hold reference glage image 
+*/
+let flageImg = document.querySelector("#flage");
+
 
 /** @constant
 *   @type {object}
@@ -212,6 +219,8 @@ createImageFromUrl = (src,alt,href,info) =>{
     img.setAttribute("alt",alt);
     img.setAttribute("title",alt);
     img.setAttribute("data-value",info);
+    img.setAttribute("data-toggle","modal");
+    img.setAttribute("data-target","#myModal");
     img.classList.add("img-thumbnail");
     img.classList.add("mb-1");
     img.classList.add("ml-1");
@@ -235,9 +244,46 @@ clearContentOfParentElement = ele =>{
 }
 
 
-
 contentDiv.addEventListener("click", (e)=>{
 console.log(e.target);
-console.log(JSON.parse( e.target.getAttribute("data-value")));
+const data = JSON.parse( e.target.getAttribute("data-value"));
+console.log(data);
+clearBySelector(".modal-title")
+document.querySelector(".modal-title").innerHTML= data.name+", "+data.language;
+flageImg.setAttribute("src",imageFlageFromCode(data.network.country.code));
+clearBySelector(".modal-body");
+document.querySelector(".modal-body").appendChild(CreateImage(data.image.medium));
+document.querySelector(".modal-body").appendChild(createDiv(arrayIntoString(data.genres)));
 
 });
+
+CreateImage =  src =>{
+    const img = document.createElement("img");
+    img.setAttribute("src",src);
+    img.classList.add("img-thumbnail");
+    img.classList.add("mb-1");
+    img.classList.add("ml-1");
+    return img
+}
+
+clearBySelector = selector =>{
+    document.querySelector(selector).innerHTML="";
+}
+
+arrayIntoString = array =>{
+
+return array.join(", ");
+}
+
+createDiv = text =>{
+
+const div=  document.createElement("div");
+const textNode = document.createTextNode(text);
+div.innerHTML="";
+div.appendChild(textNode);
+return div;
+}
+
+imageFlageFromCode = code =>{
+    return `https://flagcdn.com/32x24/${code.toLowerCase()}.png`;
+}
