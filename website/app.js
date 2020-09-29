@@ -1,11 +1,16 @@
 /** @constant
-    @type {array}
-    @global
-    @description Hold themes' names.
+*    @type {array}
+*   @global
+*   @description Hold themes' names.
 */
-themes = [{text:'orange'}, {text:'brown'}, {text:'light'},{text:'white'}, {text:'orangeLight'}, {text:'biege'},
+const themes = [{text:'orange'}, {text:'brown'}, {text:'light'},{text:'white'}, {text:'orangeLight'}, {text:'biege'},
 {text:'yellow'}, {text:'paleBlue'}, {text:'paleBiege'}, {text:'green'},{text:'pale'}, {text:'blue'}];
 
+/** @type {array}
+*   @global
+*   @description Hold results of data.
+*/
+let results = "";
 
 /** @constant
 *   @type {string}
@@ -179,16 +184,15 @@ getRequest = async url => {
     try{
         const data = await response.json();
         console.log(data);
+        results = data;
         for(item of data){
             const x = item.show;
             console.log(x.name);
             
-            createImageFromUrl(x.image.medium,x.name,x.url);
+            createImageFromUrl(x.image.medium,x.name,x.url,JSON.stringify(x));
         }
-
-
     }catch(error){
-
+        console.log(error);
     }
 }
 
@@ -198,18 +202,26 @@ getRequest = async url => {
 * @param src to be convernted into an image 
 * @param alt to be the name of the show
 */
-createImageFromUrl = (src,alt,href) =>{
+createImageFromUrl = (src,alt,href,info) =>{
+    const div = document.createElement("div");
+    div.classList.add("cont");
+  
     const img = document.createElement("img");
     img.setAttribute("src",src);
     img.setAttribute("href",href);
     img.setAttribute("alt",alt);
     img.setAttribute("title",alt);
+    img.setAttribute("data-value",info);
     img.classList.add("img-thumbnail");
     img.classList.add("mb-1");
     img.classList.add("ml-1");
+    const text = document.createElement("div");
+    text.classList.add("text-block");
+    text.innerHTML=alt;
 
-    console.log(img);
-    contentDiv.appendChild(img);
+    div.appendChild(img);
+    div.appendChild(text);
+    contentDiv.appendChild(div);
 }
 
 /**
@@ -222,3 +234,10 @@ clearContentOfParentElement = ele =>{
      ele.innerHTML="";
 }
 
+
+
+contentDiv.addEventListener("click", (e)=>{
+console.log(e.target);
+console.log(JSON.parse( e.target.getAttribute("data-value")));
+
+});
