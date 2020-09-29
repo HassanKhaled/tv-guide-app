@@ -147,7 +147,7 @@
 
 
 html {
-    height: 100%
+ 
 }
 body{
      background: linear-gradient(var(--color-1),var(--color-2)); 
@@ -209,11 +209,34 @@ fill: var(--color-2);
 
 .btn-success{
     background-color: var(--color-4);
-    border: none;
+    border-color: var(--color-4);
 }
 
-.btn-success:hover{
-    background-color: var(--color-5);
-    border: none;
+.btn-success:hover,
+.btn-success:active,
+.btn-success:visited,
+.btn-success:focus{
+    background-color: var(--color-5) !important;
+    border-color: var(--color-5) !important;
 }
 
+.img-thumbnail{
+    background: none repeat scroll 0 0 var(--color-4);
+    border-color: var(--color-5);
+    padding: 5px;
+}
+
+.cont {
+    position: relative;
+  }
+  
+  /* Bottom right text */
+  .text-block {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: black;
+    color: white;
+    padding-left: 20px;
+    padding-right: 20px;
+  }

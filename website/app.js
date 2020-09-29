@@ -175,7 +175,7 @@ searchButton.addEventListener('click', (e) =>{
 getRequest = async url => {
   
     const response = await fetch(url);
-    
+    clearContentOfParentElement(contentDiv);
     try{
         const data = await response.json();
         console.log(data);
@@ -183,7 +183,7 @@ getRequest = async url => {
             const x = item.show;
             console.log(x.name);
             
-            createImageFromUrl(x.image.medium,x.name);
+            createImageFromUrl(x.image.medium,x.name,x.url);
         }
 
 
@@ -195,19 +195,30 @@ getRequest = async url => {
 /**
 * @function  createImageFromUrl
 * @description get url and convert into an image element and added to the content div.
-* @param url to be convernted into an image 
+* @param src to be convernted into an image 
 * @param alt to be the name of the show
 */
-createImageFromUrl = (url,alt) =>{
+createImageFromUrl = (src,alt,href) =>{
     const img = document.createElement("img");
-    img.setAttribute("src",url);
+    img.setAttribute("src",src);
+    img.setAttribute("href",href);
     img.setAttribute("alt",alt);
     img.setAttribute("title",alt);
     img.classList.add("img-thumbnail");
     img.classList.add("mb-1");
-    
+    img.classList.add("ml-1");
 
     console.log(img);
     contentDiv.appendChild(img);
+}
+
+/**
+* @function  clearContentOfParentElement
+* @description removed content of an element by removing all of it's children.
+* @param ele to remove all of it's children
+*/
+
+clearContentOfParentElement = ele =>{    
+     ele.innerHTML="";
 }
 
