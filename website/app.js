@@ -263,33 +263,26 @@ console.log(data.summary);
 document.querySelector("#summary").innerHTML=data.summary;
 });
 
-CreateImage =  src =>{
-    const img = document.createElement("img");
-    img.setAttribute("src",src);
-    img.classList.add("img-thumbnail");
-    img.classList.add("mb-1");
-    img.classList.add("ml-1");
-    return img
-}
 
-clearBySelector = selector =>{
-    document.querySelector(selector).innerHTML="";
-}
+/**
+* @function  clearBySelector
+* @description removed content of an element by removing all inner html content.
+* @param selector to remove all of it's children
+*/
+clearBySelector = selector =>{ document.querySelector(selector).innerHTML="";}
 
-arrayIntoString = array =>{
+/**
+* @function  arrayIntoString
+* @description convert array of strings into a string .
+* @param array to be converted into string 
+* @returns array as a continous array 
+*/
+arrayIntoString = array =>{ return array.join(", ");}
 
-return array.join(", ");
-}
-
-createDiv = text =>{
-
-const div=  document.createElement("div");
-const textNode = document.createTextNode(text);
-div.innerHTML="";
-div.appendChild(textNode);
-return div;
-}
-
-imageFlageFromCode = code =>{
-    return `https://flagcdn.com/32x24/${code.toLowerCase()}.png`;
-}
+/**
+* @function  imageFlageFromCode
+* @description takes code of the country and convert it into a flag using flagcdn.
+* @param code of the country 
+* @returns  url of the flagcdn of the requested country's flag
+*/
+imageFlageFromCode = code =>{ return `https://flagcdn.com/32x24/${code.toLowerCase()}.png`; }
