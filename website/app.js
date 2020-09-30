@@ -249,12 +249,18 @@ console.log(e.target);
 const data = JSON.parse( e.target.getAttribute("data-value"));
 console.log(data);
 clearBySelector(".modal-title")
-document.querySelector(".modal-title").innerHTML= data.name+", "+data.language;
-flageImg.setAttribute("src",imageFlageFromCode(data.network.country.code));
-clearBySelector(".modal-body");
-document.querySelector(".modal-body").appendChild(CreateImage(data.image.medium));
-document.querySelector(".modal-body").appendChild(createDiv(arrayIntoString(data.genres)));
+document.querySelector(".modal-title").innerHTML= data.name;
 
+
+//document.querySelector(".modal-subtitle").innerHTML=data.runtime+"Min | "+arrayIntoString(data.genres)+" | "+data.premiered+" | "+data.network.country.name;
+flageImg.setAttribute("src",imageFlageFromCode(data.network.country.code));
+//clearBySelector(".modal-body");
+document.querySelector("#info").innerHTML= data.type+" | "+data.runtime+" Min | "+data.language+" | "+arrayIntoString(data.genres)+" | "+data.premiered+" | "+data.network.country.name+" | "+data.status;
+document.querySelector("#modalImage").src = data.image.medium;
+document.querySelector("#official").href=data.officialSite;
+document.querySelector("#Tvmaz").href=data.url;
+console.log(data.summary);
+document.querySelector("#summary").innerHTML=data.summary;
 });
 
 CreateImage =  src =>{

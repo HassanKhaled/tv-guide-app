@@ -187,6 +187,26 @@ h4{
     margin: 10px 0px 10px 0px;
 }
 
+/*
+.my a:link {
+    color: red;
+  }
+ 
+  .my a:visited {
+    color: green;
+  }
+  
+  
+  .my a:hover {
+    color: hotpink;
+  }
+  
+ 
+  .my a:active {
+    color: blue;
+  }
+*/
+
 a{
     margin-left: var(-) 10px;
     margin-bottom:5px;
@@ -197,7 +217,17 @@ a:hover{
     color: var(--color-2);
     text-decoration: none;
 }
+/*
+a:active{
+    color: var(--color-3);
+    text-decoration: none;
+}
 
+a:visited{
+    color: var(--color-4);
+    text-decoration: none;
+}
+*/
 
 #tv {
 fill: var(--color-1);
