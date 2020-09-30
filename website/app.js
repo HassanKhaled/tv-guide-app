@@ -107,12 +107,18 @@ createAnchorFromTextAndHref = ( text, href)=>{
 
 /**
 * @function  createListItemWithAnchor
-* @description fill in the linkes in the nav bar and highlighted active link .
+* @description fill in the linkes in the nav bar and highlighted active link.
+* @param text to be shown in the anchor.
+* @param href of the anchor to be shown.
 * @param activeLink to be highlighted active in nav bar
 */
-createListItemWithAnchor = (text, href) => {
+createListItemWithAnchor = (text, href,activeLink) => {
     let tempLi = document.createElement("li");
     tempLi.classList.add("nav-item");
+    if(activeLink===text){
+        tempLi.classList.add("active");
+    } 
+
     tempLi.appendChild(createAnchorFromTextAndHref(text,href));
     navbar.insertBefore(tempLi,navbar.childNodes[0]);
 }
@@ -123,9 +129,10 @@ createListItemWithAnchor = (text, href) => {
 * @description fill in the linkes in the nav bar and highlighted active link .
 * @param activeLink to be highlighted active in nav bar
 */
-fillInLinksInNavBar = ()=> {
+fillInLinksInNavBar =(activeLink)=> {
     for( link of links){
-        createListItemWithAnchor(link.text,link.href);
+
+        createListItemWithAnchor(link.text,link.href,activeLink);
     }
 }
 
@@ -157,7 +164,7 @@ loadThemeFromlocalStorage = ()=>{
 callOnStart = ()=>{
     links= links.reverse();
     fillInThemes();
-    fillInLinksInNavBar();
+    fillInLinksInNavBar("Search");
     loadThemeFromlocalStorage();
 }
 
