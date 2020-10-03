@@ -55,7 +55,11 @@ dropdown.addEventListener('click', (e) =>{
  * @description Handle click event of the dropdown list items
  */
 searchButton.addEventListener('click', (e) =>{
+    if(searchInput.value!==""){
     getRequest(searchUrl+searchInput.value);
+    }else{
+        getRequest(searchUrl+"missing");
+    }
   });
 
 /**
