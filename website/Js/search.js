@@ -1,11 +1,3 @@
-/** @constant
-*    @type {array}
-*   @global
-*   @description Hold themes' names.
-*/
-const themes = [{text:'orange'}, {text:'brown'}, {text:'light'},{text:'white'}, {text:'orangeLight'}, {text:'biege'},
-{text:'yellow'}, {text:'paleBlue'}, {text:'paleBiege'}, {text:'green'},{text:'pale'}, {text:'blue'}];
-
 /** @type {array}
 *   @global
 *   @description Hold results of data.
@@ -20,38 +12,11 @@ let results = "";
  const searchUrl = "http://api.tvmaze.com/search/shows?q=";
 
 /** @constant
-    @type {array}
-    @global
-    @description Hold links' names and hrefs.
-*/
-links = [ {link:"",text:"Search"},
-          {link:"",text:"Schedule"},
-          {link:"",text:"Shows"},
-          {link:"",text:"Episodes"},
-          {link:"",text:"People"}];
-
-
-/** @constant
-*   @type {object}
-*   @global
-*   @description Hold reference drop down menu.
-*/
-let dropdown = document.querySelector(".dropdown-menu");
-
-/** @constant
 *   @type {object}
 *   @global
 *   @description Hold reference glage image 
 */
 let flageImg = document.querySelector("#flage");
-
-
-/** @constant
-*   @type {object}
-*   @global
-*   @description Hold reference search button .
-*/
-let navbar = document.querySelector(".navbar-nav");
 
 
 /** @constant
@@ -76,99 +41,6 @@ let contentDiv = document.querySelector("#content");
 */
 let searchInput = document.querySelector("#searchTerm");
 
-/**
-* @function  fillInThemes
-* @description fill in the themes in the dropdown list .
-*/
-fillInThemes = ()=> {
-    for( theme of themes){
-        let temp = document.createElement("a");
-        temp.classList.add("dropdown-item");
-        temp.appendChild(document.createTextNode(theme.text));
-        dropdown.appendChild(temp);
-    }
-}
-
-
-/**
-* @function  createAnchorFromTextAndHref
-* @description fill in the linkes in the nav bar and highlighted active link .
-* @param text to be shown inside the anchor 
-* @param href to be used in teh anchor 
-* @returns object to refrences to anchor 
-*/
-createAnchorFromTextAndHref = ( text, href)=>{
-    let anchor = document.createElement("a");
-    anchor.appendChild(document.createTextNode(text));
-    anchor.setAttribute("href",href);
-    anchor.classList.add("nav-link");
-    return anchor;
-}
-
-/**
-* @function  createListItemWithAnchor
-* @description fill in the linkes in the nav bar and highlighted active link.
-* @param text to be shown in the anchor.
-* @param href of the anchor to be shown.
-* @param activeLink to be highlighted active in nav bar
-*/
-createListItemWithAnchor = (text, href,activeLink) => {
-    let tempLi = document.createElement("li");
-    tempLi.classList.add("nav-item");
-    if(activeLink===text){
-        tempLi.classList.add("active");
-    } 
-
-    tempLi.appendChild(createAnchorFromTextAndHref(text,href));
-    navbar.insertBefore(tempLi,navbar.childNodes[0]);
-}
-
-
-/**
-* @function  fillInLinksInNavBar
-* @description fill in the linkes in the nav bar and highlighted active link .
-* @param activeLink to be highlighted active in nav bar
-*/
-fillInLinksInNavBar =(activeLink)=> {
-    for( link of links){
-
-        createListItemWithAnchor(link.text,link.href,activeLink);
-    }
-}
-
-
-/**
-* @function  saveThemeTolocalStorage
-* @description save selected theme into the local storage .
-* @param theme to be saved to teh local storage
-*/
-saveThemeTolocalStorage = (theme)=>{
-    localStorage.setItem("theme",theme);
-}
-
-
-/**
-* @function  loadThemeFromlocalStorage
-* @description save selected theme into the local storage .
-* @param theme to be saved to teh local storage
-*/
-loadThemeFromlocalStorage = ()=>{
-    document.documentElement.className=localStorage.getItem("theme");
-}
-
-
-/**
-* @function  callOnStart
-* @description call on the start of the loading of the file .
-*/
-callOnStart = ()=>{
-    links= links.reverse();
-    fillInThemes();
-    fillInLinksInNavBar("Search");
-    loadThemeFromlocalStorage();
-}
-
-callOnStart();
 
 /**
  * @description Handle click event of the dropdown list items
@@ -202,12 +74,26 @@ getRequest = async url => {
         for(item of data){
             const x = item.show;
             console.log(x.name);
-            
-            createImageFromUrl(x.image.medium,x.name,x.url,JSON.stringify(x));
+            createImageFromUrl(imageExistNotCreateTemp(x.image),x.name,x.url,JSON.stringify(x));
         }
     }catch(error){
         console.log(error);
     }
+}
+/**
+* @function  imageExistNotCreateTemp
+* @description get url and convert into an image element and added to the content div.
+* @param image to be convernted into an image 
+* @returns image path to be shown on the page
+*/
+imageExistNotCreateTemp = image =>{
+    let temp="";
+    if(image===null){
+        temp ="../website/images/missing.png";
+    }else{
+        temp=image.medium;
+    }
+return temp;
 }
 
 /**
@@ -263,7 +149,11 @@ document.querySelector(".modal-title").innerHTML= data.name;
 flageImg.setAttribute("src",imageFlageFromCode(data.network.country.code));
 //clearBySelector(".modal-body");
 document.querySelector("#info").innerHTML= data.type+" | "+data.runtime+" Min | "+data.language+" | "+arrayIntoString(data.genres)+" | "+data.premiered+" | "+data.network.country.name+" | "+data.status;
-document.querySelector("#modalImage").src = data.image.medium;
+if(data.image!==null){ 
+    document.querySelector("#modalImage").src = data.image.medium;
+}else{
+    document.querySelector("#modalImage").src = "../website/images/missing.png";
+}
 document.querySelector("#official").href=data.officialSite;
 document.querySelector("#Tvmaz").href=data.url;
 console.log(data.summary);
