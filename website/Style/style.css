@@ -289,3 +289,10 @@ fill: var(--color-2);
     color: var(--color-2);
     text-shadow: 1px 1px var(--color-5);
   }
+
+  .temp{
+     width: 210px;
+     height: 295px;
+     background: linear-gradient(var(--color-2),var(--color-1)); 
+     background-repeat: no-repeat;
+  }
