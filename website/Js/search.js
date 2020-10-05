@@ -130,12 +130,32 @@ createImageFromUrl = (src,alt,href,info) =>{
     contentDiv.appendChild(div);
 }
 
+
+
+/**
+* @function  createTempDivsOnContentDiv
+* @description adds as mnay as number of temp elements to the Content Div.
+* @param num number of elements added
+*/
+createTempDivsOnContentDiv = num =>{
+
+    for(let i =0 ; i<num;i++){
+        let div =document.createElement("div");
+        div.classList.add("ml-1");
+        div.classList.add("mb-1");
+        div.classList.add("temp");
+        contentDiv.appendChild(div);
+    }
+
+}
+
+createTempDivsOnContentDiv(10);
+
 /**
 * @function  clearContentOfParentElement
 * @description removed content of an element by removing all of it's children.
 * @param ele to remove all of it's children
 */
-
 clearContentOfParentElement = ele =>{    
      ele.innerHTML="";
 }

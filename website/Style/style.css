@@ -290,9 +290,21 @@ fill: var(--color-2);
     text-shadow: 1px 1px var(--color-5);
   }
 
+  @keyframes changeColors {
+    from {background-color: var(--color-2);}
+    to {background-color: var(--color-1);}
+  }
+
   .temp{
-     width: 210px;
-     height: 295px;
-     background: linear-gradient(var(--color-2),var(--color-1)); 
+     width: 222px;
+     height: 307px;
+     /*background: linear-gradient(var(--color-2),var(--color-1)); */
      background-repeat: no-repeat;
+     animation-name: changeColors;
+     animation-duration: 1s;
+     animation-iteration-count: infinite;
+     animation-direction: alternate;
+     border-radius: .25rem;
+    /* border: solid 5px var(--color-2);*/
+     padding:5px;
   }

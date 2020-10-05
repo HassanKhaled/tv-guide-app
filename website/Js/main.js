@@ -113,6 +113,7 @@ fillInLinksInNavBar =(activeLink)=> {
 }
 
 
+
 /**
 * @function  callOnStart
 * @description call on the start of the loading of the file .
@@ -122,6 +123,7 @@ callOnStart = ()=>{
     fillInThemes();
     fillInLinksInNavBar("Search");
     loadThemeFromlocalStorage();
+   
 }
 
 callOnStart();
