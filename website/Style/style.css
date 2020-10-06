@@ -239,7 +239,7 @@ fill: var(--color-2);
 
 .btn-success{
     background-color: var(--color-4);
-    border-color: var(--color-4);
+    border-color: var(--color-5);
 }
 
 .btn-success:hover,
@@ -261,6 +261,8 @@ fill: var(--color-2);
     border-color: var(--color-5) !important;
     color: var(--color-5) !important;
 }
+
+
 
 .cont {
     position: relative;
@@ -295,6 +297,21 @@ fill: var(--color-2);
     to {background-color: var(--color-1);}
   }
 
+  @keyframes logo {
+    0%   {fill: var(--color-1);}
+    25%  {fill: var(--color-2);}
+    50%  {fill: var(--color-3);}
+    75% {fill: var(--color-4);}
+    100% {fill: var(--color-5);}
+  }
+
+  .animateText{
+    animation-name: logo;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
+
   .temp{
      width: 222px;
      height: 307px;
@@ -307,4 +324,11 @@ fill: var(--color-2);
      border-radius: .25rem;
     /* border: solid 5px var(--color-2);*/
      padding:5px;
+  }
+
+  .input-group-text{
+    border-color: var(--color-5) !important;
+    background: var(--color-3) !important;
+    color:var(--color-6)!important;
+    text-shadow: 1px 1px #000;
   }
