@@ -146,11 +146,19 @@
 }
 
 
-html {
- 
+.dropdown-item.active{
+    background-color:var(--color-1);
+    text-shadow: 1px 1px #000;
 }
+
+.dropdown-item:hover{
+    background-color:var(--color-2);
+    
+}
+
 body{
      background: linear-gradient(var(--color-1),var(--color-2)); 
+  /*   font-family: 'Acme', sans-serif;*/
      background-repeat: no-repeat;
      overflow-x: hidden;
 }
@@ -331,4 +339,6 @@ fill: var(--color-2);
     background: var(--color-3) !important;
     color:var(--color-6)!important;
     text-shadow: 1px 1px #000;
+    -webkit-text-stroke-color: #000;
+    -webkit-text-stroke-width: 0.25px;
   }

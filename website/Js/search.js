@@ -43,16 +43,35 @@ let searchInput = document.querySelector("#searchTerm");
 
 
 /**
+* @function  removeClassFromChildrenOFElem
+* @description removes a specific class from children of the elem .
+* @param cal class to be removed from the children of the elem
+* @param elem father of the element we want ot remove cal from 
+*/
+removeClassFromChildrenOFElem = (cal , elem) => {        
+   
+        for(theme of elem.children){
+            theme.classList.remove(cal);
+        }
+    
+}
+
+
+
+/**
  * @description Handle click event of the dropdown list items
  */
 dropdown.addEventListener('click', (e) =>{
   let className  = e.target.innerHTML ;
   document.documentElement.className=className;
+  removeClassFromChildrenOFElem("active",dropdown);
+
+  e.target.classList.add("active");
   saveThemeTolocalStorage(className);
 });
 
 /**
- * @description Handle click event of the dropdown list items
+ * @description Handle click event of the searchButton
  */
 searchButton.addEventListener('click', (e) =>{
     if(searchInput.value!==""){

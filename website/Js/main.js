@@ -1,11 +1,19 @@
 /** @constant
-*    @type {array}
+*   @type {array}
 *   @global
 *   @description Hold themes' names.
 */
 const themes = [{text:'orange'}, {text:'brown'}, {text:'light'},{text:'white'}, {text:'orangeLight'}, {text:'biege'},
 {text:'yellow'}, {text:'paleBlue'}, {text:'paleBiege'}, {text:'green'},{text:'pale'}, {text:'blue'}];
 
+/** @constant
+*   @type {array}
+*   @global
+*   @description Hold fonts' names.
+*/
+const fonts = [{text:'Acme'},{text:'Oswald'},{text:"Ubuntu"},{text:"Bebas Neue"} ];
+
+document.body.style.fontFamily = "Bebas Neue";
 
 /** @constant
     @type {array}
@@ -41,9 +49,22 @@ fillInThemes = ()=> {
     for( theme of themes){
         let temp = document.createElement("a");
         temp.classList.add("dropdown-item");
+
+        setActiveThemeInDropDown(theme,temp);
+
         temp.appendChild(document.createTextNode(theme.text));
         dropdown.appendChild(temp);
     }
+}
+
+/**
+* @function  setActiveThemeInDropDown
+* @description set crosspronding theme name in dropdownn to active .
+*/
+setActiveThemeInDropDown = (theme ,temp)=> {        
+        if(theme.text===localStorage.getItem("theme")){
+            temp.classList.add("active");
+        }
 }
 
 /**
@@ -54,6 +75,7 @@ fillInThemes = ()=> {
 saveThemeTolocalStorage = (theme)=>{
     localStorage.setItem("theme",theme);
 }
+
 
 
 /**
