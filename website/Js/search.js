@@ -58,17 +58,8 @@ removeClassFromChildrenOFElem = (cal , elem) => {
 
 
 
-/**
- * @description Handle click event of the dropdown list items
- */
-dropdown.addEventListener('click', (e) =>{
-  let className  = e.target.innerHTML ;
-  document.documentElement.className=className;
-  removeClassFromChildrenOFElem("active",dropdown);
 
-  e.target.classList.add("active");
-  saveThemeTolocalStorage(className);
-});
+
 
 /**
  * @description Handle click event of the searchButton

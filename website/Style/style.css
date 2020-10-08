@@ -148,11 +148,19 @@
 
 .dropdown-item.active{
     background-color:var(--color-1);
-    text-shadow: 1px 1px #000;
+    text-shadow: 1.25px 1.25px #000;
+    -webkit-text-stroke-color: #000;
+    -webkit-text-stroke-width: .5px;
 }
 
 .dropdown-item:hover{
     background-color:var(--color-2);
+    /*background-image: linear-gradient(to right, var(--color-1),var(--color-2),var(--color-3),var(--color-4),var(--color-5)); 
+*/
+    text-shadow: -1.25px -1.25px #000;
+    color:#eee;
+    -webkit-text-stroke-color: #000;
+    -webkit-text-stroke-width: 0.5px;
     
 }
 
@@ -165,6 +173,9 @@ body{
 
 .navbar-dark .navbar-nav .nav-link {
     color: var(--color-1);
+    text-shadow: 1px 1px #000;
+    -webkit-text-stroke-color: #000;
+    -webkit-text-stroke-width: 0.25px;
 }
 
 .navbar-dark .navbar-nav .act { 
@@ -175,6 +186,22 @@ body{
 .navbar-dark .navbar-nav .nav-link:hover {
     color: var(--color-2);
 }
+
+
+.form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: var(--color-7);
+    opacity: 1; /* Firefox */
+  }
+  
+  
+.form-control:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: var(--color-7);
+  }
+  
+  
+.form-control::-ms-input-placeholder { /* Microsoft Edge */
+    color: var(--color-7);
+  }
 
 .footer{
     width: 100%;
@@ -195,25 +222,6 @@ h4{
     margin: 10px 0px 10px 0px;
 }
 
-/*
-.my a:link {
-    color: red;
-  }
- 
-  .my a:visited {
-    color: green;
-  }
-  
-  
-  .my a:hover {
-    color: hotpink;
-  }
-  
- 
-  .my a:active {
-    color: blue;
-  }
-*/
 
 a{
     margin-left: var(-) 10px;
@@ -225,17 +233,6 @@ a:hover{
     color: var(--color-2);
     text-decoration: none;
 }
-/*
-a:active{
-    color: var(--color-3);
-    text-decoration: none;
-}
-
-a:visited{
-    color: var(--color-4);
-    text-decoration: none;
-}
-*/
 
 #tv {
 fill: var(--color-1);
@@ -248,6 +245,7 @@ fill: var(--color-2);
 .btn-success{
     background-color: var(--color-4);
     border-color: var(--color-5);
+    text-shadow: 1px 1px #000;
 }
 
 .btn-success:hover,

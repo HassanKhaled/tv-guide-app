@@ -11,9 +11,9 @@ const themes = [{text:'orange'}, {text:'brown'}, {text:'light'},{text:'white'}, 
 *   @global
 *   @description Hold fonts' names.
 */
-const fonts = [{text:'Acme'},{text:'Oswald'},{text:"Ubuntu"},{text:"Bebas Neue"} ];
+const fonts = [{text:'Acme'},{text:'Oswald'},{text:"Ubuntu"},{text:"Bebas Neue"}, {text:"Luckiest Guy"},
+             {text:"Jockey One"},{text:"Quantico"},{text:"Black Ops One"},{text:"Boogaloo"},{text:"Shrikhand"}  ];
 
-document.body.style.fontFamily = "Bebas Neue";
 
 /** @constant
     @type {array}
@@ -31,7 +31,15 @@ links = [ {link:"",text:"Search"},
 *   @global
 *   @description Hold reference drop down menu.
 */
-let dropdown = document.querySelector(".dropdown-menu");
+let dropdown = document.querySelector(".themes");
+
+
+/** @constant
+*   @type {object}
+*   @global
+*   @description Hold reference drop down menu.
+*/
+let dropdownFonts = document.querySelector(".fonts");
 
 /** @constant
 *   @type {object}
@@ -40,6 +48,23 @@ let dropdown = document.querySelector(".dropdown-menu");
 */
 let navbar = document.querySelector(".navbar-nav");
 
+
+
+/**
+* @function  fillInFonts
+* @description fill in the fonts in the dropdown list .
+*/
+fillInFonts = ()=> {
+    for( font of fonts){
+        let temp = document.createElement("a");
+        temp.classList.add("dropdown-item");
+        temp.style.fontFamily=font.text;
+        //setActiveThemeInDropDown(theme,temp);
+
+        temp.appendChild(document.createTextNode(font.text));
+        dropdownFonts.appendChild(temp);
+    }
+}
 
 /**
 * @function  fillInThemes
@@ -59,13 +84,37 @@ fillInThemes = ()=> {
 
 /**
 * @function  setActiveThemeInDropDown
-* @description set crosspronding theme name in dropdownn to active .
+* @description set crosspronding theme name in dropdownn to active.
+* @param theme by which we choose the right element to add active class to 
+* @param temp element with a specific theme to adding active class to 
 */
 setActiveThemeInDropDown = (theme ,temp)=> {        
         if(theme.text===localStorage.getItem("theme")){
             temp.classList.add("active");
         }
 }
+
+
+
+
+/**
+* @function  saveFontTolocalStorage
+* @description save selected font into the local storage .
+* @param font to be saved to the local storage
+*/
+saveFontTolocalStorage = (font)=>{
+    localStorage.setItem("font",font);
+}
+
+
+/**
+* @function  loadFontFromlocalStorage
+* @description load selected theme into the local storage .
+*/
+loadFontFromlocalStorage = ()=>{
+    document.body.style.fontFamily=localStorage.getItem("font");
+}
+
 
 /**
 * @function  saveThemeTolocalStorage
@@ -76,16 +125,15 @@ saveThemeTolocalStorage = (theme)=>{
     localStorage.setItem("theme",theme);
 }
 
-
-
 /**
 * @function  loadThemeFromlocalStorage
-* @description save selected theme into the local storage .
-* @param theme to be saved to teh local storage
+* @description load selected theme into the local storage .
 */
 loadThemeFromlocalStorage = ()=>{
     document.documentElement.className=localStorage.getItem("theme");
 }
+
+
 
 
 /**
@@ -143,9 +191,38 @@ fillInLinksInNavBar =(activeLink)=> {
 callOnStart = ()=>{
     links= links.reverse();
     fillInThemes();
+    fillInFonts();
     fillInLinksInNavBar("Search");
     loadThemeFromlocalStorage();
-   
+    loadFontFromlocalStorage();
+    
 }
 
 callOnStart();
+
+/**
+ * @description Handle click event of the dropdown list items
+ */
+dropdown.addEventListener('click', (e) =>{
+    let className  = e.target.innerHTML ;
+    document.documentElement.className=className;
+    removeClassFromChildrenOFElem("active",dropdown);
+    
+    e.target.classList.add("active");
+    saveThemeTolocalStorage(className);
+  });
+  
+
+  /**
+ * @description Handle click event of the dropdown list items
+ */
+dropdownFonts.addEventListener('click', (e) =>{
+    let className  = e.target.innerHTML ;
+    document.body.style.fontFamily = className;
+    removeClassFromChildrenOFElem("active",dropdownFonts);
+    
+    e.target.classList.add("active");
+    saveFontTolocalStorage(className);
+  });
+  
+  
