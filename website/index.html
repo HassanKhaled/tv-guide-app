@@ -22,10 +22,14 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+
+
+ 
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <!-- Brand -->
     <a class="navbar-brand" href="#">
-      
+ 
+     
  
 <svg
 xmlns:dc="http://purl.org/dc/elements/1.1/"
@@ -67,15 +71,6 @@ sodipodi:docname="favicon.svg">
   units="px" />
 <metadata
   id="metadata5">
- <rdf:RDF>
-   <cc:Work
-      rdf:about="">
-     <dc:format>image/svg+xml</dc:format>
-     <dc:type
-        rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-     <dc:title />
-   </cc:Work>
- </rdf:RDF>
 </metadata>
 <g
   inkscape:label="Layer 1"
@@ -204,14 +199,13 @@ sodipodi:docname="favicon.svg">
 
       </ul>
     </div>
-  </nav> 
+</nav> 
+
 
 
 <div class="modal fade" id="myModal">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
-
-
       <div class="modal-header ">
         <h3 class="modal-title"></h3> 
         <img id="flage" src="https://flagcdn.com/32x24/za.png"
@@ -220,7 +214,6 @@ sodipodi:docname="favicon.svg">
         height="24">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
       </div>
-   
     
       <div class="modal-body">
 
@@ -243,7 +236,9 @@ sodipodi:docname="favicon.svg">
 <div class="container">
   
   <div class="input-group my-2">
-    <input type="text" class="form-control" id="searchTerm" placeholder="Search Tv Shows ">
+    <input type="text" class="form-control needs-validation" id="searchTerm" placeholder="Search Tv Shows " required>
+    <div class="valid-feedback">Valid.</div>
+    <div class="invalid-feedback">Please fill out this field.</div>
     <div class="input-group-append">
       <div class="input-group-text">
         All &nbsp;
@@ -265,7 +260,7 @@ sodipodi:docname="favicon.svg">
         <input type="radio" name="searchType" value="tvrage" data-url="http://api.tvmaze.com/lookup/shows?tvrage=" >
       </div>
 
-      
+     
 
       <div class="input-group-text">
         IMDB &nbsp;
@@ -284,13 +279,17 @@ sodipodi:docname="favicon.svg">
   </div>
 <div id="content" class="row">
 
- 
+  
 
 </div>
 </div>
 </div>
   <footer class="footer">
+   
 <div class="container">
+
+
+
   <div class="row">
     
     <div class="col"> 

@@ -318,6 +318,13 @@ fill: var(--color-2);
     animation-direction: alternate;
   }
 
+  .alert {position: absolute;  left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto; 
+    width: 250px; z-index: 100;}
+ 
+
   .temp{
      width: 222px;
      height: 307px;

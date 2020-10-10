@@ -119,10 +119,48 @@ loadFontFromlocalStorage = ()=>{
 /**
 * @function  saveThemeTolocalStorage
 * @description save selected theme into the local storage .
-* @param theme to be saved to teh local storage
+* @param theme to be saved to the local storage
 */
 saveThemeTolocalStorage = (theme)=>{
     localStorage.setItem("theme",theme);
+}
+
+
+/**
+* @function  createAlertWithMessage
+* @description creates new alert and make it disappear.
+* @param type class of the alert affects the color of the alert 
+* @param time before the the alert will disappear 
+* @param head message to be shown on the page 
+* @param msg message to be shown on the page 
+* @param parent of the alert to be shown inside 
+*/
+createAlertWithMessage = (type,time,head,msg,parent)=>{
+    let alert = document.createElement("div");
+        alert.classList.add("alert");
+        alert.classList.add(type);
+        alert.classList.add("alert-dismissible");
+        alert.setAttribute("id","myAlert");
+        
+        let alertClose =  document.createElement("button");
+        alertClose.setAttribute("type","button");
+        alertClose.setAttribute("class","close");
+        alertClose.setAttribute("data-dismiss","alert");
+        alertClose.innerHTML="&times;";
+
+        let strong = document.createElement("strong");
+        strong.innerHTML=head;
+        alert.appendChild(strong);
+
+        alert.appendChild(alertClose);
+
+        let message =  document.createTextNode(msg);
+ 
+        alert.appendChild(message);
+        parent.appendChild(alert);
+
+        //document.querySelector("#myAlert").display="block";
+        setInterval(function(){   $("#myAlert").alert("close"); }, time);
 }
 
 /**
