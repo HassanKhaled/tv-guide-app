@@ -72,7 +72,7 @@ removeClassFromChildrenOFElem = (cal , elem) => {
 searchButton.addEventListener('click', (e) =>{
     let searchUrl  = document.querySelector('input[type = radio]:checked').value;
     
-    if(searchInput.value!==""){
+    if(searchInput.checkValidity()){
         if(searchUrl==="all"){ 
           
             getRequest("http://api.tvmaze.com/search/shows?q="+searchInput.value);
@@ -96,7 +96,7 @@ searchButton.addEventListener('click', (e) =>{
         }
 
     }else{
-        getRequest(searchUrl+"missing");
+        createAlertWithMessage("alert-danger",3000,"Error  " ,"please fill in required search field",contentDiv);
     }
   });
 
