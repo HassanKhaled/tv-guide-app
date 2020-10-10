@@ -145,23 +145,38 @@
     <div class="input-group-append">
       <div class="input-group-text">
         All &nbsp;
-        <input type="radio" name="searchType" value="all">
+        <input type="radio" name="searchType" value="all" value="http://api.tvmaze.com/search/shows?q=">
       </div>
 
-      <div class="input-group-text">
-        Single &nbsp;
-        <input type="radio" name="searchType"value="single" >
-      </div>
-
-      <div class="input-group-text">
-        Lookup &nbsp;
-        <input type="radio" name="searchType" value="lookup" >
-      </div>
 
       <div class="input-group-text">
         People &nbsp;
-        <input type="radio" name="searchType" value="people" >
+        <input type="radio" name="searchType" value="people" data-url="http://api.tvmaze.com/search/people?q=" >
       </div>
+      <div class="input-group-text">
+        Single &nbsp;
+        <input type="radio" name="searchType"  value="single" data-url="http://api.tvmaze.com/singlesearch/shows?q=" >
+      </div>
+
+      <div class="input-group-text">
+        Tvrage &nbsp;
+        <input type="radio" name="searchType" value="tvrage" data-url="http://api.tvmaze.com/lookup/shows?tvrage=" >
+      </div>
+
+      
+
+      <div class="input-group-text">
+        IMDB &nbsp;
+        <input type="radio" name="searchType" value="imdb" data-url="http://api.tvmaze.com/lookup/shows?imdb=" >
+      </div>
+
+      <div class="input-group-text">
+        The TVDB &nbsp;
+        <input type="radio" name="searchType" value="tvdb" data-url=" http://api.tvmaze.com/lookup/shows?thetvdb=" >
+      </div>
+
+     
+
       <button class="btn btn-success" id="search">Search <i class="fas fa-search"></i></button>
     </div>
   </div>

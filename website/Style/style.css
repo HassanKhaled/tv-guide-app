@@ -157,7 +157,7 @@
     background-color:var(--color-2);
     /*background-image: linear-gradient(to right, var(--color-1),var(--color-2),var(--color-3),var(--color-4),var(--color-5)); 
 */
-    text-shadow: -1.25px -1.25px #000;
+    text-shadow: 1.25px 1.25px #000;
     color:#eee;
     -webkit-text-stroke-color: #000;
     -webkit-text-stroke-width: 0.5px;
