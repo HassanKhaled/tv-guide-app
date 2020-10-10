@@ -164,6 +164,68 @@ createAlertWithMessage = (type,time,head,msg,parent)=>{
 }
 
 /**
+* @function  imageCreationIfExist
+* @description image loads when exist in source other wise load alternatives .
+* @param source of the image to check if exist 
+* @param image in the source if exist to be shown  
+* @param alternative if source does not exist load alternative image 
+* @param selector selects the image container to present image in   
+*/
+imageCreationIfExist = (source, image, alternative,selector)=>{
+
+    let imageFrame = document.querySelector(selector);   
+    if(source!==null){ 
+        imageFrame.src = image;
+    }else{
+        imageFrame.src = alternative;
+    }
+}
+
+/**
+* @function  returnNoneIfDoesNotExist 
+* @description if the source exist return it's content  otherwise returns None.
+* @param source of the string to presente on the page  
+* @returns string to be presented in the page   
+*/
+returnNoneIfDoesNotExist = (source,content,msg,container)=>{
+
+
+   // return  source!==null?content:msg;
+    if(source!==null){
+        container+= content;
+    }else{
+        container+= msg;
+    }
+
+}
+
+
+/**
+* @function  changeInnerHtmlContentUsingSelector 
+* @description change the innerHTML content of the selected element usinng selector.
+* @param selector upone we select the element to change it's content 
+* @param content of to be fill in the innerHTML of selected element 
+  
+*/
+changeInnerHtmlContentUsingSelector = (selector,content)=>{ document.querySelector(selector).innerHTML=content; }
+
+/**
+* @function  changeHrefContentUsingSelector 
+* @description change the href of the selected element usinng selector.
+* @param selector upone we select the element to change it's content 
+* @param href of to be fill in the href of selected element 
+  
+*/
+changeHrefContentUsingSelector = (selector,href)=>{ document.querySelector(selector).href=href; }
+
+/**
+* @function  clearBySelector
+* @description removed content of an element by removing all inner html content.
+* @param selector to remove all of it's children
+*/
+clearBySelector = selector =>{ document.querySelector(selector).innerHTML="";}
+
+/**
 * @function  loadThemeFromlocalStorage
 * @description load selected theme into the local storage .
 */
