@@ -115,7 +115,6 @@ getRequest = async url => {
         results = data;
         for(item of data){
             const x = item.show;
-           
             createImageFromUrl(imageExistNotCreateTemp(x.image),x.name,x.url,JSON.stringify(x));
         }
     }catch(error){
@@ -139,7 +138,9 @@ getPeopleRequest = async url => {
         for(item of data){
             const x = item.person;
             console.log(x.name);
+
             createImageFromUrl(imageExistNotCreateTemp(x.image),x.name,x.url,JSON.stringify(x));
+
         }
     }catch(error){
         console.log(error);
@@ -224,35 +225,99 @@ clearContentOfParentElement = ele =>{
 
 
 contentDiv.addEventListener("click", (e)=>{
+
+
+if(searchTypeRb.value==="all"){
 console.log(e.target);
-const data = JSON.parse( e.target.getAttribute("data-value"));
+const data = JSON.parse(e.target.getAttribute("data-value"));
 console.log(data);
+
 clearBySelector(".modal-title")
-document.querySelector(".modal-title").innerHTML= data.name;
 
 
-//document.querySelector(".modal-subtitle").innerHTML=data.runtime+"Min | "+arrayIntoString(data.genres)+" | "+data.premiered+" | "+data.network.country.name;
-flageImg.setAttribute("src",imageFlageFromCode(data.network.country.code));
-//clearBySelector(".modal-body");
-document.querySelector("#info").innerHTML= data.type+" | "+data.runtime+" Min | "+data.language+" | "+arrayIntoString(data.genres)+" | "+data.premiered+" | "+data.network.country.name+" | "+data.status;
-if(data.image!==null){ 
-    document.querySelector("#modalImage").src = data.image.medium;
+changeInnerHtmlContentUsingSelector(".modal-title",data.name)
+
+
+let content =""; 
+content += data.type+" | ";
+content += data.runtime+" Min | ";
+content += data.language+" | ";
+content += arrayIntoString(data.genres)+" | ";
+content += data.premiered+" | ";
+
+if(data.network!==null){
+    content+=data.network.country.name+" | ";
+//returnNoneIfDoesNotExist(data.network,,,content);
 }else{
-    document.querySelector("#modalImage").src = "../website/images/missing.png";
+    content += "No Network |";
 }
-document.querySelector("#official").href=data.officialSite;
-document.querySelector("#Tvmaz").href=data.url;
-console.log(data.summary);
-document.querySelector("#summary").innerHTML=data.summary;
+content += data.status;
+
+changeInnerHtmlContentUsingSelector("#info",content);
+changeInnerHtmlContentUsingSelector("#summary",data.summary);
+
+
+imageCreationIfExist(data.image,data.image.medium,"../website/images/missing.png","#modalImage");
+
+if(data.network!==null){
+    flageImg.setAttribute("src",imageFlageFromCode( data.network.country.code));
+}else{
+    flageImg.setAttribute("src",imageFlageFromCode( "un"));
+
+}
+
+changeHrefContentUsingSelector("#official",data.officialSite);
+changeHrefContentUsingSelector("#Tvmaz",data.url);
+
+}else if(searchTypeRb.value==="people"){
+
+clearBySelector(".modal-title");
+const data = JSON.parse(e.target.getAttribute("data-value"));
+changeInnerHtmlContentUsingSelector(".modal-title",data.name)
+
+console.log(data);
+
+let content =""; 
+if(data.birthday!==null){
+
+content += data.birthday+" | ";
+
+}else {
+
+    content +="No birthday | "
+}
+
+if( data.country!==null){
+    content += data.country.name+" | ";
+}else{
+    content +="No Country | ";
+
+}
+
+
+if(data.gender!==null){
+    content += data.gender;
+}else{
+    content +="No Gender | ";
+    
+}
+changeInnerHtmlContentUsingSelector("#info",content);
+changeInnerHtmlContentUsingSelector("#summary","We do not have any biography for this actor or actress");
+
+imageCreationIfExist(data.image,data.image.medium,"../website/images/missing.png","#modalImage");
+
+if(data.country!==null){
+    flageImg.setAttribute("src",imageFlageFromCode( data.country.code));
+}else{
+    flageImg.setAttribute("src",imageFlageFromCode( "un"));
+
+}
+changeHrefContentUsingSelector("#Tvmaz",data.url);
+}
 });
 
 
-/**
-* @function  clearBySelector
-* @description removed content of an element by removing all inner html content.
-* @param selector to remove all of it's children
-*/
-clearBySelector = selector =>{ document.querySelector(selector).innerHTML="";}
+
 
 /**
 * @function  arrayIntoString
