@@ -14,9 +14,17 @@ let results = "";
 /** @constant
 *   @type {object}
 *   @global
-*   @description Hold reference glage image 
+*   @description Hold reference flage image 
 */
 let flageImg = document.querySelector("#flage");
+
+
+/** @constant
+*   @type {object}
+*   @global
+*   @description Hold reference to search query type radio button 
+*/ 
+let searchTypeRb = document.querySelector('input[type = radio]:checked');
 
 
 /** @constant
@@ -58,15 +66,35 @@ removeClassFromChildrenOFElem = (cal , elem) => {
 
 
 
-
-
-
 /**
  * @description Handle click event of the searchButton
  */
 searchButton.addEventListener('click', (e) =>{
+    let searchUrl  = document.querySelector('input[type = radio]:checked').value;
+    
     if(searchInput.value!==""){
-    getRequest(searchUrl+searchInput.value);
+        if(searchUrl==="all"){ 
+          
+            getRequest("http://api.tvmaze.com/search/shows?q="+searchInput.value);
+
+        }else if(searchUrl==="people"){
+
+            getPeopleRequest("http://api.tvmaze.com/search/people?q="+searchInput.value);
+
+        }else if(searchUrl==="tvdb"){
+            getPeopleRequest(" http://api.tvmaze.com/lookup/shows?thetvdb="+searchInput.value);
+
+
+        }else if(searchUrl==="imdb"){
+            getPeopleRequest("http://api.tvmaze.com/lookup/shows?imdb="+searchInput.value);
+
+        }else if(searchUrl==="tvrage"){
+            getPeopleRequest("http://api.tvmaze.com/lookup/shows?tvrage="+searchInput.value);
+
+        }else{
+            getPeopleRequest("http://api.tvmaze.com/singlesearch/shows?q="+searchInput.value);
+        }
+
     }else{
         getRequest(searchUrl+"missing");
     }
@@ -87,6 +115,29 @@ getRequest = async url => {
         results = data;
         for(item of data){
             const x = item.show;
+           
+            createImageFromUrl(imageExistNotCreateTemp(x.image),x.name,x.url,JSON.stringify(x));
+        }
+    }catch(error){
+        console.log(error);
+    }
+}
+
+/**
+* @function  getRequest
+* @description get the data from the remote server.
+* @param url to be called to get the data requested
+*/
+getPeopleRequest = async url => {
+  
+    const response = await fetch(url);
+    clearContentOfParentElement(contentDiv);
+    try{
+        const data = await response.json();
+        console.log(data);
+        results = data;
+        for(item of data){
+            const x = item.person;
             console.log(x.name);
             createImageFromUrl(imageExistNotCreateTemp(x.image),x.name,x.url,JSON.stringify(x));
         }
@@ -94,6 +145,7 @@ getRequest = async url => {
         console.log(error);
     }
 }
+
 /**
 * @function  imageExistNotCreateTemp
 * @description get url and convert into an image element and added to the content div.
