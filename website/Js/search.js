@@ -82,17 +82,17 @@ searchButton.addEventListener('click', (e) =>{
             getPeopleRequest("http://api.tvmaze.com/search/people?q="+searchInput.value);
 
         }else if(searchUrl==="tvdb"){
-            getPeopleRequest(" http://api.tvmaze.com/lookup/shows?thetvdb="+searchInput.value);
+            getSingleRequest(" http://api.tvmaze.com/lookup/shows?thetvdb="+searchInput.value);
 
 
         }else if(searchUrl==="imdb"){
-            getPeopleRequest("http://api.tvmaze.com/lookup/shows?imdb="+searchInput.value);
+            getSingleRequest("http://api.tvmaze.com/lookup/shows?imdb="+searchInput.value);
 
         }else if(searchUrl==="tvrage"){
-            getPeopleRequest("http://api.tvmaze.com/lookup/shows?tvrage="+searchInput.value);
+            getSingleRequest("http://api.tvmaze.com/lookup/shows?tvrage="+searchInput.value);
 
         }else{
-            getPeopleRequest("http://api.tvmaze.com/singlesearch/shows?q="+searchInput.value);
+            getSingleRequest("http://api.tvmaze.com/singlesearch/shows?q="+searchInput.value);
         }
 
     }else{
@@ -138,10 +138,34 @@ getPeopleRequest = async url => {
         for(item of data){
             const x = item.person;
             console.log(x.name);
+            createImageFromUrl(imageExistNotCreateTemp(x.image),x.name,x.url,JSON.stringify(x));
+        }
+    }catch(error){
+        console.log(error);
+    }
+}
+
+
+/**
+* @function  getSingleRequest
+* @description get the data from the remote server.
+* @param url to be called to get the data requested
+*/
+getSingleRequest = async url => {
+  
+    const response = await fetch(url);
+    clearContentOfParentElement(contentDiv);
+    try{
+        const data = await response.json();
+        console.log(data);
+        results = data;
+        
+            const x = data;
+            console.log(x.name);
 
             createImageFromUrl(imageExistNotCreateTemp(x.image),x.name,x.url,JSON.stringify(x));
 
-        }
+        
     }catch(error){
         console.log(error);
     }
@@ -227,92 +251,105 @@ clearContentOfParentElement = ele =>{
 contentDiv.addEventListener("click", (e)=>{
 
 
-if(searchTypeRb.value==="all"){
 console.log(e.target);
 const data = JSON.parse(e.target.getAttribute("data-value"));
 console.log(data);
 
-clearBySelector(".modal-title")
+if(document.querySelector('input[type = radio]:checked').value==="all"){
+    clearBySelector(".modal-title")
+    changeInnerHtmlContentUsingSelector(".modal-title",data.name)
 
+    let content =""; 
+    content += data.type+" | ";
+    content += data.runtime+" Min | ";
+    content += data.language+" | ";
+    content += arrayIntoString(data.genres)+" | ";
+    content += data.premiered+" | ";
 
-changeInnerHtmlContentUsingSelector(".modal-title",data.name)
+    if(data.network!==null){
+        content+=data.network.country.name+" | ";
+    }else{
+        content += "No Network |";
+    }
+    content += data.status;
 
+    changeInnerHtmlContentUsingSelector("#info",content);
+    changeInnerHtmlContentUsingSelector("#summary",data.summary);
+    imageCreationIfExist(data.image,data.image.medium,"../website/images/missing.png","#modalImage");
 
-let content =""; 
-content += data.type+" | ";
-content += data.runtime+" Min | ";
-content += data.language+" | ";
-content += arrayIntoString(data.genres)+" | ";
-content += data.premiered+" | ";
+    if(data.network!==null){
+        flageImg.setAttribute("src",imageFlageFromCode( data.network.country.code));
+    }else{
+        flageImg.setAttribute("src",imageFlageFromCode( "un"));
+    }
+    changeHrefContentUsingSelector("#official",data.officialSite);
+    changeHrefContentUsingSelector("#Tvmaz",data.url);
 
-if(data.network!==null){
-    content+=data.network.country.name+" | ";
-//returnNoneIfDoesNotExist(data.network,,,content);
-}else{
-    content += "No Network |";
-}
-content += data.status;
-
-changeInnerHtmlContentUsingSelector("#info",content);
-changeInnerHtmlContentUsingSelector("#summary",data.summary);
-
-
-imageCreationIfExist(data.image,data.image.medium,"../website/images/missing.png","#modalImage");
-
-if(data.network!==null){
-    flageImg.setAttribute("src",imageFlageFromCode( data.network.country.code));
-}else{
-    flageImg.setAttribute("src",imageFlageFromCode( "un"));
-
-}
-
-changeHrefContentUsingSelector("#official",data.officialSite);
-changeHrefContentUsingSelector("#Tvmaz",data.url);
-
-}else if(searchTypeRb.value==="people"){
+}else if(document.querySelector('input[type = radio]:checked').value==="people"){
 
 clearBySelector(".modal-title");
-const data = JSON.parse(e.target.getAttribute("data-value"));
 changeInnerHtmlContentUsingSelector(".modal-title",data.name)
 
-console.log(data);
-
 let content =""; 
-if(data.birthday!==null){
+    if(data.birthday!==null){
+        content += data.birthday+" | ";
+    }else {
+        content +="No birthday | "
+    }
 
-content += data.birthday+" | ";
+    if( data.country!==null){
+        content += data.country.name+" | ";
+    }else{
+        content +="No Country | ";
+    }
+    if(data.gender!==null){
+        content += data.gender;
+    }else{
+        content +="No Gender | ";    
+    }
 
-}else {
-
-    content +="No birthday | "
-}
-
-if( data.country!==null){
-    content += data.country.name+" | ";
-}else{
-    content +="No Country | ";
-
-}
-
-
-if(data.gender!==null){
-    content += data.gender;
-}else{
-    content +="No Gender | ";
-    
-}
 changeInnerHtmlContentUsingSelector("#info",content);
 changeInnerHtmlContentUsingSelector("#summary","We do not have any biography for this actor or actress");
-
 imageCreationIfExist(data.image,data.image.medium,"../website/images/missing.png","#modalImage");
 
-if(data.country!==null){
-    flageImg.setAttribute("src",imageFlageFromCode( data.country.code));
-}else{
-    flageImg.setAttribute("src",imageFlageFromCode( "un"));
-
-}
+    if(data.country!==null){
+        flageImg.setAttribute("src",imageFlageFromCode( data.country.code));
+    }else{
+        flageImg.setAttribute("src",imageFlageFromCode( "un"));
+    }
 changeHrefContentUsingSelector("#Tvmaz",data.url);
+}else {
+    console.log(data);
+
+    clearBySelector(".modal-title")
+    changeInnerHtmlContentUsingSelector(".modal-title",data.name)
+
+    let content =""; 
+    content += data.type+" | ";
+    content += data.runtime+" Min | ";
+    content += data.language+" | ";
+    content += arrayIntoString(data.genres)+" | ";
+    content += data.premiered+" | ";
+
+    if(data.network!==null){
+        content+=data.network.country.name+" | ";
+    }else{
+        content += "No Network |";
+    }
+    content += data.status;
+
+    changeInnerHtmlContentUsingSelector("#info",content);
+    changeInnerHtmlContentUsingSelector("#summary",data.summary);
+    imageCreationIfExist(data.image,data.image.medium,"../website/images/missing.png","#modalImage");
+
+    if(data.network!==null){
+        flageImg.setAttribute("src",imageFlageFromCode( data.network.country.code));
+    }else{
+        flageImg.setAttribute("src",imageFlageFromCode( "un"));
+    }
+    changeHrefContentUsingSelector("#official",data.officialSite);
+    changeHrefContentUsingSelector("#Tvmaz",data.url);
+
 }
 });
 
