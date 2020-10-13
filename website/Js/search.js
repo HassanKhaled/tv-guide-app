@@ -371,3 +371,5 @@ arrayIntoString = array =>{ return array.join(", ");}
 * @returns  url of the flagcdn of the requested country's flag
 */
 imageFlageFromCode = code =>{ return `https://flagcdn.com/32x24/${code.toLowerCase()}.png`; }
+
+callOnStart("Search");

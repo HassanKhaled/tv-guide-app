@@ -20,11 +20,11 @@ const fonts = [{text:'Acme'},{text:'Oswald'},{text:"Ubuntu"},{text:"Bebas Neue"}
     @global
     @description Hold links' names and hrefs.
 */
-links = [ {link:"",text:"Search"},
-          {link:"",text:"Schedule"},
-          {link:"",text:"Shows"},
-          {link:"",text:"Episodes"},
-          {link:"",text:"People"}];
+links = [ {href:"../website/index.html",text:"Search"},
+          {href:"../website/schedule.html",text:"Schedule"},
+          {href:"../website/shows.html",text:"Shows"},
+          {href:"../website/episodes.html",text:"Episodes"},
+          {href:"../website/people.html",text:"People"}];
 
 /** @constant
 *   @type {object}
@@ -250,8 +250,6 @@ callOnStart = (selecteLink)=>{
     loadFontFromlocalStorage();
     
 }
-
-callOnStart("Search");
 
 /**
  * @description Handle click event of the dropdown list items
