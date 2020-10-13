@@ -34,13 +34,6 @@ let searchTypeRb = document.querySelector('input[type = radio]:checked');
 */
 let searchButton = document.querySelector("#search");
 
-/** @constant
-*   @type {object}
-*   @global
-*   @description Hold reference to content div .
-*/
-let contentDiv = document.querySelector("#content");
-
 
 /** @constant
 *   @type {object}
@@ -48,22 +41,6 @@ let contentDiv = document.querySelector("#content");
 *   @description Hold reference search term textbox.
 */
 let searchInput = document.querySelector("#searchTerm");
-
-
-/**
-* @function  removeClassFromChildrenOFElem
-* @description removes a specific class from children of the elem .
-* @param cal class to be removed from the children of the elem
-* @param elem father of the element we want ot remove cal from 
-*/
-removeClassFromChildrenOFElem = (cal , elem) => {        
-   
-        for(theme of elem.children){
-            theme.classList.remove(cal);
-        }
-    
-}
-
 
 
 /**
@@ -123,7 +100,7 @@ getRequest = async url => {
 }
 
 /**
-* @function  getRequest
+* @function  getPeopleRequest
 * @description get the data from the remote server.
 * @param url to be called to get the data requested
 */
@@ -171,85 +148,10 @@ getSingleRequest = async url => {
     }
 }
 
-/**
-* @function  imageExistNotCreateTemp
-* @description get url and convert into an image element and added to the content div.
-* @param image to be convernted into an image 
-* @returns image path to be shown on the page
-*/
-imageExistNotCreateTemp = image =>{
-    let temp="";
-    if(image===null){
-        temp ="../website/images/missing.png";
-    }else{
-        temp=image.medium;
-    }
-return temp;
-}
 
-/**
-* @function  createImageFromUrl
-* @description get url and convert into an image element and added to the content div.
-* @param src to be convernted into an image 
-* @param alt to be the name of the show
-*/
-createImageFromUrl = (src,alt,href,info) =>{
-    const div = document.createElement("div");
-    div.classList.add("cont");
-  
-    const img = document.createElement("img");
-    img.setAttribute("src",src);
-    img.setAttribute("href",href);
-    img.setAttribute("alt",alt);
-    img.setAttribute("title",alt);
-    img.setAttribute("data-value",info);
-    img.setAttribute("data-toggle","modal");
-    img.setAttribute("data-target","#myModal");
-    img.classList.add("img-thumbnail");
-    img.classList.add("mb-1");
-    img.classList.add("ml-1");
-    const text = document.createElement("div");
-    text.classList.add("text-block");
-    text.innerHTML=alt;
-
-    div.appendChild(img);
-    div.appendChild(text);
-    contentDiv.appendChild(div);
-}
-
-
-
-/**
-* @function  createTempDivsOnContentDiv
-* @description adds as mnay as number of temp elements to the Content Div.
-* @param num number of elements added
-*/
-createTempDivsOnContentDiv = num =>{
-
-    for(let i =0 ; i<num;i++){
-        let div =document.createElement("div");
-        div.classList.add("ml-1");
-        div.classList.add("mb-1");
-        div.classList.add("temp");
-        contentDiv.appendChild(div);
-    }
-
-}
-
-createTempDivsOnContentDiv(10);
-
-/**
-* @function  clearContentOfParentElement
-* @description removed content of an element by removing all of it's children.
-* @param ele to remove all of it's children
-*/
-clearContentOfParentElement = ele =>{    
-     ele.innerHTML="";
-}
-
+createTempDivsOnContentDiv(10,"temp","#content");
 
 contentDiv.addEventListener("click", (e)=>{
-
 
 console.log(e.target);
 const data = JSON.parse(e.target.getAttribute("data-value"));
@@ -371,3 +273,5 @@ arrayIntoString = array =>{ return array.join(", ");}
 * @returns  url of the flagcdn of the requested country's flag
 */
 imageFlageFromCode = code =>{ return `https://flagcdn.com/32x24/${code.toLowerCase()}.png`; }
+
+callOnStart("Search");

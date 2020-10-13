@@ -20,11 +20,11 @@ const fonts = [{text:'Acme'},{text:'Oswald'},{text:"Ubuntu"},{text:"Bebas Neue"}
     @global
     @description Hold links' names and hrefs.
 */
-links = [ {link:"",text:"Search"},
-          {link:"",text:"Schedule"},
-          {link:"",text:"Shows"},
-          {link:"",text:"Episodes"},
-          {link:"",text:"People"}];
+links = [ {href:"../website/index.html",text:"Search"},
+          {href:"../website/schedule.html",text:"Schedule"},
+          {href:"",text:"Shows"},
+          {href:"",text:"Episodes"},
+          {href:"",text:"People"}];
 
 /** @constant
 *   @type {object}
@@ -33,6 +33,13 @@ links = [ {link:"",text:"Search"},
 */
 let dropdown = document.querySelector(".themes");
 
+
+/** @constant
+*   @type {object}
+*   @global
+*   @description Hold reference to content div .
+*/
+let contentDiv = document.querySelector("#content");
 
 /** @constant
 *   @type {object}
@@ -71,6 +78,54 @@ fillInDropDownFromList = (dropdownSelector, list, localStorageSelector,setFontSt
         temp.appendChild(document.createTextNode(item.text));
         dDown.appendChild(temp);
     }
+}
+
+
+
+/**
+* @function  createImageFromUrl
+* @description get url and convert into an image element and added to the content div.
+* @param src to be convernted into an image 
+* @param alt to be the name of the show
+*/
+createImageFromUrl = (src,alt,href,info) =>{
+    const div = document.createElement("div");
+    div.classList.add("cont");
+  
+    const img = document.createElement("img");
+    img.setAttribute("src",src);
+    img.setAttribute("href",href);
+    img.setAttribute("alt",alt);
+    img.setAttribute("title",alt);
+    img.setAttribute("data-value",info);
+    img.setAttribute("data-toggle","modal");
+    img.setAttribute("data-target","#myModal");
+    img.classList.add("img-thumbnail");
+    img.classList.add("mb-1");
+    img.classList.add("ml-1");
+    const text = document.createElement("div");
+    text.classList.add("text-block");
+    text.innerHTML=alt;
+
+    div.appendChild(img);
+    div.appendChild(text);
+    contentDiv.appendChild(div);
+}
+
+/**
+* @function  imageExistNotCreateTemp
+* @description get url and convert into an image element and added to the content div.
+* @param image to be convernted into an image 
+* @returns image path to be shown on the page
+*/
+imageExistNotCreateTemp = image =>{
+    let temp="";
+    if(image===null){
+        temp ="../website/images/missing.png";
+    }else{
+        temp=image.medium;
+    }
+return temp;
 }
 
 
@@ -251,23 +306,59 @@ callOnStart = (selecteLink)=>{
     
 }
 
-callOnStart("Search");
+/**
+* @function  createTempDivsOnContentDiv
+* @description adds as mnay as number of temp elements to the Content Div.
+* @param num number of elements added
+*/
+createTempDivsOnContentDiv = (num , cla ,divSelector) => {
+    let content = document.querySelector(divSelector);
+    for(let i =0 ; i<num;i++){
+        let div =document.createElement("div");
+        div.classList.add("ml-1");
+        div.classList.add("mb-1");
+        div.classList.add(cla);
+        content.appendChild(div);
+    }
+
+}
 
 /**
- * @description Handle click event of the dropdown list items
- */
+* @function  clearContentOfParentElement
+* @description removed content of an element by removing all of it's children.
+* @param ele to remove all of it's children
+*/
+clearContentOfParentElement = ele =>{    
+    ele.innerHTML="";
+}
+
+
+/**
+* @function  removeClassFromChildrenOFElem
+* @description removes a specific class from children of the elem .
+* @param cal class to be removed from the children of the elem
+* @param elem father of the element we want ot remove cal from 
+*/
+removeClassFromChildrenOFElem = (cal , elem) => {        
+   
+        for(theme of elem.children){
+            theme.classList.remove(cal);
+        }
+    
+}
+
+
+
 dropdown.addEventListener('click', (e) =>{
     let className  = e.target.innerHTML ;
     document.documentElement.className=className;
     removeClassFromChildrenOFElem("active",dropdown);
     e.target.classList.add("active");
     saveTolocalStorage("theme",className);
-  });
+});
   
 
-  /**
- * @description Handle click event of the dropdown list items
- */
+
 dropdownFonts.addEventListener('click', (e) =>{
     let className  = e.target.innerHTML ;
     document.body.style.fontFamily = className;
