@@ -49,63 +49,55 @@ let dropdownFonts = document.querySelector(".fonts");
 let navbar = document.querySelector(".navbar-nav");
 
 
-
 /**
-* @function  fillInFonts
-* @description fill in the fonts in the dropdown list .
-*/
-fillInFonts = ()=> {
-    for( font of fonts){
-        let temp = document.createElement("a");
-        temp.classList.add("dropdown-item");
-        temp.style.fontFamily=font.text;
-        //setActiveThemeInDropDown(theme,temp);
-
-        temp.appendChild(document.createTextNode(font.text));
-        dropdownFonts.appendChild(temp);
-    }
-}
-
-/**
-* @function  fillInThemes
+* @function  fillInDropDownFromList
 * @description fill in the themes in the dropdown list .
+* @param dropdownSelector selects the correct drowpdown to be filled in 
+* @param list of items to be filled in the dropdown 
+* @param localStorageSelector to set active item in the dropdown 
+* @param setFontStyle to set font style when it is true 
 */
-fillInThemes = ()=> {
-    for( theme of themes){
+fillInDropDownFromList = (dropdownSelector, list, localStorageSelector,setFontStyle)=> {
+
+    let dDown = document.querySelector(dropdownSelector);
+
+    for(item of list){
         let temp = document.createElement("a");
         temp.classList.add("dropdown-item");
-
-        setActiveThemeInDropDown(theme,temp);
-
-        temp.appendChild(document.createTextNode(theme.text));
-        dropdown.appendChild(temp);
+        setActiveItemInDropDown(item,localStorageSelector,temp);
+        if(setFontStyle===true)
+            temp.style.fontFamily=item.text;
+        
+        temp.appendChild(document.createTextNode(item.text));
+        dDown.appendChild(temp);
     }
 }
 
+
 /**
-* @function  setActiveThemeInDropDown
+* @function  setActiveItemInDropDown
 * @description set crosspronding theme name in dropdownn to active.
-* @param theme by which we choose the right element to add active class to 
+* @param item by which we choose the right element to add active class to 
+* @param storage item from localstorage name 
 * @param temp element with a specific theme to adding active class to 
 */
-setActiveThemeInDropDown = (theme ,temp)=> {        
-        if(theme.text===localStorage.getItem("theme")){
+setActiveItemInDropDown = (item ,storage,temp)=> {        
+        if(item.text===localStorage.getItem(storage)){
             temp.classList.add("active");
         }
 }
 
 
 
-
 /**
-* @function  saveFontTolocalStorage
+* @function  saveTolocalStorage
 * @description save selected font into the local storage .
-* @param font to be saved to the local storage
+* @param item to be saved to the local storage
+* @param key to be save teh data under 
 */
-saveFontTolocalStorage = (font)=>{
-    localStorage.setItem("font",font);
+saveTolocalStorage = (key,item)=>{
+    localStorage.setItem(key,item);
 }
-
 
 /**
 * @function  loadFontFromlocalStorage
@@ -114,17 +106,6 @@ saveFontTolocalStorage = (font)=>{
 loadFontFromlocalStorage = ()=>{
     document.body.style.fontFamily=localStorage.getItem("font");
 }
-
-
-/**
-* @function  saveThemeTolocalStorage
-* @description save selected theme into the local storage .
-* @param theme to be saved to the local storage
-*/
-saveThemeTolocalStorage = (theme)=>{
-    localStorage.setItem("theme",theme);
-}
-
 
 /**
 * @function  createAlertWithMessage
@@ -158,8 +139,6 @@ createAlertWithMessage = (type,time,head,msg,parent)=>{
  
         alert.appendChild(message);
         parent.appendChild(alert);
-
-        //document.querySelector("#myAlert").display="block";
         setInterval(function(){   $("#myAlert").alert("close"); }, time);
 }
 
@@ -182,25 +161,6 @@ imageCreationIfExist = (source, image, alternative,selector)=>{
 }
 
 /**
-* @function  returnNoneIfDoesNotExist 
-* @description if the source exist return it's content  otherwise returns None.
-* @param source of the string to presente on the page  
-* @returns string to be presented in the page   
-*/
-returnNoneIfDoesNotExist = (source,content,msg,container)=>{
-
-
-   // return  source!==null?content:msg;
-    if(source!==null){
-        container+= content;
-    }else{
-        container+= msg;
-    }
-
-}
-
-
-/**
 * @function  changeInnerHtmlContentUsingSelector 
 * @description change the innerHTML content of the selected element usinng selector.
 * @param selector upone we select the element to change it's content 
@@ -213,8 +173,7 @@ changeInnerHtmlContentUsingSelector = (selector,content)=>{ document.querySelect
 * @function  changeHrefContentUsingSelector 
 * @description change the href of the selected element usinng selector.
 * @param selector upone we select the element to change it's content 
-* @param href of to be fill in the href of selected element 
-  
+* @param href of to be fill in the href of selected element  
 */
 changeHrefContentUsingSelector = (selector,href)=>{ document.querySelector(selector).href=href; }
 
@@ -232,9 +191,6 @@ clearBySelector = selector =>{ document.querySelector(selector).innerHTML="";}
 loadThemeFromlocalStorage = ()=>{
     document.documentElement.className=localStorage.getItem("theme");
 }
-
-
-
 
 /**
 * @function  createAnchorFromTextAndHref
@@ -269,7 +225,6 @@ createListItemWithAnchor = (text, href,activeLink) => {
     navbar.insertBefore(tempLi,navbar.childNodes[0]);
 }
 
-
 /**
 * @function  fillInLinksInNavBar
 * @description fill in the linkes in the nav bar and highlighted active link .
@@ -277,28 +232,26 @@ createListItemWithAnchor = (text, href,activeLink) => {
 */
 fillInLinksInNavBar =(activeLink)=> {
     for( link of links){
-
         createListItemWithAnchor(link.text,link.href,activeLink);
     }
 }
-
-
 
 /**
 * @function  callOnStart
 * @description call on the start of the loading of the file .
 */
-callOnStart = ()=>{
+callOnStart = (selecteLink)=>{
+
     links= links.reverse();
-    fillInThemes();
-    fillInFonts();
-    fillInLinksInNavBar("Search");
+    fillInDropDownFromList(".fonts", fonts, "font",true);
+    fillInDropDownFromList(".themes", themes, "theme",false);
+    fillInLinksInNavBar(selecteLink);
     loadThemeFromlocalStorage();
     loadFontFromlocalStorage();
     
 }
 
-callOnStart();
+callOnStart("Search");
 
 /**
  * @description Handle click event of the dropdown list items
@@ -307,9 +260,8 @@ dropdown.addEventListener('click', (e) =>{
     let className  = e.target.innerHTML ;
     document.documentElement.className=className;
     removeClassFromChildrenOFElem("active",dropdown);
-    
     e.target.classList.add("active");
-    saveThemeTolocalStorage(className);
+    saveTolocalStorage("theme",className);
   });
   
 
@@ -320,9 +272,8 @@ dropdownFonts.addEventListener('click', (e) =>{
     let className  = e.target.innerHTML ;
     document.body.style.fontFamily = className;
     removeClassFromChildrenOFElem("active",dropdownFonts);
-    
     e.target.classList.add("active");
-    saveFontTolocalStorage(className);
+    saveTolocalStorage("font",className);
   });
   
   
