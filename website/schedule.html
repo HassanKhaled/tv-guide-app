@@ -234,14 +234,19 @@ sodipodi:docname="favicon.svg">
 <div class="container">
   
   <div class="input-group my-2">
-    <input type="text" class="form-control needs-validation" id="searchDateTerm" placeholder="Search Tv Schedule... " required>
-    
+
+    <div class="input-group-prepend">
+      <span class="input-group-text">Schedule Date </span>
+    </div>
+    <input type="date" id="searchDateTerm" class="form-control needs-validation" required> 
+    <!--
+    <input type="text" class="form-control needs-validation"  placeholder="Search Tv Schedule... " required>
+    -->
     <div class="input-group-prepend">
         <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown">
           Country <span  class="badge badge-light"></span>
         </button>
         <div class="dropdown-menu countries">
-        
         </div>
       </div>
     <div class="valid-feedback">Valid.</div>

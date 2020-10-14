@@ -95,7 +95,7 @@ getRequest = async url => {
             createImageFromUrl(imageExistNotCreateTemp(x.image),x.name,x.url,JSON.stringify(x));
         }
     }catch(error){
-        console.log(error);
+        createAlertWithMessage("alert-danger",3000,"Error  " ,error,contentDiv);
     }
 }
 
@@ -118,7 +118,7 @@ getPeopleRequest = async url => {
             createImageFromUrl(imageExistNotCreateTemp(x.image),x.name,x.url,JSON.stringify(x));
         }
     }catch(error){
-        console.log(error);
+        createAlertWithMessage("alert-danger",3000,"Error  " ,error,contentDiv);
     }
 }
 
@@ -144,7 +144,7 @@ getSingleRequest = async url => {
 
         
     }catch(error){
-        console.log(error);
+        createAlertWithMessage("alert-danger",3000,"Error  " ,error,contentDiv);
     }
 }
 
@@ -258,13 +258,7 @@ changeHrefContentUsingSelector("#Tvmaz",data.url);
 
 
 
-/**
-* @function  arrayIntoString
-* @description convert array of strings into a string .
-* @param array to be converted into string 
-* @returns array as a continous array 
-*/
-arrayIntoString = array =>{ return array.join(", ");}
+
 
 /**
 * @function  imageFlageFromCode

@@ -81,17 +81,18 @@ countriesDropDown.addEventListener('click', (e) =>{
 getRequest = async url => {
   
     const response = await fetch(url);
-    clearContentOfParentElement(contentDiv);
+    
     try{
         const data = await response.json();
-        console.log(data);
         results = data;
+        clearContentOfParentElement(contentDiv);
         for(item of data){
             const x = item.show;
-            createImageFromUrl(imageExistNotCreateTemp(x.image),x.name,x.url,JSON.stringify(x));
+            createImageFromUrlForSchedul(imageExistNotCreateTemp(x.image),x.name,x.url,x);
         }
+
     }catch(error){
-        console.log(error);
+        createAlertWithMessage("alert-danger",3000,"Error  " ,error,contentDiv);
     }
 }
 
@@ -100,9 +101,13 @@ getRequest = async url => {
  * @description Handle click event of the searchButton
  */
 searchButton.addEventListener('click', (e) =>{
-
+    //searchDateInput.value=document.getElementById("birthday").value;
+     
     if(searchDateInput.checkValidity()){
-        
+        if(selectedCountry===""){
+            selectedCountry="US";
+            badageSpan.innerHTML="US";
+        }
         getRequest(`http://api.tvmaze.com/schedule?country=${selectedCountry}&date=${searchDateInput.value}`);
 
     }else{
