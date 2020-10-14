@@ -87,6 +87,8 @@ fillInDropDownFromList = (dropdownSelector, list, localStorageSelector,setFontSt
 * @description get url and convert into an image element and added to the content div.
 * @param src to be convernted into an image 
 * @param alt to be the name of the show
+* @param href of the image created  
+* @param info to be converted to text and then json for data in the modal
 */
 createImageFromUrl = (src,alt,href,info) =>{
     const div = document.createElement("div");
@@ -111,6 +113,103 @@ createImageFromUrl = (src,alt,href,info) =>{
     div.appendChild(text);
     contentDiv.appendChild(div);
 }
+
+/**
+* @function  arrayIntoString
+* @description convert array of strings into a string .
+* @param array to be converted into string 
+* @returns array as a continous array 
+*/
+arrayIntoString = array =>{ return array.join(", ");}
+
+/**
+* @function  createImageFromUrlForSchedul
+* @description get url and convert into an image element and added to the content div.
+* @param src to be convernted into an image 
+* @param alt to be the name of the show
+* @param href of the image created  
+* @param info to be converted to text and then json for data in the modal
+*/
+createImageFromUrlForSchedul = (src,alt,href,info) =>{
+
+    console.log(info);
+
+    const div = document.createElement("div");
+    div.classList.add("row");
+    div.classList.add("schedule");
+
+    const img = document.createElement("img");
+    img.setAttribute("src",src);
+    img.setAttribute("href",href);
+    img.setAttribute("alt",alt);
+    img.setAttribute("title",alt);
+    img.classList.add("col-md-3");
+
+
+    const textContent = document.createElement("div");
+
+    const header = document.createElement("h1");
+   
+    header.innerHTML= "&nbsp;"+ info.name;
+     
+    const summary = document.createElement("p");
+    summary.innerHTML = info.summary;
+
+
+    const headerLine1 = document.createElement("h4");
+    const headerLine2 = document.createElement("h4");
+    const headerLine3 = document.createElement("h4");
+    const headerLine4 = document.createElement("h4");
+    
+    let contentLine1 = `&nbsp; ${info.language} | First Aired ${info.premiered}`;
+    let contentLine2 = `&nbsp; Running Time ${info.runtime} Min |${info.status} | ${info.type}`;
+    let contentLine3 = `&nbsp; ${arrayIntoString(info.genres)} | Network ${info.network.name}`;
+    let contentLine4 = `&nbsp; Airs ${arrayIntoString(info.schedule.days)} @ ${info.schedule.time}`;
+    
+    let rate = document.createElement("div");
+    rate.style.marginLeft ="10px";
+    let star = document.createElement("i");
+    star.classList.add("fas");
+    star.classList.add("fa-star");
+
+    rate.appendChild(star);
+    let rateContent = document.createElement("div");
+    rateContent.innerHTML=info.rating.average;
+    rate.appendChild(rateContent);
+
+    headerLine1.innerHTML=contentLine1;
+    headerLine2.innerHTML=contentLine2;
+    headerLine3.innerHTML=contentLine3;
+    headerLine4.innerHTML=contentLine4;
+    
+
+    img.classList.add("img-thumbnail");
+    img.classList.add("mb-1");
+    img.classList.add("ml-1");
+    const text = document.createElement("div");
+    text.classList.add("text-block");
+    text.innerHTML=info.name;
+    
+
+    text.innerHTML=alt;
+    textContent.appendChild(header);
+    textContent.appendChild(rate);
+    textContent.appendChild(headerLine1);
+    textContent.appendChild(headerLine2);
+    textContent.appendChild(headerLine3);
+    textContent.appendChild(headerLine4);
+    //textContent.appendChild(rate);
+    
+    
+    //div.append(headerMedium);
+    div.appendChild(img); 
+    div.appendChild(textContent);
+    div.appendChild(summary);
+    contentDiv.appendChild(div);
+    
+}
+
+
 
 /**
 * @function  imageExistNotCreateTemp
