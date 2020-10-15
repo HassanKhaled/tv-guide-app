@@ -255,11 +255,6 @@ changeHrefContentUsingSelector("#Tvmaz",data.url);
 }
 });
 
-
-
-
-
-
 /**
 * @function  imageFlageFromCode
 * @description takes code of the country and convert it into a flag using flagcdn.
