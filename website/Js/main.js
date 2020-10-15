@@ -161,16 +161,26 @@ createImageFromUrlForSchedul = (src,alt,href,info) =>{
     const headerLine3 = document.createElement("h4");
     const headerLine4 = document.createElement("h4");
     
-    let contentLine1 = `&nbsp; ${info.language} | First Aired ${info.premiered}`;
-    let contentLine2 = `&nbsp; Running Time ${info.runtime} Min |${info.status} | ${info.type}`;
-    let contentLine3 = `&nbsp; ${arrayIntoString(info.genres)} | Network ${info.network.name}`;
-    let contentLine4 = `&nbsp; Airs ${arrayIntoString(info.schedule.days)} @ ${info.schedule.time}`;
+    let contentLine1 = `${info.language} | First Aired ${info.premiered}`;
+    let contentLine2 = `Running Time ${info.runtime} Min | ${info.status} | ${info.type}`;
+    let contentLine3 = `${arrayIntoString(info.genres)} | Network ${info.network.name}`;
+    let contentLine4 = `Airs ${arrayIntoString(info.schedule.days)} @ ${info.schedule.time}`;
     
     let rate = document.createElement("div");
     rate.style.marginLeft ="10px";
     let star = document.createElement("i");
     star.classList.add("fas");
     star.classList.add("fa-star");
+       
+
+    let official = document.createElement("a");
+    official.innerHTML="  Oficial Website  ";
+    official.href=info.officialSite;
+
+
+    let tvmaz = document.createElement("a");
+    tvmaz.innerHTML ="  TvMaze  ";
+    tvmaz.href=info.url;
 
     rate.appendChild(star);
     let rateContent = document.createElement("div");
@@ -186,6 +196,7 @@ createImageFromUrlForSchedul = (src,alt,href,info) =>{
     img.classList.add("img-thumbnail");
     img.classList.add("mb-1");
     img.classList.add("ml-1");
+    img.classList.add("mr-1");
     const text = document.createElement("div");
     text.classList.add("text-block");
     text.innerHTML=info.name;
@@ -198,6 +209,8 @@ createImageFromUrlForSchedul = (src,alt,href,info) =>{
     textContent.appendChild(headerLine2);
     textContent.appendChild(headerLine3);
     textContent.appendChild(headerLine4);
+    textContent.appendChild(official);
+    textContent.appendChild(tvmaz);
     //textContent.appendChild(rate);
     
     
