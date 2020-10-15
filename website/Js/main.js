@@ -22,9 +22,9 @@ const fonts = [{text:'Acme'},{text:'Oswald'},{text:"Ubuntu"},{text:"Bebas Neue"}
 */
 links = [ {href:"../website/index.html",text:"Search"},
           {href:"../website/schedule.html",text:"Schedule"},
-          {href:"",text:"Shows"},
-          {href:"",text:"Episodes"},
-          {href:"",text:"People"}];
+          {href:"../website/shows.html",text:"Shows"},
+          {href:"../website/episodes.html",text:"Episodes"},
+          {href:"../website/people.html",text:"People"}];
 
 /** @constant
 *   @type {object}
@@ -179,7 +179,7 @@ createImageFromUrlForSchedul = (src,alt,href,info) =>{
 
 
     let tvmaz = document.createElement("a");
-    tvmaz.innerHTML ="  TvMaze  ";
+    tvmaz.innerHTML ="  TvMaze ";
     tvmaz.href=info.url;
 
     rate.appendChild(star);
