@@ -236,6 +236,24 @@ body{
     color: var(--color-7);
   }
 
+
+.list-group-item.active{
+    background: var(--color-1);
+    color: var(--color-4);
+    border: none;
+
+}
+
+.list-group-item{
+    background: var(--color-2);
+    color: var(--color-5);
+
+}
+
+.list-group{
+    border-radius: 0 20px 0 20px;
+}
+
 .footer{
     width: 100%;
     color: var(--color-6);
@@ -285,6 +303,7 @@ fill: var(--color-2);
 
 .img-thumbnail{
     background: none repeat scroll 0 0 var(--color-4);
+    border-radius: 0 20px 0 20px;
     border-color: var(--color-5);
     padding: 5px;
 }
@@ -377,33 +396,30 @@ fill: var(--color-2);
     right: 0; 
     margin-left: auto; 
     margin-right: auto; 
-    width: 250px; z-index: 100;}
+    width: 250px; z-index: 100000;}
  
 
   .temp{
      width: 222px;
      height: 307px;
-     /*background: linear-gradient(var(--color-2),var(--color-1)); */
+     border-radius: 0 20px 0 20px;
      background-repeat: no-repeat;
      animation-name: changeColors;
      animation-duration: 1s;
      animation-iteration-count: infinite;
      animation-direction: alternate;
-     border-radius: .25rem;
-    /* border: solid 5px var(--color-2);*/
      padding:5px;
   }
 
   .tempTop{
     width: 100%;
     height: 315px;
-    /*background: linear-gradient(var(--color-2),var(--color-1)); */
+    border-radius: 0 20px 0 20px;
     background-repeat: no-repeat;
     animation-name: changeColors;
     animation-duration: 1s;
     animation-iteration-count: infinite;
     animation-direction: alternate;
-    border-radius: .25rem;
     padding:5px;
     margin-bottom:2px;
  }
@@ -411,13 +427,16 @@ fill: var(--color-2);
  .schedule{
     width: 100%;
     background-image: linear-gradient(45deg,var(--color-1),var(--color-2));
-    border-radius: .25rem;
+    border-radius: 0 20px 0 20px;
     padding:5px;
     margin-bottom:5px;
  }
 
  .schedule:hover{
-    background: var(--color-3);
+    /*background: var(--color-3);*/
+    /*background-image: radial-gradient(var(--color-1),var(--color-2));*/
+    background-image:linear-gradient(45deg,var(--color-2),var(--color-1));
+
  }
 
   .input-group-text{

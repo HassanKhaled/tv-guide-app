@@ -14,14 +14,6 @@ let results = "";
 /** @constant
 *   @type {object}
 *   @global
-*   @description Hold reference flage image 
-*/
-let flageImg = document.querySelector("#flage");
-
-
-/** @constant
-*   @type {object}
-*   @global
 *   @description Hold reference to search query type radio button 
 */ 
 let searchTypeRb = document.querySelector('input[type = radio]:checked');
@@ -151,6 +143,10 @@ getSingleRequest = async url => {
 
 createTempDivsOnContentDiv(10,"temp","#content");
 
+
+/**
+ * @description Handle click event of the contentDiv
+ */
 contentDiv.addEventListener("click", (e)=>{
 
 console.log(e.target);
@@ -238,6 +234,7 @@ changeHrefContentUsingSelector("#Tvmaz",data.url);
     }else{
         content += "No Network |";
     }
+
     content += data.status;
 
     changeInnerHtmlContentUsingSelector("#info",content);
@@ -255,12 +252,6 @@ changeHrefContentUsingSelector("#Tvmaz",data.url);
 }
 });
 
-/**
-* @function  imageFlageFromCode
-* @description takes code of the country and convert it into a flag using flagcdn.
-* @param code of the country 
-* @returns  url of the flagcdn of the requested country's flag
-*/
-imageFlageFromCode = code =>{ return `https://flagcdn.com/32x24/${code.toLowerCase()}.png`; }
+
 
 callOnStart("Search");

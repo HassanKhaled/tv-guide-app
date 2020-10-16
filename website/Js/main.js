@@ -29,6 +29,13 @@ links = [ {href:"../website/index.html",text:"Search"},
 /** @constant
 *   @type {object}
 *   @global
+*   @description Hold reference flage image 
+*/
+let flageImg = document.querySelector("#flage");
+
+/** @constant
+*   @type {object}
+*   @global
 *   @description Hold reference drop down menu.
 */
 let dropdown = document.querySelector(".themes");
@@ -80,7 +87,13 @@ fillInDropDownFromList = (dropdownSelector, list, localStorageSelector,setFontSt
     }
 }
 
-
+/**
+* @function  imageFlageFromCode
+* @description takes code of the country and convert it into a flag using flagcdn.
+* @param code of the country 
+* @returns  url of the flagcdn of the requested country's flag
+*/
+imageFlageFromCode = code =>{ return `https://flagcdn.com/32x24/${code.toLowerCase()}.png`; }
 
 /**
 * @function  createImageFromUrl
