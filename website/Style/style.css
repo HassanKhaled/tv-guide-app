@@ -155,7 +155,7 @@
 .nav-item.active{
     background-color:var(--color-1);
     color:var(--color-2);
-    border-radius:  5px 0 0 0;
+    border-radius:  0 20px 0 0;
     text-shadow: 1.25px 1.25px #000;
     -webkit-text-stroke-color: #000;
     -webkit-text-stroke-width: .5px;
@@ -174,7 +174,6 @@
 
 .dropdown-item:hover{
     background-color:var(--color-2);
-
     border-top: 1px solid var(--color-1);
     border-bottom: 1px solid var(--color-1);
     /*background-image: linear-gradient(to right, var(--color-1),var(--color-2),var(--color-3),var(--color-4),var(--color-5)); 
@@ -217,7 +216,7 @@ body{
 
 .navbar-dark .navbar-nav .nav-link:hover {
     background: var(--color-2);
-    border-radius:  5px 0 0 0;
+    border-radius:  0 20px 0 0;
 }
 
 
@@ -235,6 +234,24 @@ body{
 .form-control::-ms-input-placeholder { /* Microsoft Edge */
     color: var(--color-7);
   }
+
+
+.list-group-item.active{
+    background: var(--color-1);
+    color: var(--color-4);
+    border: none;
+
+}
+
+.list-group-item{
+    background: var(--color-2);
+    color: var(--color-5);
+
+}
+
+.list-group{
+    border-radius: 0 20px 0 20px;
+}
 
 .footer{
     width: 100%;
@@ -273,6 +290,12 @@ fill: var(--color-2);
     background-color: var(--color-4);
     border-color: var(--color-5);
     text-shadow: 1px 1px #000;
+    border-radius: 0 20px 0 0;
+}
+
+input[type=password]{
+    border-radius: 20px 20px 20px 20px;
+
 }
 
 .btn-success:hover,
@@ -285,6 +308,7 @@ fill: var(--color-2);
 
 .img-thumbnail{
     background: none repeat scroll 0 0 var(--color-4);
+    border-radius: 0 20px 0 20px;
     border-color: var(--color-5);
     padding: 5px;
 }
@@ -318,6 +342,8 @@ fill: var(--color-2);
 .form-control{
     border-color: var(--color-5) !important;
     color: var(--color-5) !important;
+    border-radius: 0px 20px 20px 20px;
+
 }
 
 .cont {
@@ -377,33 +403,30 @@ fill: var(--color-2);
     right: 0; 
     margin-left: auto; 
     margin-right: auto; 
-    width: 250px; z-index: 100;}
+    width: 250px; z-index: 100000;}
  
 
   .temp{
      width: 222px;
      height: 307px;
-     /*background: linear-gradient(var(--color-2),var(--color-1)); */
+     border-radius: 0 20px 0 20px;
      background-repeat: no-repeat;
      animation-name: changeColors;
      animation-duration: 1s;
      animation-iteration-count: infinite;
      animation-direction: alternate;
-     border-radius: .25rem;
-    /* border: solid 5px var(--color-2);*/
      padding:5px;
   }
 
   .tempTop{
     width: 100%;
     height: 315px;
-    /*background: linear-gradient(var(--color-2),var(--color-1)); */
+    border-radius: 0 20px 0 20px;
     background-repeat: no-repeat;
     animation-name: changeColors;
     animation-duration: 1s;
     animation-iteration-count: infinite;
     animation-direction: alternate;
-    border-radius: .25rem;
     padding:5px;
     margin-bottom:2px;
  }
@@ -411,14 +434,19 @@ fill: var(--color-2);
  .schedule{
     width: 100%;
     background-image: linear-gradient(45deg,var(--color-1),var(--color-2));
-    border-radius: .25rem;
+    border-radius: 0 20px 0 20px;
     padding:5px;
     margin-bottom:5px;
  }
 
  .schedule:hover{
-    background: var(--color-3);
+    /*background: var(--color-3);*/
+    /*background-image: radial-gradient(var(--color-1),var(--color-2));*/
+    background-image:linear-gradient(45deg,var(--color-2),var(--color-1));
+
  }
+
+ 
 
   .input-group-text{
     border-color: var(--color-5) !important;
