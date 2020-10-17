@@ -402,11 +402,13 @@ input[type=password]{
 
 .modal{
     z-index: 9500;
+    
 }
 
 .modal-content{
       background-color: var(--color-5);
       color: var(--color-2);
+      border-radius: 0 20px 0 20px;
 }
  
 .modal-title{

@@ -58,23 +58,6 @@ getPeopleRequest = async url => {
 
 
 /**
-* @function  fillListHeaderFromContentUsingRefrence
-* @description get cast createdits of an person using it's id .
-* @param reference of list item to change it's header 
-* @param content to be fill in the header of the list item
-*/
-fillListHeaderFromContentUsingRefrence=(reference,content)=>{
-    let tempHeader = document.createElement("li");
-    tempHeader.innerHTML=content;
-    tempHeader.classList.add("active");
-    tempHeader.classList.add("list-group-item");
-    reference.appendChild(tempHeader);
-}
-
-
-
-
-/**
 * @function  getPeopleCastCredits
 * @description get cast createdits of an person using it's id .
 * @param id of people we search for 
@@ -155,13 +138,11 @@ searchButton.addEventListener('click', (e) =>{
   });
 
 
-  contentDiv.addEventListener("click", (e)=>{
+contentDiv.addEventListener("click", (e)=>{
 
     console.log(e.target);
     const data = JSON.parse(e.target.getAttribute("data-value"));
     console.log(data);
-
-
 
     clearBySelector(".modal-title");
 changeInnerHtmlContentUsingSelector(".modal-title",data.name)
@@ -171,8 +152,6 @@ let content ="";
    getPeopleCastCredits(data.id);
    getPeopleCrewCredits(data.id); 
 
-
-  
     if(data.birthday!==null){
         content += data.birthday+" | ";
     }else {

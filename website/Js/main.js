@@ -322,6 +322,21 @@ createAlertWithMessage = (type,time,head,msg,parent)=>{
         setInterval(function(){   $("#myAlert").alert("close"); }, time);
 }
 
+
+/**
+* @function  fillListHeaderFromContentUsingRefrence
+* @description get cast createdits of an person using it's id .
+* @param reference of list item to change it's header 
+* @param content to be fill in the header of the list item
+*/
+fillListHeaderFromContentUsingRefrence=(reference,content)=>{
+    let tempHeader = document.createElement("li");
+    tempHeader.innerHTML=content;
+    tempHeader.classList.add("active");
+    tempHeader.classList.add("list-group-item");
+    reference.appendChild(tempHeader);
+}
+
 /**
 * @function  imageCreationIfExist
 * @description image loads when exist in source other wise load alternatives .
