@@ -145,10 +145,35 @@
     --color-8:#818181;
 }
 
+
+
+.dropdown-menu{
+
+    border-radius: 0 20px 0 20px;
+}
+
+
 .dropdown-item{
     border-top: 1px solid white;
     border-bottom: 1px solid white;
 
+}
+
+
+.nav-item:hover{
+    background-color:var(--color-2);
+    color:var(--color-1);
+    border-radius:  0 20px 0 0;
+  
+}
+
+.nav-item.active:hover{
+    background-color:var(--color-3);
+    color:var(--color-5);
+    border-radius:  0 20px 0 0;
+    text-shadow: 1.25px 1.25px #000;
+    -webkit-text-stroke-color: #000;
+    -webkit-text-stroke-width: .5px;
 }
 
 
@@ -161,23 +186,33 @@
     -webkit-text-stroke-width: .5px;
 }
 
+
 .dropdown-item.active{
     background-color:var(--color-1);
     color:var(--color-2);
     border-top: 1px solid var(--color-2);
     border-bottom: 1px solid var(--color-2);
-
     text-shadow: 1.25px 1.25px #000;
     -webkit-text-stroke-color: #000;
     -webkit-text-stroke-width: .5px;
 }
 
+.dropdown-item.active:hover{
+    background-color:var(--color-3);
+    color:var(--color-5);
+    border-top: 1px solid var(--color-2);
+    border-bottom: 1px solid var(--color-2);
+    text-shadow: 1.25px 1.25px #000;
+    -webkit-text-stroke-color: #000;
+    -webkit-text-stroke-width: .5px;
+}
+
+
+
 .dropdown-item:hover{
     background-color:var(--color-2);
     border-top: 1px solid var(--color-1);
     border-bottom: 1px solid var(--color-1);
-    /*background-image: linear-gradient(to right, var(--color-1),var(--color-2),var(--color-3),var(--color-4),var(--color-5)); 
-*/
     text-shadow: 1.25px 1.25px #000;
     color:#eee;
     -webkit-text-stroke-color: #000;
@@ -214,11 +249,6 @@ body{
     padding: 0px;
 }
 
-.navbar-dark .navbar-nav .nav-link:hover {
-    background: var(--color-2);
-    border-radius:  0 20px 0 0;
-}
-
 
 .form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
     color: var(--color-7);
@@ -240,7 +270,12 @@ body{
     background: var(--color-1);
     color: var(--color-4);
     border: none;
+}
 
+.list-group-item.active:hover{
+    background: var(--color-2);
+    color: var(--color-5);
+    border: none;
 }
 
 .list-group-item{
