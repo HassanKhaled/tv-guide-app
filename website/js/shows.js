@@ -24,6 +24,28 @@ let searchInput = document.querySelector("#searchTerm");
 */
 let episodeList = document.querySelector("#episodes");
 
+/** @constant
+*   @type {object}
+*   @global
+*   @description Hold reference castList list.
+*/
+let castList = document.querySelector("#cast");
+
+/** @constant
+*   @type {object}
+*   @global
+*   @description Hold reference crewList list.
+*/
+let crewList = document.querySelector("#crew");
+
+
+/** @constant
+*   @type {object}
+*   @global
+*   @description Hold reference akaList list.
+*/
+let akaList = document.querySelector("#aka");
+
 
 /** @type {array}
 *   @global
@@ -31,30 +53,6 @@ let episodeList = document.querySelector("#episodes");
 */
 let results = "";
 
-/** @type {array}
-*   @global
-*   @description Hold episodes of data.
-*/
-let episodes = "";
-
-/** @type {array}
-*   @global
-*   @description Hold cast of data.
-*/
-let cast = "";
-
-
-/** @type {array}
-*   @global
-*   @description Hold crew of data.
-*/
-let crew = "";
-
-/** @type {array}
-*   @global
-*   @description Hold crew of data.
-*/
-let aka = "";
 
 
 /**
@@ -100,26 +98,96 @@ searchButton.addEventListener('click', (e) =>{
 * @param url to get data of 
 * @param list
 */
-getRequestandFill = async (url,list)=> {
-    
+getRequestandFill = async (url)=> {
     clearBySelector("#episodes");
     fillListHeaderFromContentUsingRefrence(episodeList,"Episodes ");
-
-    list=[];
     const response = await fetch(url);
-
     try{
         const data = await response.json();
         console.log(data);
         for(item of data){
-
             let tempLi = document.createElement("li");
             tempLi.innerHTML=`${item.name} Ep:${item.number} S:${item.season} Aird: ${item.airdate} @ ${item.airstamp}  ${item.summary}` ;
             tempLi.classList.add("list-group-item");
             episodeList.appendChild(tempLi);
-     
         }
-       
+    }catch(error){
+        console.log(error);
+        createAlertWithMessage("alert-danger",3000,"Error  " ,error,contentDiv);
+    }
+}
+
+
+/**
+* @function  getCastData
+* @description get cast data from endpoint.
+* @param url to get data of 
+*/
+getCastData = async (url)=> {
+    clearBySelector("#cast");
+    fillListHeaderFromContentUsingRefrence(castList,"Cast ");
+    const response = await fetch(url);
+    try{
+        const data = await response.json();
+        console.log(data);
+        for(item of data){
+            let tempLi = document.createElement("li");
+            tempLi.innerHTML=`${item.person.name} Played ${item.character.name}` ;
+            tempLi.classList.add("list-group-item");
+            castList.appendChild(tempLi);
+        }
+    }catch(error){
+        console.log(error);
+        createAlertWithMessage("alert-danger",3000,"Error  " ,error,contentDiv);
+    }
+}
+
+
+/**
+* @function  getCrewData
+* @description get cast data from endpoint.
+* @param url to get data of 
+*/
+getCrewData = async (url)=> {
+    clearBySelector("#crew");
+    fillListHeaderFromContentUsingRefrence(crewList,"Crew ");
+    const response = await fetch(url);
+    try{
+        const data = await response.json();
+        console.log(data);
+        for(item of data){
+            let tempLi = document.createElement("li");
+            tempLi.innerHTML=`${item.type}  -  ${item.person.name}` ;
+            tempLi.classList.add("list-group-item");
+            crewList.appendChild(tempLi);
+        }
+    }catch(error){
+        console.log(error);
+        createAlertWithMessage("alert-danger",3000,"Error  " ,error,contentDiv);
+    }
+}
+
+/**
+* @function  getAkaData
+* @description get cast data from endpoint.
+* @param url to get data of 
+*/
+getAkaData = async (url)=> {
+    clearBySelector("#aka");
+    fillListHeaderFromContentUsingRefrence(akaList,"aka ");
+    const response = await fetch(url);
+    try{
+        const data = await response.json();
+        console.log(data);
+        for(item of data){
+            let tempLi = document.createElement("li");
+            tempLi.innerHTML=`${item.name}  -  ${item.country.name}` ;
+            tempLi.classList.add("list-group-item");
+            let img = document.createElement("img");
+            img.setAttribute("src",imageFlageFromCode(item.country.code));
+            tempLi.appendChild(img);
+            akaList.appendChild(tempLi);
+        }
     }catch(error){
         console.log(error);
         createAlertWithMessage("alert-danger",3000,"Error  " ,error,contentDiv);
@@ -131,7 +199,10 @@ contentDiv.addEventListener("click", (e)=>{
 
     console.log(e.target);
     const data = JSON.parse(e.target.getAttribute("data-value"));
-    getRequestandFill(`http://api.tvmaze.com/seasons/${data.id}/episodes`,episodes);
+    getRequestandFill(`http://api.tvmaze.com/seasons/${data.id}/episodes`);
+    getCastData(`http://api.tvmaze.com/shows/${data.id}/cast`);
+    getCrewData(`http://api.tvmaze.com/shows/${data.id}/crew`);
+    getAkaData(`http://api.tvmaze.com/shows/${data.id}/akas`);
 
     console.log(data);
 
@@ -163,6 +234,5 @@ contentDiv.addEventListener("click", (e)=>{
     }
     changeHrefContentUsingSelector("#official",data.officialSite);
     changeHrefContentUsingSelector("#Tvmaz",data.url);
-    console.log(episodes);
-
+   
 });
