@@ -47,6 +47,14 @@ let crewList = document.querySelector("#crew");
 let akaList = document.querySelector("#aka");
 
 
+/** @constant
+*   @type {object}
+*   @global
+*   @description Hold reference akaList list.
+*/
+let imagesList = document.querySelector("#images");
+
+
 /** @type {array}
 *   @global
 *   @description Hold results of data.
@@ -195,6 +203,36 @@ getAkaData = async (url)=> {
 }
 
 
+
+/**
+* @function  getImagesData
+* @description get cast data from endpoint.
+* @param url to get data of 
+*/
+getImagesData = async (url)=> {
+    clearBySelector("#images");
+    const response = await fetch(url);
+    try{
+        const data = await response.json();
+      
+        for(item of data){
+            let tempLi = document.createElement("div");
+            //tempLi.innerHTML=`${item.name}  -  ${item.country.name}` ;
+            
+            let img = document.createElement("img");
+            if(item.resolutions.medium!==undefined){
+            img.setAttribute("src",item.resolutions.medium.url);
+        }
+            img.classList.add("img-thumbnail");
+            tempLi.appendChild(img);
+            imagesList.appendChild(tempLi);
+        }
+    }catch(error){
+        console.log(error);
+        createAlertWithMessage("alert-danger",3000,"Error  " ,error,contentDiv);
+    }
+}
+
 contentDiv.addEventListener("click", (e)=>{
 
     console.log(e.target);
@@ -203,6 +241,7 @@ contentDiv.addEventListener("click", (e)=>{
     getCastData(`http://api.tvmaze.com/shows/${data.id}/cast`);
     getCrewData(`http://api.tvmaze.com/shows/${data.id}/crew`);
     getAkaData(`http://api.tvmaze.com/shows/${data.id}/akas`);
+    getImagesData(`http://api.tvmaze.com/shows/${data.id}/images`);
 
     console.log(data);
 
