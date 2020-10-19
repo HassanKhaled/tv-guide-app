@@ -20,11 +20,11 @@ const fonts = [{text:'Acme'},{text:'Oswald'},{text:"Ubuntu"},{text:"Bebas Neue"}
     @global
     @description Hold links' names and hrefs.
 */
-links = [ {href:"../website/index.html",text:"Search"},
-          {href:"../website/schedule.html",text:"Schedule"},
-          {href:"../website/shows.html",text:"Shows"},
-          {href:"../website/episodes.html",text:"Episodes"},
-          {href:"../website/people.html",text:"People"}];
+links = [ {href:"../website/index.html",text:"Search",icon:{first:"fas",second:"fa-search"}},
+          {href:"../website/schedule.html",text:"Schedule",icon:{first:"fas",second:"fa-calendar-alt"}},
+          {href:"../website/shows.html",text:"Shows",icon:{first:"fas",second:"fa-tv"}},
+         
+          {href:"../website/people.html",text:"People",icon:{first:"fas",second:"fa-user"}}];
 
 /** @constant
 *   @type {object}
@@ -394,8 +394,15 @@ loadThemeFromlocalStorage = ()=>{
 * @param href to be used in teh anchor 
 * @returns object to refrences to anchor 
 */
-createAnchorFromTextAndHref = ( text, href)=>{
+createAnchorFromTextAndHref = ( text, href,icon)=>{
     let anchor = document.createElement("a");
+
+    let tempSpan = document.createElement("i");
+    tempSpan.classList.add(icon.first);
+    tempSpan.classList.add(icon.second);
+
+    anchor.appendChild(tempSpan);
+
     anchor.appendChild(document.createTextNode(text));
     anchor.setAttribute("href",href);
     anchor.classList.add("nav-link");
@@ -408,15 +415,21 @@ createAnchorFromTextAndHref = ( text, href)=>{
 * @param text to be shown in the anchor.
 * @param href of the anchor to be shown.
 * @param activeLink to be highlighted active in nav bar
+* @param icon to be added to the link 
 */
-createListItemWithAnchor = (text, href,activeLink) => {
+createListItemWithAnchor = (text, href,activeLink,icon) => {
     let tempLi = document.createElement("li");
     tempLi.classList.add("nav-item");
+
+    
+
+
     if(activeLink===text){
         tempLi.classList.add("active");
     } 
-
-    tempLi.appendChild(createAnchorFromTextAndHref(text,href));
+    
+    tempLi.appendChild(createAnchorFromTextAndHref(text,href,icon));
+    
     navbar.insertBefore(tempLi,navbar.childNodes[0]);
 }
 
@@ -426,8 +439,8 @@ createListItemWithAnchor = (text, href,activeLink) => {
 * @param activeLink to be highlighted active in nav bar
 */
 fillInLinksInNavBar =(activeLink)=> {
-    for( link of links){
-        createListItemWithAnchor(link.text,link.href,activeLink);
+    for(link of links){
+        createListItemWithAnchor(link.text,link.href,activeLink,link.icon);
     }
 }
 
