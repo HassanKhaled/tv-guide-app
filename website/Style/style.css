@@ -416,6 +416,11 @@ input[type=password]{
     text-shadow: 1px 1px var(--color-5);
 }
 
+.input-group-text{
+    border-radius: 0 0 0 20px;
+
+}
+
   @keyframes changeColors {
     from {background-color: var(--color-2);}
     to {background-color: var(--color-1);}
