@@ -392,6 +392,7 @@ loadThemeFromlocalStorage = ()=>{
 * @description fill in the linkes in the nav bar and highlighted active link .
 * @param text to be shown inside the anchor 
 * @param href to be used in teh anchor 
+* @param icon to be added before text of link 
 * @returns object to refrences to anchor 
 */
 createAnchorFromTextAndHref = ( text, href,icon)=>{
@@ -403,7 +404,7 @@ createAnchorFromTextAndHref = ( text, href,icon)=>{
 
     anchor.appendChild(tempSpan);
 
-    anchor.appendChild(document.createTextNode(text));
+    anchor.appendChild(document.createTextNode(" "+text));
     anchor.setAttribute("href",href);
     anchor.classList.add("nav-link");
     return anchor;
@@ -420,10 +421,6 @@ createAnchorFromTextAndHref = ( text, href,icon)=>{
 createListItemWithAnchor = (text, href,activeLink,icon) => {
     let tempLi = document.createElement("li");
     tempLi.classList.add("nav-item");
-
-    
-
-
     if(activeLink===text){
         tempLi.classList.add("active");
     } 
