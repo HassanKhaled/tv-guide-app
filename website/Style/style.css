@@ -228,12 +228,17 @@ body{
 .navbar-dark .navbar-nav .nav-link{
    transition: color 0.1s, text-shadow 0.15s, -webkit-text-stroke-width 0.15s;
    transition-timing-function: linear;
+
+   text-shadow: 0.5px 0.5px 2px black;
+    -webkit-text-stroke-color:white;
+    -webkit-text-stroke-width: 0.20px;
+   color:var(--color-5);
 }
 
 
 .navbar-dark .navbar-nav .nav-link:hover{
-    text-shadow: 0.5px 0.5px 2px black;
-    -webkit-text-stroke-color: var(--color-2);
+    -webkit-text-stroke-color:white;
+    -webkit-text-stroke-width: 0.20px;
     -webkit-text-stroke-width: 0.25px;
     color:var(--color-2);
 }
@@ -242,16 +247,16 @@ body{
 
 .navbar-dark .navbar-nav .active > .nav-link:hover{
 
-    text-shadow: 0.5px 0.5px 2px black;
-    -webkit-text-stroke-color:var(--color-1);
+    -webkit-text-stroke-color:white;
+    -webkit-text-stroke-width: 0.20px;
     -webkit-text-stroke-width: 0.25px;
     color:var(--color-1);
 }
 
 
 .navbar-dark .navbar-nav .active > .nav-link{
-    text-shadow: 0.5px 0.5px 2px black;
-    -webkit-text-stroke-color:var(--color-3);
+    -webkit-text-stroke-color:white;
+    -webkit-text-stroke-width: 0.20px;
     -webkit-text-stroke-width: 0.25px;
     color:var(--color-3);
     
