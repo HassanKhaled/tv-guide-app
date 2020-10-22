@@ -174,10 +174,9 @@
 .dropdown-item{
     margin-top: 0px;
     padding-top: 0px;
-
     margin-bottom: 0px;
     border: 1px solid white;
-   
+    transition: color 0.25s, background-color 0.25s;
 }
 
 
@@ -204,7 +203,6 @@
 .dropdown-item:hover{
     /*background-image: radial-gradient(var(--color-2),var(--color-1));*/
     background-color:var(--color-2);
-    
     border: 1px solid var(--color-1);
     text-shadow: 1.25px 1.25px #000;
     color:#eee;
@@ -215,39 +213,56 @@
 
 body{
      background: linear-gradient(var(--color-1),var(--color-2)); 
-  /*   font-family: 'Acme', sans-serif;*/
      background-repeat: no-repeat;
      overflow-x: hidden;
 }
 
 
-.nav-item:hover{
-    text-shadow: 0.5px 0.5px 2px var(--color-4);
-    -webkit-text-stroke-color:var(--color-4);
-    -webkit-text-stroke-width: 0.25px;
-    color:var(--color-4);
-   
-}
-
 .navbar-dark {
     font-size: large;
-    
+    border-bottom: 1px solid white;
 }
 
-.nav-item.active:hover{
 
-    text-shadow: 0.5px 0.5px 2px var(--color-1);
+.navbar-dark .navbar-nav .nav-link{
+   transition: color 0.1s, text-shadow 0.1s, -webkit-text-stroke-width 0.1s;
+}
+
+
+.navbar-dark .navbar-nav .nav-link:hover{
+    text-shadow: 0.5px 0.5px 2px black;
+    -webkit-text-stroke-color: var(--color-2);
+    -webkit-text-stroke-width: 0.25px;
+    color:var(--color-2);
+}
+
+
+
+.navbar-dark .navbar-nav .active > .nav-link:hover{
+
+    text-shadow: 0.5px 0.5px 2px black;
     -webkit-text-stroke-color:var(--color-1);
     -webkit-text-stroke-width: 0.25px;
     color:var(--color-1);
 }
 
 
-.nav-item.active{
-    text-shadow: 0.5px 0.5px 2px var(--color-3);
+.navbar-dark .navbar-nav .active > .nav-link{
+    text-shadow: 0.5px 0.5px 2px black;
     -webkit-text-stroke-color:var(--color-3);
     -webkit-text-stroke-width: 0.25px;
     color:var(--color-3);
+    
+}
+/*
+button.navbar-toggler{
+    color: var(--color-3);
+    background:  var(--color-3);
+}*/
+
+.bars{
+    color:var(--color-1);
+    font-size:28px;
 }
 
 .form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -266,6 +281,14 @@ body{
   }
 
 
+.list-group-item{
+    background: var(--color-2);
+    color: var(--color-5);
+    
+}
+
+
+
 .list-group-item.active{
     background: var(--color-1);
     color: var(--color-4);
@@ -278,11 +301,6 @@ body{
     border: none;
 }
 
-.list-group-item{
-    background: var(--color-2);
-    color: var(--color-5);
-
-}
 
 .list-group{
     border-radius: 0 20px 0 20px;
