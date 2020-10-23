@@ -175,7 +175,7 @@
     margin-top: 0px;
     padding-top: 0px;
     margin-bottom: 0px;
-    border: 1px solid white;
+    /*border: 1px solid white;*/
     transition: color 0.15s, background-color 0.15s;
     transition-timing-function: linear;
 }
@@ -184,7 +184,7 @@
 .dropdown-item.active{
     background-color:var(--color-1);
     color:var(--color-2);
-    border: 1px solid var(--color-2);
+  /*  border: 1px solid var(--color-2);*/
     text-shadow: 1.25px 1.25px #000;
     -webkit-text-stroke-color: #000;
     -webkit-text-stroke-width: .5px;
@@ -193,7 +193,7 @@
 .dropdown-item.active:hover{
     background-color:var(--color-3);
     /*color:var(--color-5);*/
-    border: 1px solid var(--color-2);
+   /* border: 1px solid var(--color-2);*/
    /* text-shadow: 1.25px 1.25px #000;
     -webkit-text-stroke-color: #000;
     -webkit-text-stroke-width: .5px;*/
@@ -204,7 +204,7 @@
 .dropdown-item:hover{
     /*background-image: radial-gradient(var(--color-2),var(--color-1));*/
     background-color:var(--color-2);
-    border: 1px solid var(--color-1);
+    /*border: 1px solid var(--color-1);*/
     text-shadow: 1.25px 1.25px #000;
     color:#eee;
     -webkit-text-stroke-color: #000;
@@ -228,11 +228,10 @@ body{
 .navbar-dark .navbar-nav .nav-link{
    transition: color 0.1s, text-shadow 0.15s, -webkit-text-stroke-width 0.15s;
    transition-timing-function: linear;
-
    text-shadow: 0.5px 0.5px 2px black;
     -webkit-text-stroke-color:white;
     -webkit-text-stroke-width: 0.20px;
-   color:var(--color-5);
+   color:var(--color-4);
 }
 
 
@@ -261,11 +260,6 @@ body{
     color:var(--color-3);
     
 }
-/*
-button.navbar-toggler{
-    color: var(--color-3);
-    background:  var(--color-3);
-}*/
 
 .bars{
     color:var(--color-1);
@@ -347,24 +341,46 @@ fill: var(--color-2);
 }
 
 .btn-success{
+    color: var(--color-3);
     background-color: var(--color-4);
     border-color: var(--color-5);
     text-shadow: 1px 1px #000;
     border-radius: 0 20px 0 0;
-}
-
-input[type=password]{
-    border-radius: 20px 20px 20px 20px;
-
+    transition: background-color 0.15s, border-color 0.15s, color 0.15s;
 }
 
 .btn-success:hover,
 .btn-success:active,
 .btn-success:visited,
 .btn-success:focus{
+
     background-color: var(--color-5) !important;
     border-color: var(--color-5) !important;
+
 }
+
+.btn-secondary{
+    color: var(--color-3);
+    background-color: var(--color-2);
+    border-color: var(--color-5);
+    text-shadow: 1px 1px #000;
+    border-radius: 0px;
+    border-right: 0px;
+    transition: background-color 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.btn-secondary:hover,
+.btn-secondary:active,
+.btn-secondary:visited,
+.btn-secondary:focus{
+    background-color: var(--color-1) !important;
+    border-color: var(--color-5) !important;
+}
+/*
+input[type=password]{
+    border-radius: 20px 20px 20px 20px;
+
+}*/
 
 .img-thumbnail{
     background: none repeat scroll 0 0 var(--color-4);
@@ -373,22 +389,7 @@ input[type=password]{
     padding: 5px;
 }
 
-@keyframes shine{
-    10% {
-      opacity: 1;
-      top: -30%;
-      left: -30%;
-      transition-property: left, top, opacity;
-      transition-duration: 0.7s, 0.7s, 0.15s;
-      transition-timing-function: ease;
-    }
-    100% {
-      opacity: 0;
-      top: -30%;
-      left: -30%;
-      transition-property: left, top, opacity;
-    }
-  }
+
 
 .cont:hover{
     border-color: var(--color-3);/*

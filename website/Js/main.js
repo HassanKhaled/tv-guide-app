@@ -16,6 +16,14 @@ const fonts = [{text:'Acme'},{text:'Oswald'},{text:"Ubuntu"},{text:"Bebas Neue"}
 
 
 /** @constant
+*   @type {array}
+*   @global
+*   @description Hold options' names.
+*/
+const options = [{text:'all'},{text:'single'},{text:"tvrage"},{text:"people"}, {text:"imdb"}, {text:"tvdb"} ];
+
+
+/** @constant
     @type {array}
     @global
     @description Hold links' names and hrefs.
@@ -40,6 +48,12 @@ let flageImg = document.querySelector("#flage");
 */
 let dropdown = document.querySelector(".themes");
 
+/** @constant
+*   @type {string}
+*   @global
+*   @description Hold reference string variable.
+*/
+let searchQuery = "";
 
 /** @constant
 *   @type {object}
@@ -54,6 +68,7 @@ let contentDiv = document.querySelector("#content");
 *   @description Hold reference drop down menu.
 */
 let dropdownFonts = document.querySelector(".fonts");
+
 
 /** @constant
 *   @type {object}
@@ -450,6 +465,7 @@ callOnStart = (selecteLink)=>{
     links= links.reverse();
     fillInDropDownFromList(".fonts", fonts, "font",true);
     fillInDropDownFromList(".themes", themes, "theme",false);
+    fillInDropDownFromList(".options", options, "option",false);
     fillInLinksInNavBar(selecteLink);
     loadThemeFromlocalStorage();
     loadFontFromlocalStorage();
@@ -516,5 +532,8 @@ dropdownFonts.addEventListener('click', (e) =>{
     e.target.classList.add("active");
     saveTolocalStorage("font",className);
   });
+  
+
+
   
   
