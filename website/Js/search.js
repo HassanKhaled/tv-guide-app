@@ -5,18 +5,25 @@
 let results = "";
 
 /** @constant
+*   @type {object}
+*   @global
+*   @description Hold reference drop down menu.
+*/
+let dropdownOptions = document.querySelector(".options");
+
+/** @constant
+*   @type {object}
+*   @global
+*   @description Hold reference options button .
+*/
+let optionsButton = document.querySelector("#optionsButton");
+
+/** @constant
 *   @type {string}
 *   @global
 *   @description url search in the api.
 */
  const searchUrl = "http://api.tvmaze.com/search/shows?q=";
-
-/** @constant
-*   @type {object}
-*   @global
-*   @description Hold reference to search query type radio button 
-*/ 
-let searchTypeRb = document.querySelector('input[type = radio]:checked');
 
 
 /** @constant
@@ -39,7 +46,8 @@ let searchInput = document.querySelector("#searchTerm");
  * @description Handle click event of the searchButton
  */
 searchButton.addEventListener('click', (e) =>{
-    let searchUrl  = document.querySelector('input[type = radio]:checked').value;
+   
+    let searchUrl  = searchQuery;
     
     if(searchInput.checkValidity()){
         if(searchUrl==="all"){ 
@@ -153,7 +161,7 @@ console.log(e.target);
 const data = JSON.parse(e.target.getAttribute("data-value"));
 console.log(data);
 
-if(document.querySelector('input[type = radio]:checked').value==="all"){
+if(searchQuery==="all"){
     clearBySelector(".modal-title")
     changeInnerHtmlContentUsingSelector(".modal-title",data.name)
 
@@ -183,7 +191,7 @@ if(document.querySelector('input[type = radio]:checked').value==="all"){
     changeHrefContentUsingSelector("#official",data.officialSite);
     changeHrefContentUsingSelector("#Tvmaz",data.url);
 
-}else if(document.querySelector('input[type = radio]:checked').value==="people"){
+}else if(searchQuery==="people"){
 
 clearBySelector(".modal-title");
 changeInnerHtmlContentUsingSelector(".modal-title",data.name)
@@ -252,6 +260,18 @@ changeHrefContentUsingSelector("#Tvmaz",data.url);
 }
 });
 
+dropdownOptions.addEventListener('click', (e) =>{
+    searchQuery = e.target.innerHTML ;
+    removeClassFromChildrenOFElem("active",dropdownOptions);
+    e.target.classList.add("active");
+    optionsButton.innerHTML= searchQuery;
+
+    
+    /*
+    document.body.style.fontFamily = className;
+    
+    saveTolocalStorage("font",className);*/
+  });
 
 
 callOnStart("Search");
