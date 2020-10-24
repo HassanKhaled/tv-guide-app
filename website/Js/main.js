@@ -34,6 +34,44 @@ const socialLinks = [
           {href:"https://twitter.com/hassan_k_a",icons:["fab", "fa-twitter-square", "fa-2x"]},
           {href:"https://facebook.com/hassan.khaled.1414",icons:["fab" ,"fa-facebook-square" ,"fa-2x"]}];
 
+/** @constant
+    @type {array}
+    @global
+    @description Hold links' names and hrefs.
+*/
+const projects = [ 
+    {href:"https://github.com/HassanKhaled/tvGuide",text:"This Project"},
+    {href:"https://github.com/HassanKhaled/WeatherSPA",text:"Weather App"}];
+
+/** @constant
+    @type {array}
+    @global
+    @description Hold links' names and hrefs.
+*/
+const apis = [ 
+    {href:"http://www.tvmaze.com/api",text:"TVmaze"},
+    {href:"https://fonts.google.com/",text:"Google Fonts"},
+    {href:"https://flagpedia.net/download/api",text:"Flagpedia"}];
+
+
+/** @constant
+    @type {array}
+    @global
+    @description Hold links' names and hrefs.
+*/
+const stack = [ 
+    {href:"https://www.w3schools.com/html/",text:"HTML"},
+    {href:"https://www.w3schools.com/js/",text:"JavaScript"},
+    {href:"https://www.w3schools.com/css/",text:"Css"}];
+
+/** @constant
+    @type {array}
+    @global
+    @description Hold links' names and hrefs.
+*/
+const cert = [ 
+    {href:"https://confirm.udacity.com/KKMLTGA4",text:"Web Development Professional"}];
+
 
 /** @type {array}
     @global
@@ -394,6 +432,30 @@ fillSocialLinks=()=>{
 }
 
 
+
+/**
+* @function  fillFooterLinks
+* @description fill social media links section of the footer.
+* @param id for selecting the list to be filled 
+* @param list list to be filled in the list group
+* @param tag to be created and filled with link 
+* @param cls class to be added to the tag provided 
+*/
+fillFooterLinks=(id,list,tag,cls)=>{
+    
+    let  htmlElement = document.getElementById(id);
+   
+    for(item of list){
+        let innerHTMLElement =  document.createElement(tag);
+        innerHTMLElement.classList.add(cls);
+        let tempA =  document.createElement("a");
+        tempA.setAttribute("href",item.href);
+        tempA.innerHTML= item.text;
+        innerHTMLElement.appendChild(tempA);
+        htmlElement.appendChild(innerHTMLElement); 
+    }
+ 
+}
 /**
 * @function  fillRights
 * @description fill reserve rights section with custom message.
@@ -466,13 +528,10 @@ loadThemeFromlocalStorage = ()=>{
 */
 createAnchorFromTextAndHref = ( text, href,icon)=>{
     let anchor = document.createElement("a");
-
     let tempSpan = document.createElement("i");
     tempSpan.classList.add(icon.first);
     tempSpan.classList.add(icon.second);
-
     anchor.appendChild(tempSpan);
-
     anchor.appendChild(document.createTextNode(" "+text));
     anchor.setAttribute("href",href);
     anchor.classList.add("nav-link");
@@ -521,6 +580,11 @@ callOnStart = (selecteLink)=>{
     fillInLinksInNavBar(selecteLink);
     loadThemeFromlocalStorage();
     loadFontFromlocalStorage();
+    fillFooterLinks("projects",projects,"li","list-group-item");
+    fillFooterLinks("apis",apis,"li","list-group-item");
+    fillFooterLinks("stack",stack,"li","list-group-item");
+    fillFooterLinks("cert",cert,"li","list-group-item");
+
     fillSocialLinks();
     fillRights(" &#169; 2020 Hassan Khaled All Rights Reserved");
 }
