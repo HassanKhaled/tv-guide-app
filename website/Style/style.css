@@ -567,6 +567,9 @@ input[type=password]{
     .no-mobile{
         display: none;
     }
+    .rights{
+        font-weight: 100;
+    }
   
   }
   
