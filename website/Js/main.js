@@ -395,6 +395,18 @@ fillSocialLinks=()=>{
 
 
 /**
+* @function  fillRights
+* @description fill reserve rights section with custom message.
+*/
+fillRights=(right)=>{
+   
+    let selector = document.getElementById("rights");
+    selector.innerHTML=right;
+   
+}
+
+
+/**
 * @function  imageCreationIfExist
 * @description image loads when exist in source other wise load alternatives .
 * @param source of the image to check if exist 
@@ -510,7 +522,10 @@ callOnStart = (selecteLink)=>{
     loadThemeFromlocalStorage();
     loadFontFromlocalStorage();
     fillSocialLinks();
+    fillRights(" &#169; 2020 Hassan Khaled All Rights Reserved");
 }
+
+
 
 /**
 * @function  createTempDivsOnContentDiv
