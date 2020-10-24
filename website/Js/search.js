@@ -266,8 +266,6 @@ dropdownOptions.addEventListener('click', (e) =>{
     e.target.classList.add("active");
     optionsButton.innerHTML= searchQuery;
 
-    
-
   });
 
 fillInDropDownFromList(".options", options, "option",false);
