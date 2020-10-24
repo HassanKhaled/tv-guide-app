@@ -267,11 +267,9 @@ dropdownOptions.addEventListener('click', (e) =>{
     optionsButton.innerHTML= searchQuery;
 
     
-    /*
-    document.body.style.fontFamily = className;
-    
-    saveTolocalStorage("font",className);*/
+
   });
 
+fillInDropDownFromList(".options", options, "option",false);
 
 callOnStart("Search");

@@ -28,7 +28,18 @@ const options = [{text:'all'},{text:'single'},{text:"tvrage"},{text:"people"}, {
     @global
     @description Hold links' names and hrefs.
 */
-links = [ {href:"../website/index.html",text:"Search",icon:{first:"fas",second:"fa-search"}},
+const socialLinks = [ 
+          {href:"https://www.linkedin.com/in/hassankhaledabdelhady/",icons:["fab" ,"fa-linkedin", "fa-2x"]},
+          {href:"https://github.com/HassanKhaled",icons:["fab" ,"fa-github-square" ,"fa-2x"]},
+          {href:"https://twitter.com/hassan_k_a",icons:["fab", "fa-twitter-square", "fa-2x"]},
+          {href:"https://facebook.com/hassan.khaled.1414",icons:["fab" ,"fa-facebook-square" ,"fa-2x"]}];
+
+
+/** @type {array}
+    @global
+    @description Hold links' text and hrefs.
+*/
+ links = [ {href:"../website/index.html",text:"Search",icon:{first:"fas",second:"fa-search"}},
           {href:"../website/schedule.html",text:"Schedule",icon:{first:"fas",second:"fa-calendar-alt"}},
           {href:"../website/shows.html",text:"Shows",icon:{first:"fas",second:"fa-tv"}},
          
@@ -73,9 +84,16 @@ let dropdownFonts = document.querySelector(".fonts");
 /** @constant
 *   @type {object}
 *   @global
-*   @description Hold reference search button .
+*   @description Hold reference nav bar .
 */
 let navbar = document.querySelector(".navbar-nav");
+
+/** @constant
+*   @type {object}
+*   @global
+*   @description Hold reference social links div .
+*/
+let socialLinksDiv = document.querySelector("#social_links");
 
 
 /**
@@ -352,6 +370,30 @@ fillListHeaderFromContentUsingRefrence=(reference,content)=>{
     reference.appendChild(tempHeader);
 }
 
+
+/**
+* @function  fillSocialLinks
+* @description fill social media links section of the footer.
+*/
+fillSocialLinks=()=>{
+    
+    for(link of socialLinks){
+        let tempA = document.createElement("a");
+        tempA.setAttribute("href",link.href);
+        tempA.classList.add("ml-1");
+        let tempI = document.createElement("i");
+
+            for(icon of link.icons){
+                tempI.classList.add(icon);
+            }
+
+        tempA.appendChild(tempI);
+        socialLinksDiv.appendChild(tempA);
+    }
+   
+}
+
+
 /**
 * @function  imageCreationIfExist
 * @description image loads when exist in source other wise load alternatives .
@@ -461,15 +503,13 @@ fillInLinksInNavBar =(activeLink)=> {
 * @description call on the start of the loading of the file .
 */
 callOnStart = (selecteLink)=>{
-
     links= links.reverse();
     fillInDropDownFromList(".fonts", fonts, "font",true);
     fillInDropDownFromList(".themes", themes, "theme",false);
-    fillInDropDownFromList(".options", options, "option",false);
     fillInLinksInNavBar(selecteLink);
     loadThemeFromlocalStorage();
     loadFontFromlocalStorage();
-    
+    fillSocialLinks();
 }
 
 /**
