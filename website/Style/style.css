@@ -564,6 +564,9 @@ input[type=password]{
         padding-left: 20px;
         padding-right: 20px;
     }
+    .no-mobile{
+        display: none;
+    }
   
   }
   
