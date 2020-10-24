@@ -304,6 +304,12 @@ body{
     border-radius: 0 20px 0 20px;
 }
 
+.list-group-flush > .list-group-item {
+   background-color: transparent;
+   border-bottom: none;
+   padding: 0px;
+}
+
 .footer{
     width: 100%;
     color: var(--color-6);
@@ -559,7 +565,7 @@ input[type=password]{
         border: solid 1  var(--color-5);
         border-radius: 20px 20px 0px 0px; 
         left: 35%;
-        background-image: linear-gradient(rgba(255,255,255,0.3),var(--color-4));
+        background-image: linear-gradient(transparent,(--color-4));
         color: var(--color-1);
         padding-left: 20px;
         padding-right: 20px;
