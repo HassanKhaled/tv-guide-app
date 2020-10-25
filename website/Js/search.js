@@ -68,8 +68,10 @@ searchButton.addEventListener('click', (e) =>{
         }else if(searchUrl==="tvrage"){
             getSingleRequest("http://api.tvmaze.com/lookup/shows?tvrage="+searchInput.value);
 
-        }else{
+        }else if(searchUrl==="single"){
             getSingleRequest("http://api.tvmaze.com/singlesearch/shows?q="+searchInput.value);
+        }else{
+            createAlertWithMessage("alert-danger",3000,"Error  " ,"please choose a search option before proceeding",contentDiv);
         }
 
     }else{
