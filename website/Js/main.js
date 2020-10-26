@@ -135,6 +135,22 @@ let socialLinksDiv = document.querySelector("#social_links");
 
 
 /**
+* @function  loadThemeFromlocalStorage
+* @description load selected theme into the local storage .
+*/
+loadThemeFromlocalStorage = ()=>{
+    document.documentElement.className=localStorage.getItem("theme");
+}
+
+/**
+* @function  loadFontFromlocalStorage
+* @description load selected theme into the local storage .
+*/
+loadFontFromlocalStorage = ()=>{
+    document.body.style.fontFamily=localStorage.getItem("font");
+}
+
+/**
 * @function  fillInDropDownFromList
 * @description fill in the themes in the dropdown list .
 * @param dropdownSelector selects the correct drowpdown to be filled in 
@@ -158,6 +174,91 @@ fillInDropDownFromList = (dropdownSelector, list, localStorageSelector,setFontSt
     }
 }
 
+
+/**
+* @function  fillFooterLinks
+* @description fill social media links section of the footer.
+* @param id for selecting the list to be filled 
+* @param list list to be filled in the list group
+* @param tag to be created and filled with link 
+* @param cls class to be added to the tag provided 
+*/
+fillFooterLinks=(id,list,tag,cls)=>{
+    
+    let  htmlElement = document.getElementById(id);
+   
+    for(item of list){
+        let innerHTMLElement =  document.createElement(tag);
+        innerHTMLElement.classList.add(cls);
+        let tempA =  document.createElement("a");
+        tempA.setAttribute("href",item.href);
+        tempA.innerHTML= item.text;
+        innerHTMLElement.appendChild(tempA);
+        htmlElement.appendChild(innerHTMLElement); 
+    }
+ 
+}
+
+
+/**
+* @function  fillSocialLinks
+* @description fill social media links section of the footer.
+*/
+fillSocialLinks=()=>{
+    
+    for(link of socialLinks){
+        let tempA = document.createElement("a");
+        tempA.setAttribute("href",link.href);
+        tempA.classList.add("ml-1");
+        let tempI = document.createElement("i");
+
+            for(icon of link.icons){
+                tempI.classList.add(icon);
+            }
+
+        tempA.appendChild(tempI);
+        socialLinksDiv.appendChild(tempA);
+    }
+   
+}
+
+
+
+/**
+* @function  fillRights
+* @description fill reserve rights section with custom message.
+*/
+fillRights=(right)=>{
+   
+    let selector = document.getElementById("rights");
+    selector.innerHTML=right;
+   
+}
+
+
+
+/**
+* @function  callOnStart
+* @description call on the start of the loading of the file .
+*/
+callOnStart = (selecteLink)=>{
+       
+    loadThemeFromlocalStorage();
+    loadFontFromlocalStorage();
+    links= links.reverse();
+    fillInLinksInNavBar(selecteLink);
+    fillInDropDownFromList(".fonts", fonts, "font",true);
+    fillInDropDownFromList(".themes", themes, "theme",false);
+ 
+    fillFooterLinks("projects",projects,"li","list-group-item");
+    fillFooterLinks("apis",apis,"li","list-group-item");
+    fillFooterLinks("stack",stack,"li","list-group-item");
+    fillFooterLinks("cert",cert,"li","list-group-item");
+    fillSocialLinks();
+    fillRights(" &#169; 2020 Hassan Khaled All Rights Reserved");
+}
+
+
 /**
 * @function  imageFlageFromCode
 * @description takes code of the country and convert it into a flag using flagcdn.
@@ -177,7 +278,7 @@ imageFlageFromCode = code =>{ return `https://flagcdn.com/32x24/${code.toLowerCa
 createImageFromUrl = (src,alt,href,info) =>{
     const div = document.createElement("div");
     div.classList.add("cont");
-    
+    /*
     let temp = document.querySelector("#imageTemp");
     let clone = temp.content.cloneNode(true);
     const img = clone.querySelector("img");
@@ -196,8 +297,8 @@ createImageFromUrl = (src,alt,href,info) =>{
     text.innerHTML=alt;
     div.appendChild(img);
     div.appendChild(text);
-    contentDiv.appendChild(div);
-    /*
+    contentDiv.appendChild(div);*/
+    
     const img = document.createElement("img");
     img.setAttribute("src",src);
     img.setAttribute("href",href);
@@ -214,7 +315,7 @@ createImageFromUrl = (src,alt,href,info) =>{
     text.innerHTML=alt;
     div.appendChild(img);
     div.appendChild(text);
-    contentDiv.appendChild(div);*/
+    contentDiv.appendChild(div);
 }
 
 /**
@@ -370,11 +471,14 @@ saveTolocalStorage = (key,item)=>{
 }
 
 /**
-* @function  loadFontFromlocalStorage
-* @description load selected theme into the local storage .
+* @function  fillInLinksInNavBar
+* @description fill in the linkes in the nav bar and highlighted active link .
+* @param activeLink to be highlighted active in nav bar
 */
-loadFontFromlocalStorage = ()=>{
-    document.body.style.fontFamily=localStorage.getItem("font");
+fillInLinksInNavBar =(activeLink)=> {
+    for(link of links){
+        createListItemWithAnchor(link.text,link.href,activeLink,link.icon);
+    }
 }
 
 /**
@@ -428,64 +532,6 @@ fillListHeaderFromContentUsingRefrence=(reference,content)=>{
 }
 
 
-/**
-* @function  fillSocialLinks
-* @description fill social media links section of the footer.
-*/
-fillSocialLinks=()=>{
-    
-    for(link of socialLinks){
-        let tempA = document.createElement("a");
-        tempA.setAttribute("href",link.href);
-        tempA.classList.add("ml-1");
-        let tempI = document.createElement("i");
-
-            for(icon of link.icons){
-                tempI.classList.add(icon);
-            }
-
-        tempA.appendChild(tempI);
-        socialLinksDiv.appendChild(tempA);
-    }
-   
-}
-
-
-
-/**
-* @function  fillFooterLinks
-* @description fill social media links section of the footer.
-* @param id for selecting the list to be filled 
-* @param list list to be filled in the list group
-* @param tag to be created and filled with link 
-* @param cls class to be added to the tag provided 
-*/
-fillFooterLinks=(id,list,tag,cls)=>{
-    
-    let  htmlElement = document.getElementById(id);
-   
-    for(item of list){
-        let innerHTMLElement =  document.createElement(tag);
-        innerHTMLElement.classList.add(cls);
-        let tempA =  document.createElement("a");
-        tempA.setAttribute("href",item.href);
-        tempA.innerHTML= item.text;
-        innerHTMLElement.appendChild(tempA);
-        htmlElement.appendChild(innerHTMLElement); 
-    }
- 
-}
-/**
-* @function  fillRights
-* @description fill reserve rights section with custom message.
-*/
-fillRights=(right)=>{
-   
-    let selector = document.getElementById("rights");
-    selector.innerHTML=right;
-   
-}
-
 
 /**
 * @function  imageCreationIfExist
@@ -529,13 +575,6 @@ changeHrefContentUsingSelector = (selector,href)=>{ document.querySelector(selec
 */
 clearBySelector = selector =>{ document.querySelector(selector).innerHTML="";}
 
-/**
-* @function  loadThemeFromlocalStorage
-* @description load selected theme into the local storage .
-*/
-loadThemeFromlocalStorage = ()=>{
-    document.documentElement.className=localStorage.getItem("theme");
-}
 
 /**
 * @function  createAnchorFromTextAndHref
@@ -575,38 +614,6 @@ createListItemWithAnchor = (text, href,activeLink,icon) => {
     tempLi.appendChild(createAnchorFromTextAndHref(text,href,icon));
     
     navbar.insertBefore(tempLi,navbar.childNodes[0]);
-}
-
-/**
-* @function  fillInLinksInNavBar
-* @description fill in the linkes in the nav bar and highlighted active link .
-* @param activeLink to be highlighted active in nav bar
-*/
-fillInLinksInNavBar =(activeLink)=> {
-    for(link of links){
-        createListItemWithAnchor(link.text,link.href,activeLink,link.icon);
-    }
-}
-
-/**
-* @function  callOnStart
-* @description call on the start of the loading of the file .
-*/
-callOnStart = (selecteLink)=>{
-       
-    loadThemeFromlocalStorage();
-    loadFontFromlocalStorage();
-    links= links.reverse();
-    fillInLinksInNavBar(selecteLink);
-    fillInDropDownFromList(".fonts", fonts, "font",true);
-    fillInDropDownFromList(".themes", themes, "theme",false);
- 
-    fillFooterLinks("projects",projects,"li","list-group-item");
-    fillFooterLinks("apis",apis,"li","list-group-item");
-    fillFooterLinks("stack",stack,"li","list-group-item");
-    fillFooterLinks("cert",cert,"li","list-group-item");
-    fillSocialLinks();
-    fillRights(" &#169; 2020 Hassan Khaled All Rights Reserved");
 }
 
 
