@@ -572,6 +572,9 @@ input[type=password]{
     .rights{
         font-weight: 100;
     }
+    #rights{
+        margin-left: 10px;
+    }
   
   }
   
