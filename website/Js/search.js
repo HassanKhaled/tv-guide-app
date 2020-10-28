@@ -90,6 +90,7 @@ getRequest = async url => {
     clearContentOfParentElement(contentDiv);
     try{
         const data = await response.json();
+        
         console.log(data);
         results = data;
         for(item of data){

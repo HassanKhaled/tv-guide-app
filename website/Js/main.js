@@ -315,6 +315,7 @@ createImageFromUrl = (src,alt,href,info) =>{
     text.innerHTML=alt;
     div.appendChild(img);
     div.appendChild(text);
+  
     contentDiv.appendChild(div);
 }
 
@@ -626,7 +627,9 @@ createListItemWithAnchor = (text, href,activeLink,icon) => {
 createTempDivsOnContentDiv = (num , cla ,divSelector) => {
     let content = document.querySelector(divSelector);
     for(let i =0 ; i<num;i++){
+
         let div =document.createElement("div");
+        div.classList.add("x");
         div.classList.add("ml-1");
         div.classList.add("mb-1");
         div.classList.add(cla);
