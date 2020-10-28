@@ -312,6 +312,7 @@ body{
     background-color: var(--color-7);
 }
 
+
 .bar{
     background: var(--color-1);
     width: 50px;
@@ -436,11 +437,6 @@ input[type=password]{
 .modal-title{
     color: var(--color-2);
     text-shadow: 1px 1px var(--color-5);
-}
-
-#content{
-    transition: all 0.25s linear;
-    
 }
 
 
