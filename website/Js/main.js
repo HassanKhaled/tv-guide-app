@@ -77,11 +77,11 @@ const cert = [
     @global
     @description Hold links' text and hrefs.
 */
- links = [ {href:"../website/index.html",text:"Search",icon:{first:"fas",second:"fa-search"}},
-          {href:"../website/schedule.html",text:"Schedule",icon:{first:"fas",second:"fa-calendar-alt"}},
-          {href:"../website/shows.html",text:"Shows",icon:{first:"fas",second:"fa-tv"}},
-         
-          {href:"../website/people.html",text:"People",icon:{first:"fas",second:"fa-user"}}];
+ links = [ {href:"../website/index.html",text:"Home",icon:{first:"fas",second:"fa-search"},img:"../website/images/search.png"}
+         ,{href:"../website/index.html",text:"Search",icon:{first:"fas",second:"fa-search"},img:"../website/images/search.png"},
+          {href:"../website/schedule.html",text:"Schedule",icon:{first:"fas",second:"fa-calendar-alt"},img:"../website/images/search.png"},
+          {href:"../website/shows.html",text:"Shows",icon:{first:"fas",second:"fa-tv"},img:"../website/images/search.png"},
+          {href:"../website/people.html",text:"People",icon:{first:"fas",second:"fa-user"},img:"../website/images/search.png"}];
 
 /** @constant
 *   @type {object}
@@ -316,7 +316,6 @@ createImageFromUrl = (src,alt,href,info) =>{
     div.appendChild(img);
     div.appendChild(text);
     return div;
-    //contentDiv.appendChild(div);
 }
 
 /**
@@ -339,6 +338,8 @@ createImageFromUrlForSchedul = (src,alt,href,info) =>{
 
     console.log(info);
 
+    
+
     const div = document.createElement("div");
     div.classList.add("row");
     div.classList.add("schedule");
@@ -355,7 +356,7 @@ createImageFromUrlForSchedul = (src,alt,href,info) =>{
 
     const header = document.createElement("h1");
    
-    header.innerHTML= "&nbsp;"+ info.name;
+    header.innerHTML= "&nbsp;"+ info.show.name;
      
     const summary = document.createElement("p");
     summary.innerHTML = info.summary;
@@ -368,8 +369,11 @@ createImageFromUrlForSchedul = (src,alt,href,info) =>{
     
     let contentLine1 = `${info.language} | First Aired ${info.premiered}`;
     let contentLine2 = `Running Time ${info.runtime} Min | ${info.status} | ${info.type}`;
-    let contentLine3 = `${arrayIntoString(info.genres)} | Network ${info.network.name}`;
-    let contentLine4 = `Airs ${arrayIntoString(info.schedule.days)} @ ${info.schedule.time}`;
+    let contentLine3=""
+    if(info.show.network!==null){
+        contentLine3 = `${arrayIntoString(info.show.genres)} | Network ${info.show.network.name}`;
+    }
+    let contentLine4 = `Airs ${arrayIntoString(info.show.schedule.days)} @ ${info.show.schedule.time}`;
     
     let rate = document.createElement("div");
     rate.style.marginLeft ="10px";
@@ -389,7 +393,7 @@ createImageFromUrlForSchedul = (src,alt,href,info) =>{
 
     rate.appendChild(star);
     let rateContent = document.createElement("div");
-    rateContent.innerHTML=info.rating.average;
+    rateContent.innerHTML=info.show.rating.average;
     rate.appendChild(rateContent);
 
     headerLine1.innerHTML=contentLine1;
@@ -423,8 +427,8 @@ createImageFromUrlForSchedul = (src,alt,href,info) =>{
     div.appendChild(img); 
     div.appendChild(textContent);
     div.appendChild(summary);
-    contentDiv.appendChild(div);
-    
+    //contentDiv.appendChild(div);
+    return div;
 }
 
 
