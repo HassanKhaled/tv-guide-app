@@ -85,16 +85,20 @@ getRequest = async url => {
     try{
         const data = await response.json();
         results = data;
+
+        console.log(data);
         clearContentOfParentElement(contentDiv);
         fragment = new DocumentFragment();
 
         for(item of data){
-            const x = item.show;
-            fragment.appendChild(createImageFromUrl(imageExistNotCreateTemp(x.image),x.name,x.url,JSON.stringify(x)));
+            const x = item;
+           
+            fragment.appendChild(createImageFromUrlForSchedul(imageExistNotCreateTemp(x.show.image),x.name,x.url,x));
         }
         contentDiv.appendChild(fragment);
 
     }catch(error){
+        console.log(error);
         createAlertWithMessage("alert-danger",3000,"Error  " ,error,contentDiv);
     }
 }

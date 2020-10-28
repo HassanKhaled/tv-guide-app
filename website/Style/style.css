@@ -282,7 +282,6 @@ body{
 }
 
 
-
 .list-group-item.active{
     background: var(--color-1);
     color: var(--color-4);
@@ -531,6 +530,20 @@ input[type=password]{
     -webkit-text-stroke-width: 0.5px;
   }
 
+
+
+  .card{
+
+      padding: 2px;
+      border-radius: 20px 0px 0px 0px;
+      background-color: var(--color-3);
+  }
+
+  .card > img{
+
+    border-radius: 20px 0px 0px 0px;
+
+  }
   @media only screen and (max-width: 768px) {
     .temp{
         width: 98%;

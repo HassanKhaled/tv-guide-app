@@ -44,11 +44,16 @@ getPeopleRequest = async url => {
         const data = await response.json();
         console.log(data);
         results = data;
+
+        fragment = new DocumentFragment();
+
         for(item of data){
             const x = item.person;
             console.log(x.name);
-            createImageFromUrl(imageExistNotCreateTemp(x.image),x.name,x.url,JSON.stringify(x));
+            fragment.appendChild( createImageFromUrl(imageExistNotCreateTemp(x.image),x.name,x.url,JSON.stringify(x)));
         }
+        contentDiv.appendChild(fragment);
+
     }catch(error){
         createAlertWithMessage("alert-danger",3000,"Error  " ,error,contentDiv);
     }
