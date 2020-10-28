@@ -86,10 +86,13 @@ getRequest = async url => {
         const data = await response.json();
         results = data;
         clearContentOfParentElement(contentDiv);
+        fragment = new DocumentFragment();
+
         for(item of data){
             const x = item.show;
-            createImageFromUrlForSchedul(imageExistNotCreateTemp(x.image),x.name,x.url,x);
+            fragment.appendChild(createImageFromUrl(imageExistNotCreateTemp(x.image),x.name,x.url,JSON.stringify(x)));
         }
+        contentDiv.appendChild(fragment);
 
     }catch(error){
         createAlertWithMessage("alert-danger",3000,"Error  " ,error,contentDiv);
