@@ -315,8 +315,8 @@ createImageFromUrl = (src,alt,href,info) =>{
     text.innerHTML=alt;
     div.appendChild(img);
     div.appendChild(text);
-  
-    contentDiv.appendChild(div);
+    return div;
+    //contentDiv.appendChild(div);
 }
 
 /**
@@ -626,6 +626,8 @@ createListItemWithAnchor = (text, href,activeLink,icon) => {
 */
 createTempDivsOnContentDiv = (num , cla ,divSelector) => {
     let content = document.querySelector(divSelector);
+    let fragment = new DocumentFragment();
+
     for(let i =0 ; i<num;i++){
 
         let div =document.createElement("div");
@@ -633,8 +635,9 @@ createTempDivsOnContentDiv = (num , cla ,divSelector) => {
         div.classList.add("ml-1");
         div.classList.add("mb-1");
         div.classList.add(cla);
-        content.appendChild(div);
+        fragment.appendChild(div);
     }
+    content.appendChild(fragment);
 
 }
 

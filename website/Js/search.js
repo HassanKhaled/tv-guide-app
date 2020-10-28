@@ -93,10 +93,13 @@ getRequest = async url => {
         
         console.log(data);
         results = data;
+        fragment = new DocumentFragment();
+
         for(item of data){
             const x = item.show;
-            createImageFromUrl(imageExistNotCreateTemp(x.image),x.name,x.url,JSON.stringify(x));
+            fragment.appendChild(createImageFromUrl(imageExistNotCreateTemp(x.image),x.name,x.url,JSON.stringify(x)));
         }
+        contentDiv.appendChild(fragment);
     }catch(error){
         createAlertWithMessage("alert-danger",3000,"Error  " ,error,contentDiv);
     }
@@ -115,11 +118,14 @@ getPeopleRequest = async url => {
         const data = await response.json();
         console.log(data);
         results = data;
+        fragment = new DocumentFragment();
+
         for(item of data){
             const x = item.person;
             console.log(x.name);
-            createImageFromUrl(imageExistNotCreateTemp(x.image),x.name,x.url,JSON.stringify(x));
+            fragment.appendChild(createImageFromUrl(imageExistNotCreateTemp(x.image),x.name,x.url,JSON.stringify(x)));
         }
+        contentDiv.appendChild(fragment);
     }catch(error){
         createAlertWithMessage("alert-danger",3000,"Error  " ,error,contentDiv);
     }
@@ -135,7 +141,9 @@ getSingleRequest = async url => {
   
     const response = await fetch(url);
     clearContentOfParentElement(contentDiv);
+
     try{
+        fragment = new DocumentFragment();
         const data = await response.json();
         console.log(data);
         results = data;
@@ -143,9 +151,9 @@ getSingleRequest = async url => {
             const x = data;
             console.log(x.name);
 
-            createImageFromUrl(imageExistNotCreateTemp(x.image),x.name,x.url,JSON.stringify(x));
+            fragment.appendChild(createImageFromUrl(imageExistNotCreateTemp(x.image),x.name,x.url,JSON.stringify(x)));
+            contentDiv.appendChild(fragment);
 
-        
     }catch(error){
         createAlertWithMessage("alert-danger",3000,"Error  " ,error,contentDiv);
     }
