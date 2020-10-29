@@ -77,8 +77,8 @@ const cert = [
     @global
     @description Hold links' text and hrefs.
 */
- links = [ {href:"../website/index.html",text:"Home",icon:{first:"fas",second:"fa-search"},img:"../website/images/search.png"}
-         ,{href:"../website/index.html",text:"Search",icon:{first:"fas",second:"fa-search"},img:"../website/images/search.png"},
+ links = [ {href:"../website/index.html",text:"Home",icon:{first:"fas",second:"fa-home"},img:"../website/images/search.png"}
+         ,{href:"../website/search.html",text:"Search",icon:{first:"fas",second:"fa-search"},img:"../website/images/search.png"},
           {href:"../website/schedule.html",text:"Schedule",icon:{first:"fas",second:"fa-calendar-alt"},img:"../website/images/search.png"},
           {href:"../website/shows.html",text:"Shows",icon:{first:"fas",second:"fa-tv"},img:"../website/images/search.png"},
           {href:"../website/people.html",text:"People",icon:{first:"fas",second:"fa-user"},img:"../website/images/search.png"}];
@@ -161,7 +161,7 @@ loadFontFromlocalStorage = ()=>{
 fillInDropDownFromList = (dropdownSelector, list, localStorageSelector,setFontStyle)=> {
 
     let dDown = document.querySelector(dropdownSelector);
-
+    let fragment = new DocumentFragment();
     for(item of list){
         let temp = document.createElement("a");
         temp.classList.add("dropdown-item");
@@ -170,8 +170,9 @@ fillInDropDownFromList = (dropdownSelector, list, localStorageSelector,setFontSt
             temp.style.fontFamily=item.text;
         
         temp.appendChild(document.createTextNode(item.text));
-        dDown.appendChild(temp);
+        fragment.appendChild(temp);
     }
+    dDown.appendChild(fragment);
 }
 
 
@@ -186,7 +187,7 @@ fillInDropDownFromList = (dropdownSelector, list, localStorageSelector,setFontSt
 fillFooterLinks=(id,list,tag,cls)=>{
     
     let  htmlElement = document.getElementById(id);
-   
+    let fragment = new DocumentFragment();
     for(item of list){
         let innerHTMLElement =  document.createElement(tag);
         innerHTMLElement.classList.add(cls);
@@ -194,9 +195,9 @@ fillFooterLinks=(id,list,tag,cls)=>{
         tempA.setAttribute("href",item.href);
         tempA.innerHTML= item.text;
         innerHTMLElement.appendChild(tempA);
-        htmlElement.appendChild(innerHTMLElement); 
+        fragment.appendChild(innerHTMLElement); 
     }
- 
+    htmlElement.appendChild(fragment);
 }
 
 
@@ -206,6 +207,7 @@ fillFooterLinks=(id,list,tag,cls)=>{
 */
 fillSocialLinks=()=>{
     
+    let fragment =  new DocumentFragment();
     for(link of socialLinks){
         let tempA = document.createElement("a");
         tempA.setAttribute("href",link.href);
@@ -217,9 +219,9 @@ fillSocialLinks=()=>{
             }
 
         tempA.appendChild(tempI);
-        socialLinksDiv.appendChild(tempA);
+        fragment.appendChild(tempA);
     }
-   
+    socialLinksDiv.appendChild(fragment);
 }
 
 
@@ -245,7 +247,6 @@ callOnStart = (selecteLink)=>{
        
     loadThemeFromlocalStorage();
     loadFontFromlocalStorage();
-    links= links.reverse();
     fillInLinksInNavBar(selecteLink);
     fillInDropDownFromList(".fonts", fonts, "font",true);
     fillInDropDownFromList(".themes", themes, "theme",false);
@@ -481,9 +482,11 @@ saveTolocalStorage = (key,item)=>{
 * @param activeLink to be highlighted active in nav bar
 */
 fillInLinksInNavBar =(activeLink)=> {
+    let fragment = new DocumentFragment();
     for(link of links){
-        createListItemWithAnchor(link.text,link.href,activeLink,link.icon);
+        fragment.appendChild(createListItemWithAnchor(link.text,link.href,activeLink,link.icon));
     }
+    navbar.insertBefore(fragment,navbar.childNodes[0]);
 }
 
 /**
@@ -617,8 +620,8 @@ createListItemWithAnchor = (text, href,activeLink,icon) => {
     } 
     
     tempLi.appendChild(createAnchorFromTextAndHref(text,href,icon));
-    
-    navbar.insertBefore(tempLi,navbar.childNodes[0]);
+    return tempLi;
+    /*navbar.insertBefore(tempLi,navbar.childNodes[0]);*/
 }
 
 
