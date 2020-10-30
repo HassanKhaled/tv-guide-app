@@ -4,15 +4,13 @@
 */
 let results = "";
 
-/** @constant
-*   @type {object}
+/** @type {object}
 *   @global
 *   @description Hold reference drop down menu.
 */
 let dropdownOptions = document.querySelector(".options");
 
-/** @constant
-*   @type {object}
+/** @type {object}
 *   @global
 *   @description Hold reference options button .
 */
@@ -26,16 +24,14 @@ let optionsButton = document.querySelector("#optionsButton");
  const searchUrl = "http://api.tvmaze.com/search/shows?q=";
 
 
-/** @constant
-*   @type {object}
+/** @type {object}
 *   @global
 *   @description Hold reference search button .
 */
 let searchButton = document.querySelector("#search");
 
 
-/** @constant
-*   @type {object}
+/** @type {object}
 *   @global
 *   @description Hold reference search term textbox.
 */
