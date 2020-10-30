@@ -170,46 +170,26 @@ sodipodi:docname="favicon.svg">
 </svg>
 
     </a>
-  
-    <!-- Toggler/collapsibe Button -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
       <span class="navbar-toggler-icon">
         <i class="fas fa-bars bars"></i>
       </span>
     </button>
   
-    <!-- Navbar links -->
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
-      <ul class="navbar-nav">
-    
-         
-
-        
-        
-         <li class="dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-            Themes 
-          </a>
-          <div class="dropdown-menu themes">
-            
-          </div>
-          </li>
-    
-          <li class="dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-              Fonts 
-            </a>
-            <div class="dropdown-menu fonts">
-              
-            </div>
-            </li>
-
+      <ul class="navbar-nav" id="navBarLinks">
         
       </ul>
     </div>
 
-
+    <nav class="navbar navbar-expand-sm bg-dark justify-content-center">
+        <ul class="navbar-nav">
+         
+            
+        </ul>
+      </nav>
 </nav> 
+
 
 
 
@@ -246,28 +226,35 @@ sodipodi:docname="favicon.svg">
 <div class="container">
   
 
+ 
+    <div class="input-group mt-2 mb-2">
+        <div class="input-group-prepend">
+            <span class="input-group-text">Font</span>
+         
+          <button type="button" class="btn btn-success dropdown-toggle form-control" data-toggle="dropdown">
+            Fonts
+          </button>
+          <div class="dropdown-menu fonts">   
+        </div>
+        </div>
+        <input type="text" class="form-control" disabled id="selectedFont">
+            <div class="input-group-append">
+                <span class="input-group-text">Theme</span>
+            
+                <button type="button" class="btn btn-success dropdown-toggle form-control" data-toggle="dropdown">
+                    Themes
+                  </button>
+                    <div class="dropdown-menu themes">
+                </div>
+            </div>
+            <input type="text" class="form-control except"  disabled id="selectedTheme" >
+
+    </div> 
   
 <div id="content" >
  
-    <form>
-        <label for="customRange">Custom range</label>
-        <input type="range" class="custom-range" id="customRange" name="points1">
+   
 
-        <label for="customRange">Custom range</label>
-        <input type="range" class="custom-range" id="customRange" name="points1">
-
-        <label for="customRange">Custom range</label>
-        <input type="range" class="custom-range" id="customRange" name="points1">
-
-        <label for="customRange">Custom range</label>
-        <input type="range" class="custom-range" id="customRange" name="points1">
-
-        <label for="customRange">Custom range</label>
-        <input type="range" class="custom-range" id="customRange" name="points1">
-
-        <label for="customRange">Custom range</label>
-        <input type="range" class="custom-range" id="customRange" name="points1">
-      </form>   
   
 
 </div>

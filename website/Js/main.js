@@ -108,7 +108,7 @@ let contentDiv = document.querySelector("#content");
 *   @global
 *   @description Hold reference nav bar .
 */
-let navbar = document.querySelector(".navbar-nav");
+let navbar = document.querySelector("#navBarLinks");
 
 /** @type {object}
 *   @global
