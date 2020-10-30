@@ -150,6 +150,35 @@ loadFontFromlocalStorage = ()=>{
     document.body.style.fontFamily=localStorage.getItem("font");
 }
 
+
+let counter =0;
+//------------------------ Watch out working area
+
+const target = document.querySelector('#end');
+
+
+function handleIntersection(entries) {
+    entries.map((entry) => {
+      if (entry.isIntersecting && counter ===0) {
+        fillFooterLinks("projects",projects,"li","list-group-item");
+        fillFooterLinks("apis",apis,"li","list-group-item");
+        fillFooterLinks("stack",stack,"li","list-group-item");
+        fillFooterLinks("cert",cert,"li","list-group-item");
+        fillSocialLinks();
+        fillRights(" &#169; 2020 Hassan Khaled All Rights Reserved");
+        console.log("Loaded ....");
+        counter++; 
+      } 
+    });
+  }
+
+const observer = new IntersectionObserver(handleIntersection);
+
+
+observer.observe(target);
+
+//------------------------ It is safe now 
+
 /**
 * @function  fillInDropDownFromList
 * @description fill in the themes in the dropdown list .
@@ -250,13 +279,7 @@ callOnStart = (selecteLink)=>{
     fillInLinksInNavBar(selecteLink);
     fillInDropDownFromList(".fonts", fonts, "font",true);
     fillInDropDownFromList(".themes", themes, "theme",false);
- 
-    fillFooterLinks("projects",projects,"li","list-group-item");
-    fillFooterLinks("apis",apis,"li","list-group-item");
-    fillFooterLinks("stack",stack,"li","list-group-item");
-    fillFooterLinks("cert",cert,"li","list-group-item");
-    fillSocialLinks();
-    fillRights(" &#169; 2020 Hassan Khaled All Rights Reserved");
+
 }
 
 
