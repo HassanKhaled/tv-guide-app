@@ -1,5 +1,5 @@
 
-callOnStart("Shows");
+callOnStart("Shows",false);
 createTempDivsOnContentDiv(10,"temp","#content");
 
 /** @constant
