@@ -77,11 +77,12 @@ const cert = [
     @global
     @description Hold links' text and hrefs.
 */
- links = [ {href:"../website/index.html",text:"Home",icon:{first:"fas",second:"fa-home"},img:"../website/images/search.png"}
-         ,{href:"../website/search.html",text:"Search",icon:{first:"fas",second:"fa-search"},img:"../website/images/search.png"},
+ links = [{href:"../website/index.html",text:"Home",icon:{first:"fas",second:"fa-home"},img:"../website/images/search.png"},
+          {href:"../website/search.html",text:"Search",icon:{first:"fas",second:"fa-search"},img:"../website/images/search.png"},
           {href:"../website/schedule.html",text:"Schedule",icon:{first:"fas",second:"fa-calendar-alt"},img:"../website/images/search.png"},
           {href:"../website/shows.html",text:"Shows",icon:{first:"fas",second:"fa-tv"},img:"../website/images/search.png"},
-          {href:"../website/people.html",text:"People",icon:{first:"fas",second:"fa-user"},img:"../website/images/search.png"}];
+          {href:"../website/people.html",text:"People",icon:{first:"fas",second:"fa-user"},img:"../website/images/search.png"},
+          {href:"../website/setting.html",text:"Setting",icon:{first:"fas",second:"fa-cog"},img:"../website/images/search.png"}];
 
 /** @type {object}
 *   @global
@@ -173,7 +174,6 @@ function handleIntersection(entries) {
         fillFooterLinks("cert",cert,"li","list-group-item");
         fillSocialLinks();
         fillRights(" &#169; 2020 Hassan Khaled All Rights Reserved");
-        console.log("Loaded ....");
         counter++; 
       } 
     });
