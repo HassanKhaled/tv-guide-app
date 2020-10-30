@@ -1,3 +1,8 @@
+:root{
+
+    --time: 0.15s;
+}
+
 .orange{
     --color-1: #e76f51;
     --color-2: #f4a261;
@@ -172,7 +177,7 @@
     margin-top: 0px;
     padding-top: 0px;
     margin-bottom: 0px;
-    transition: all .15s linear;
+    transition: all var(--time) linear;
 }
 
 .dropdown-item.active{
@@ -211,7 +216,7 @@ body{
 
 
 .navbar-dark .navbar-nav .nav-link{
-    transition: all .15s linear;
+    transition: all var(--time) linear;
    text-shadow: 0.5px 0.5px 2px black;
     -webkit-text-stroke-color:white;
     -webkit-text-stroke-width: 0.20px;
@@ -336,7 +341,7 @@ fill: var(--color-2);
     border-color: var(--color-5);
     text-shadow: 1px 1px #000;
     border-radius: 0 20px 0 0;
-    transition: all .15s linear;
+    transition: all var(--time) linear;
 }
 
 .btn-success:hover,
@@ -356,7 +361,7 @@ fill: var(--color-2);
     text-shadow: 1px 1px #000;
     border-radius: 0px;
     border-right: 0px;
-    transition: all .15s linear;
+    transition: all var(--time) linear;
 }
 
 .btn-secondary:hover,
@@ -384,7 +389,7 @@ fill: var(--color-2);
 
 .cont {
     position: relative;
-    transition: all .15s linear;
+    transition: all var(--time) linear;
   }
 
 .cont:hover{
@@ -490,7 +495,7 @@ fill: var(--color-2);
     border-top: 1px solid transparent;
     padding:5px;
     margin:auto;
-    transition:  all 0.25s linear;
+    transition:  all var(--time) linear;
  }
 
  .schedule:hover{
@@ -525,7 +530,7 @@ fill: var(--color-2);
       border-radius: 0px 0px 20px 0px;
       background-color: var(--color-3);
       border-left: solid 5px var(--color-3);
-      transition: all 0.25s linear;
+      transition: all var(--time) linear;
   }
 
   .card:hover{
@@ -555,7 +560,7 @@ fill: var(--color-2);
     .img-thumbnail{
         width: 100%;
         box-shadow: 0px 0px 10px black;
-        transition: all .15s linear;
+        transition: all var(--time) linear;
     }
     .img-thumbnail:hover{
         box-shadow: none;
