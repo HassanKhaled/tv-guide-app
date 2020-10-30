@@ -83,51 +83,44 @@ const cert = [
           {href:"../website/shows.html",text:"Shows",icon:{first:"fas",second:"fa-tv"},img:"../website/images/search.png"},
           {href:"../website/people.html",text:"People",icon:{first:"fas",second:"fa-user"},img:"../website/images/search.png"}];
 
-/** @constant
-*   @type {object}
+/** @type {object}
 *   @global
 *   @description Hold reference flage image 
 */
 let flageImg = document.querySelector("#flage");
 
-/** @constant
-*   @type {object}
+/** @type {object}
 *   @global
 *   @description Hold reference drop down menu.
 */
 let dropdown = document.querySelector(".themes");
 
-/** @constant
-*   @type {string}
+/** @type {string}
 *   @global
 *   @description Hold reference string variable.
 */
 let searchQuery = "";
 
-/** @constant
-*   @type {object}
+/** @type {object}
 *   @global
 *   @description Hold reference to content div .
 */
 let contentDiv = document.querySelector("#content");
 
-/** @constant
-*   @type {object}
+/**@type {object}
 *   @global
 *   @description Hold reference drop down menu.
 */
 let dropdownFonts = document.querySelector(".fonts");
 
 
-/** @constant
-*   @type {object}
+/** @type {object}
 *   @global
 *   @description Hold reference nav bar .
 */
 let navbar = document.querySelector(".navbar-nav");
 
-/** @constant
-*   @type {object}
+/** @type {object}
 *   @global
 *   @description Hold reference social links div .
 */
@@ -151,12 +144,26 @@ loadFontFromlocalStorage = ()=>{
 }
 
 
-let counter =0;
-//------------------------ Watch out working area
 
+//------------------------ Watch out working area
+/** @type {int}
+*   @global
+*   @description intersections counter
+*/
+let counter =0;
+
+/** @constant
+*   @type {object}
+*   @global
+*   @description target element to be observer for intersection
+*/
 const target = document.querySelector('#end');
 
-
+/**
+* @function  handleIntersection
+* @description call back when observe event happens .
+* @param entries array of element to be observed 
+*/
 function handleIntersection(entries) {
     entries.map((entry) => {
       if (entry.isIntersecting && counter ===0) {
@@ -172,6 +179,11 @@ function handleIntersection(entries) {
     });
   }
 
+/** @constant
+*   @type {object}
+*   @global
+*   @description observer for observing objects intersection 
+*/
 const observer = new IntersectionObserver(handleIntersection);
 
 
