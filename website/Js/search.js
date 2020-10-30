@@ -31,13 +31,15 @@ let optionsButton = document.querySelector("#optionsButton");
 let searchButton = document.querySelector("#search");
 
 
+
+
 /** @type {object}
 *   @global
 *   @description Hold reference search term textbox.
 */
 let searchInput = document.querySelector("#searchTerm");
 
-
+callOnStart("Search",false);
 /**
  * @description Handle click event of the searchButton
  */
@@ -277,4 +279,4 @@ dropdownOptions.addEventListener('click', (e) =>{
 
 fillInDropDownFromList(".options", options, "option",false);
 
-callOnStart("Search");
+

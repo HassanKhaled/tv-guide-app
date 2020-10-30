@@ -27,7 +27,7 @@ let rolesList = document.querySelector("#roles");
 */
 let crewList = document.querySelector("#crew");
 
-callOnStart("People");
+callOnStart("People",false);
 createTempDivsOnContentDiv(10,"temp","#content");
 
 

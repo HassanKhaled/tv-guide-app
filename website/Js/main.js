@@ -90,11 +90,6 @@ const cert = [
 */
 let flageImg = document.querySelector("#flage");
 
-/** @type {object}
-*   @global
-*   @description Hold reference drop down menu.
-*/
-let dropdown = document.querySelector(".themes");
 
 /** @type {string}
 *   @global
@@ -107,12 +102,6 @@ let searchQuery = "";
 *   @description Hold reference to content div .
 */
 let contentDiv = document.querySelector("#content");
-
-/**@type {object}
-*   @global
-*   @description Hold reference drop down menu.
-*/
-let dropdownFonts = document.querySelector(".fonts");
 
 
 /** @type {object}
@@ -274,15 +263,18 @@ fillRights=(right)=>{
 /**
 * @function  callOnStart
 * @description call on the start of the loading of the file .
+* @param selecteLink is the link to be active on the page.
+* @param Switch make the font & theme load on or off.
 */
-callOnStart = (selecteLink)=>{
+callOnStart = (selecteLink,Switch)=>{
        
     loadThemeFromlocalStorage();
     loadFontFromlocalStorage();
     fillInLinksInNavBar(selecteLink);
-    fillInDropDownFromList(".fonts", fonts, "font",true);
-    fillInDropDownFromList(".themes", themes, "theme",false);
-
+    if(Switch){
+        fillInDropDownFromList(".fonts", fonts, "font",true);
+        fillInDropDownFromList(".themes", themes, "theme",false);
+    }
 }
 
 
@@ -698,25 +690,6 @@ removeClassFromChildrenOFElem = (cal , elem) => {
     
 }
 
-
-
-dropdown.addEventListener('click', (e) =>{
-    let className  = e.target.innerHTML ;
-    document.documentElement.className=className;
-    removeClassFromChildrenOFElem("active",dropdown);
-    e.target.classList.add("active");
-    saveTolocalStorage("theme",className);
-});
-  
-
-
-dropdownFonts.addEventListener('click', (e) =>{
-    let className  = e.target.innerHTML ;
-    document.body.style.fontFamily = className;
-    removeClassFromChildrenOFElem("active",dropdownFonts);
-    e.target.classList.add("active");
-    saveTolocalStorage("font",className);
-  });
   
 
  

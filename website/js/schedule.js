@@ -9,7 +9,7 @@ const countries = [{text:'USA',value:'US'},{text:'Canada',value:'CA'},{text:'Uni
 
 
 fillInDropDownFromList(".countries", countries, "",false);
-callOnStart("Schedule");
+callOnStart("Schedule",false);
 createTempDivsOnContentDiv(10,"tempTop","#content");
 
 /** @constant
