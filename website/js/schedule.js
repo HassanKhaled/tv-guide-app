@@ -86,7 +86,7 @@ getRequest = async url => {
         const data = await response.json();
         results = data;
 
-        console.log(data);
+        //console.log(data);
         clearContentOfParentElement(contentDiv);
         fragment = new DocumentFragment();
 
@@ -96,9 +96,10 @@ getRequest = async url => {
             fragment.appendChild(createImageFromUrlForSchedul(imageExistNotCreateTemp(x.show.image),x.name,x.url,x));
         }
         contentDiv.appendChild(fragment);
+        
 
     }catch(error){
-        console.log(error);
+       // console.log(error);
         createAlertWithMessage("alert-danger",3000,"Error  " ,error,contentDiv);
     }
 }

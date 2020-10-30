@@ -144,15 +144,6 @@ loadFontFromlocalStorage = ()=>{
     document.body.style.fontFamily=localStorage.getItem("font");
 }
 
-
-
-//------------------------ Watch out working area
-/** @type {int}
-*   @global
-*   @description intersections counter
-*/
-let counter =0;
-
 /** @constant
 *   @type {object}
 *   @global
@@ -167,14 +158,14 @@ const target = document.querySelector('#end');
 */
 function handleIntersection(entries) {
     entries.map((entry) => {
-      if (entry.isIntersecting && counter ===0) {
+      if (entry.isIntersecting ) {
         fillFooterLinks("projects",projects,"li","list-group-item");
         fillFooterLinks("apis",apis,"li","list-group-item");
         fillFooterLinks("stack",stack,"li","list-group-item");
         fillFooterLinks("cert",cert,"li","list-group-item");
         fillSocialLinks();
         fillRights(" &#169; 2020 Hassan Khaled All Rights Reserved");
-        counter++; 
+        observer.unobserve(entry.target);
       } 
     });
   }
@@ -372,7 +363,7 @@ arrayIntoString = array =>{ return array.join(", ");}
 */
 createImageFromUrlForSchedul = (src,alt,href,info) =>{
 
-    console.log(info);
+    //console.log(info);
 
     
 
