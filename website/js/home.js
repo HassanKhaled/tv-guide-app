@@ -9,3 +9,4 @@ setTimeout(()=>{
 
 });
 callOnStart("Home",false);
+//seenSplashScreen();

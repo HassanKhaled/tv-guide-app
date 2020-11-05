@@ -133,6 +133,8 @@ loadFontFromlocalStorage = ()=>{
     document.body.style.fontFamily=localStorage.getItem("font");
 }
 
+
+
 /** @constant
 *   @type {object}
 *   @global
@@ -271,12 +273,32 @@ callOnStart = (selecteLink,Switch)=>{
     loadThemeFromlocalStorage();
     loadFontFromlocalStorage();
     fillInLinksInNavBar(selecteLink);
+
+    if(selecteLink==="Home"){
+        seenSplashScreen();
+    }
     if(Switch){
         fillInDropDownFromList(".fonts", fonts, "font",true);
         fillInDropDownFromList(".themes", themes, "theme",false);
     }
 }
 
+    /**
+  * @function  seenSplashScreen
+  * @description sets that user seen the splash screen .
+  */
+ seenSplashScreen = ()=>{
+      
+  
+    if(localStorage.getItem("seen")!=="1"){
+        localStorage.setItem("seen", "1");
+       console.log("set");
+    }else{
+        console.log("remove");
+        document.getElementById("splash").remove();
+    }
+
+}
 
 /**
 * @function  imageFlageFromCode
