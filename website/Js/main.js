@@ -269,14 +269,15 @@ fillRights=(right)=>{
 * @param Switch make the font & theme load on or off.
 */
 callOnStart = (selecteLink,Switch)=>{
-    checkForPushAPiAllowance();
+    if(selecteLink==="Home"){
+        seenSplashScreen();
+    }
+
     loadThemeFromlocalStorage();
     loadFontFromlocalStorage();
     fillInLinksInNavBar(selecteLink);
 
-    if(selecteLink==="Home"){
-        seenSplashScreen();
-    }
+    
     if(Switch){
         fillInDropDownFromList(".fonts", fonts, "font",true);
         fillInDropDownFromList(".themes", themes, "theme",false);
@@ -284,32 +285,58 @@ callOnStart = (selecteLink,Switch)=>{
 }
 
 /**
+* @function  createSplashScreen
+* @description create splash screen on the age .
+*/
+createSplashScreen = ()=>{
+    const div = document.createElement("div");
+
+    div.classList.add("splash");
+    div.setAttribute("id","splash");
+
+    fragment = new DocumentFragment();
+    let tempImg = document.createElement("img");
+    tempImg.style.width="250px";
+    tempImg.style.height="200px";
+    tempImg.style.padding="none";
+    tempImg.style.marginBottom="none";
+    tempImg.src= "../website/images/favicon.svg";
+    let tempHeader = document.createElement("h1");
+    tempHeader.innerHTML="Wecome to Tv Guide the first Destinaion for all things TV";
+    tempHeader.classList.add("fade-in");
+    fragment.appendChild(tempImg);
+    fragment.appendChild(tempHeader);
+    div.appendChild(fragment);
+  
+    document.body.appendChild(div);
+    const splash = document.querySelector("#splash");
+    document.addEventListener("DOMContentLoaded",(e)=>{ setTimeout(()=>{ splash.classList.add("display-none");},2000);});  
+
+
+
+}
+
+
+
+/**
 * @function  seenSplashScreen
 * @description sets that user seen the splash screen .
 */
  seenSplashScreen = ()=>{
-      
-  
+ 
+    
     if(localStorage.getItem("seen")!=="1"){
+
         localStorage.setItem("seen", "1");
-       console.log("set");
+        createSplashScreen();
+        console.trace("added");
+       
     }else{
-        console.log("remove");
-        document.getElementById("splash").remove();
+    
     }
 
 }
 
-/**
-* @function  checkForPushAPiAllowance
-* @description check if the push notification is supported .
-*/
-checkForPushAPiAllowance = ()=>{
-      
-  
-  
-      
-}
 
 
 /**
