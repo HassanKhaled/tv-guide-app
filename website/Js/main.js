@@ -269,7 +269,7 @@ fillRights=(right)=>{
 * @param Switch make the font & theme load on or off.
 */
 callOnStart = (selecteLink,Switch)=>{
-       
+    checkForPushAPiAllowance();
     loadThemeFromlocalStorage();
     loadFontFromlocalStorage();
     fillInLinksInNavBar(selecteLink);
@@ -283,10 +283,10 @@ callOnStart = (selecteLink,Switch)=>{
     }
 }
 
-    /**
-  * @function  seenSplashScreen
-  * @description sets that user seen the splash screen .
-  */
+/**
+* @function  seenSplashScreen
+* @description sets that user seen the splash screen .
+*/
  seenSplashScreen = ()=>{
       
   
@@ -299,6 +299,18 @@ callOnStart = (selecteLink,Switch)=>{
     }
 
 }
+
+/**
+* @function  checkForPushAPiAllowance
+* @description check if the push notification is supported .
+*/
+checkForPushAPiAllowance = ()=>{
+      
+  
+  
+      
+}
+
 
 /**
 * @function  imageFlageFromCode
