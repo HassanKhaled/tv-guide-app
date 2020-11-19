@@ -269,9 +269,9 @@ fillRights=(right)=>{
 * @param Switch make the font & theme load on or off.
 */
 callOnStart = (selecteLink,Switch)=>{
-    if(selecteLink==="Home"){
+    /*if(selecteLink==="Home"){
         seenSplashScreen();
-    }
+    }*/
 
     loadThemeFromlocalStorage();
     loadFontFromlocalStorage();
