@@ -269,9 +269,9 @@ fillRights=(right)=>{
 * @param Switch make the font & theme load on or off.
 */
 callOnStart = (selecteLink,Switch)=>{
-    if(selecteLink==="Home"){
+    /*if(selecteLink==="Home"){
         seenSplashScreen();
-    }
+    }*/
 
     loadThemeFromlocalStorage();
     loadFontFromlocalStorage();
@@ -289,10 +289,9 @@ callOnStart = (selecteLink,Switch)=>{
 * @description create splash screen on the age .
 */
 createSplashScreen = ()=>{
-    const div = document.createElement("div");
+    const splash = document.querySelector("#splash");
 
-    div.classList.add("splash");
-    div.setAttribute("id","splash");
+    splash.classList.add("splash");
 
     fragment = new DocumentFragment();
     let tempImg = document.createElement("img");
@@ -306,10 +305,8 @@ createSplashScreen = ()=>{
     tempHeader.classList.add("fade-in");
     fragment.appendChild(tempImg);
     fragment.appendChild(tempHeader);
-    div.appendChild(fragment);
-  
-    document.body.appendChild(div);
-    const splash = document.querySelector("#splash");
+    splash.appendChild(fragment);
+    
     document.addEventListener("DOMContentLoaded",(e)=>{ setTimeout(()=>{ splash.classList.add("display-none");},2000);});  
 
 
@@ -323,12 +320,13 @@ createSplashScreen = ()=>{
 * @description sets that user seen the splash screen .
 */
  seenSplashScreen = ()=>{
- 
+     
+    createSplashScreen();
     
     if(localStorage.getItem("seen")!=="1"){
 
         localStorage.setItem("seen", "1");
-        createSplashScreen();
+    
         console.trace("added");
        
     }else{
