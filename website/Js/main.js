@@ -122,7 +122,11 @@ let socialLinksDiv = document.querySelector("#social_links");
 * @description load selected theme into the local storage .
 */
 loadThemeFromlocalStorage = ()=>{
-    document.documentElement.className=localStorage.getItem("theme");
+
+    if(localStorage.getItem("theme")!=="")
+         document.documentElement.className=localStorage.getItem("theme");
+    else 
+        document.documentElement.className=themes[0].text;
 }
 
 /**
@@ -130,7 +134,10 @@ loadThemeFromlocalStorage = ()=>{
 * @description load selected theme into the local storage .
 */
 loadFontFromlocalStorage = ()=>{
-    document.body.style.fontFamily=localStorage.getItem("font");
+    if(localStorage.getItem("font")!=="")
+        document.body.style.fontFamily=localStorage.getItem("font");
+    else 
+        document.body.style.fontFamily=fonts[0].text;
 }
 
 
