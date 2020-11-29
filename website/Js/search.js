@@ -99,6 +99,7 @@ getRequest = async url => {
         }
         contentDiv.appendChild(fragment);
     }catch(error){
+        console.error(error);
         createAlertWithMessage("alert-danger",3000,"Error  " ,error,contentDiv);
     }
 }
@@ -125,6 +126,7 @@ getPeopleRequest = async url => {
         }
         contentDiv.appendChild(fragment);
     }catch(error){
+        console.error(error);
         createAlertWithMessage("alert-danger",3000,"Error  " ,error,contentDiv);
     }
 }
@@ -153,6 +155,7 @@ getSingleRequest = async url => {
             contentDiv.appendChild(fragment);
 
     }catch(error){
+        console.error(error);
         createAlertWithMessage("alert-danger",3000,"Error  " ,error,contentDiv);
     }
 }

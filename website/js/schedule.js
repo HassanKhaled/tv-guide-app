@@ -99,7 +99,7 @@ getRequest = async url => {
         
 
     }catch(error){
-       // console.log(error);
+        console.error(error);
         createAlertWithMessage("alert-danger",3000,"Error  " ,error,contentDiv);
     }
 }
