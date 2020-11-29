@@ -55,6 +55,7 @@ getPeopleRequest = async url => {
         contentDiv.appendChild(fragment);
 
     }catch(error){
+        console.error(error);
         createAlertWithMessage("alert-danger",3000,"Error  " ,error,contentDiv);
     }
 }
@@ -89,7 +90,7 @@ getPeopleCastCredits = async id => {
         }
        
     }catch(error){
-        console.log(error);
+        console.error(error);
         createAlertWithMessage("alert-danger",3000,"Error  " ,error,contentDiv);
     }
 }
@@ -121,7 +122,7 @@ getPeopleCrewCredits = async id => {
         }
        
     }catch(error){
-        console.log(error);
+        console.error(error);
         createAlertWithMessage("alert-danger",3000,"Error  " ,error,contentDiv);
     }
 }

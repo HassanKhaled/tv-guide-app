@@ -84,6 +84,7 @@ getRequest = async url => {
         }
         contentDiv.appendChild(fragment);
     }catch(error){
+        console.error(error);
         createAlertWithMessage("alert-danger",3000,"Error  " ,error,contentDiv);
     }
 }
@@ -123,7 +124,7 @@ getRequestandFill = async (url)=> {
             episodeList.appendChild(tempLi);
         }
     }catch(error){
-        console.log(error);
+        console.error(error);
         createAlertWithMessage("alert-danger",3000,"Error  " ,error,contentDiv);
     }
 }
@@ -148,7 +149,7 @@ getCastData = async (url)=> {
             castList.appendChild(tempLi);
         }
     }catch(error){
-        console.log(error);
+        console.error(error);
         createAlertWithMessage("alert-danger",3000,"Error  " ,error,contentDiv);
     }
 }
@@ -173,7 +174,7 @@ getCrewData = async (url)=> {
             crewList.appendChild(tempLi);
         }
     }catch(error){
-        console.log(error);
+        console.error(error);
         createAlertWithMessage("alert-danger",3000,"Error  " ,error,contentDiv);
     }
 }
@@ -200,7 +201,7 @@ getAkaData = async (url)=> {
             akaList.appendChild(tempLi);
         }
     }catch(error){
-        console.log(error);
+        console.error(error);
         createAlertWithMessage("alert-danger",3000,"Error  " ,error,contentDiv);
     }
 }
@@ -231,7 +232,7 @@ getImagesData = async (url)=> {
             imagesList.appendChild(tempLi);
         }
     }catch(error){
-        console.log(error);
+        console.error(error);
         createAlertWithMessage("alert-danger",3000,"Error  " ,error,contentDiv);
     }
 }
