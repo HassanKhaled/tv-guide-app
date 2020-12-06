@@ -559,7 +559,14 @@ fill: var(--color-2);
 }
 
 
-
+.parallax {
+    background-image:var(--url);
+    min-height: 500px; 
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
 
   @media only screen and (max-width: 768px) {
     .temp{
