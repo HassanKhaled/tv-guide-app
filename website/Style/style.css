@@ -569,6 +569,11 @@ fill: var(--color-2);
   }
 
   @media only screen and (max-width: 768px) {
+
+    .parallax {
+        background-attachment: scroll;
+      }
+
     .temp{
         width: 98%;
         margin-left: 0px;
