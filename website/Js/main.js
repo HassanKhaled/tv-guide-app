@@ -363,28 +363,9 @@ imageFlageFromCode = code =>{ return `https://flagcdn.com/32x24/${code.toLowerCa
 createImageFromUrl = (src,alt,href,info) =>{
     const div = document.createElement("div");
     div.classList.add("cont");
-    /*
-    let temp = document.querySelector("#imageTemp");
-    let clone = temp.content.cloneNode(true);
-    const img = clone.querySelector("img");
-    img.setAttribute("src",src);
-    img.setAttribute("href",href);
-    img.setAttribute("alt",alt);
-    img.setAttribute("title",alt);
-    img.setAttribute("data-value",info);
-    img.setAttribute("data-toggle","modal");
-    img.setAttribute("data-target","#myModal");
-    img.classList.add("img-thumbnail");
-    img.classList.add("mb-1");
-    img.classList.add("ml-1");
-    const text = clone.querySelector("div");
-    text.classList.add("text-block");
-    text.innerHTML=alt;
-    div.appendChild(img);
-    div.appendChild(text);
-    contentDiv.appendChild(div);*/
     
     const img = document.createElement("img");
+    img.setAttribute("loading","lazy");
     img.setAttribute("src",src);
     img.setAttribute("href",href);
     img.setAttribute("alt",alt);
@@ -421,19 +402,18 @@ arrayIntoString = array =>{ return array.join(", ");}
 */
 createImageFromUrlForSchedul = (src,alt,href,info) =>{
 
-    //console.log(info);
-
     
-
     const div = document.createElement("div");
     div.classList.add("row");
     div.classList.add("schedule");
 
     const img = document.createElement("img");
+    img.setAttribute("loading","lazy");
     img.setAttribute("src",src);
     img.setAttribute("href",href);
     img.setAttribute("alt",alt);
     img.setAttribute("title",alt);
+   
     img.classList.add("col-md-3");
 
 

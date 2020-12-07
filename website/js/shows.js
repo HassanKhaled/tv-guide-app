@@ -196,6 +196,7 @@ getAkaData = async (url)=> {
             tempLi.innerHTML=`${item.name}  -  ${item.country.name}` ;
             tempLi.classList.add("list-group-item");
             let img = document.createElement("img");
+            img.setAttribute("loading","lazy");
             img.setAttribute("src",imageFlageFromCode(item.country.code));
             tempLi.appendChild(img);
             akaList.appendChild(tempLi);
@@ -224,9 +225,11 @@ getImagesData = async (url)=> {
             //tempLi.innerHTML=`${item.name}  -  ${item.country.name}` ;
             
             let img = document.createElement("img");
-            if(item.resolutions.medium!==undefined){
-            img.setAttribute("src",item.resolutions.medium.url);
-        }
+            img.setAttribute("loading","lazy");
+
+            if(item.resolutions.medium!==undefined)
+                img.setAttribute("src",item.resolutions.medium.url);
+        
             img.classList.add("img-thumbnail");
             tempLi.appendChild(img);
             imagesList.appendChild(tempLi);
