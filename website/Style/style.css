@@ -217,9 +217,9 @@ body{
 
 .navbar-dark .navbar-nav .nav-link{
     transition: all var(--time) linear;
+    
    text-shadow: 0.5px 0.5px 2px black;
-    -webkit-text-stroke-color:white;
-    -webkit-text-stroke-width: 0.20px;
+   
    color:var(--color-4);
 }
 
